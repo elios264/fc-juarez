@@ -1,0 +1,3 @@
+rootProject.name = 'fc_juarez'
+
+include ':app'
