@@ -3,13 +3,15 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node node_modules/react-native/local-cli/cli.js start"
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "regenerate-icon": "app-icon generate"
   },
   "dependencies": {
     "react": "16.0.0",
     "react-native": "0.51.0"
   },
   "devDependencies": {
+    "app-icon": "^0.6.3",
     "babel-eslint": "^8.0.3",
     "babel-preset-react-native": "4.0.0",
     "eslint": "^4.13.1",
