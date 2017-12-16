@@ -6,12 +6,16 @@
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "regenerate-icon": "app-icon generate"
   },
+  "rnpm": {
+    "assets": ["./assets/fonts"]
+  },
   "dependencies": {
     "lodash": "^4.17.4",
     "prop-types": "^15.6.0",
     "react": "16.0.0",
     "react-native": "0.51.0",
     "react-native-drawer-menu": "^0.2.5",
+    "react-native-style-tachyons": "^3.5.1",
     "react-redux": "^5.0.6",
     "react-router-native": "^4.2.0",
     "redux": "^3.7.2",

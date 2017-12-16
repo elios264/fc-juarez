@@ -4,6 +4,8 @@ import { Platform, StyleSheet, Text, View, StatusBar } from 'react-native';
 import { connect } from 'react-redux';
 import Drawer from 'react-native-drawer-menu';
 
+import { Sidebar } from './sideBar';
+
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' +
@@ -24,18 +26,10 @@ export class App extends PureComponent {
   render() {
     const { initializing } = this.props;
 
-    const content = (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-        Menu here!
-        </Text>
-      </View>
-    );
-
     return (
       <Drawer
         drawerWidth={300}
-        drawerContent={content}
+        drawerContent={<Sidebar drawer={{}} />}
       >
         <View style={styles.container}>
           <StatusBar backgroundColor='transparent' translucent={true} barStyle='light-content' />
