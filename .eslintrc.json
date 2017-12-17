@@ -83,10 +83,11 @@
     "react/jsx-closing-tag-location": "warn",
     "react/jsx-indent": ["warn", 2],
     "react/jsx-pascal-case": "error",
-    "import/no-unresolved": "error",
+    "import/no-unresolved": "off",
     "import/no-dynamic-require": "error",
-    "import/no-extraneous-dependencies": "error",
+    "import/no-extraneous-dependencies": "off",
     "import/first": "error",
+    "import/named": "off",
     "import/no-duplicates": "error"
   }
 }
