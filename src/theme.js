@@ -1,4 +1,4 @@
-export const rem = 16;
+export const rem = 14;
 export const palette = {
   contrast: '#14fa68',
   primary: '#161616',

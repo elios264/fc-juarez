@@ -3,8 +3,11 @@ import React, { PureComponent } from 'react';
 import { Platform, StyleSheet, Text, View, StatusBar } from 'react-native';
 import { connect } from 'react-redux';
 import Drawer from 'react-native-drawer-menu';
+import NativeTachyons from 'react-native-style-tachyons';
+//import { Route, Switch } from 'react-router-native';
 
 import { Sidebar } from './sideBar';
+import { Header } from './header';
 
 
 const instructions = Platform.select({
@@ -17,31 +20,39 @@ const instructions = Platform.select({
 const mapStateToProps = (state) => ({ initializing: state.initializing });
 
 @connect(mapStateToProps)
+@NativeTachyons.wrap
 export class App extends PureComponent {
 
   static propTypes = {
     initializing: PropTypes.bool.isRequired,
   }
 
+  setDrawerRef = (ref) => this.drawer = ref;
+
   render() {
     const { initializing } = this.props;
 
     return (
       <Drawer
+        ref={this.setDrawerRef}
+        disabled={initializing}
         drawerWidth={300}
         drawerContent={<Sidebar drawer={{}} />}
       >
-        <View style={styles.container}>
-          <StatusBar backgroundColor='transparent' translucent={true} barStyle='light-content' />
-          <Text style={styles.welcome}>
-            Welcome to React Native!
-          </Text>
-          <Text style={styles.instructions}>
-            {initializing && 'Initializing please wait'}
-          </Text>
-          <Text style={styles.instructions}>
-            {instructions}
-          </Text>
+        <StatusBar backgroundColor='transparent' translucent={true} barStyle='light-content' />
+        <View cls='flx-i'>
+          <Header drawer={this.drawer} />
+          <View cls='flx-i jcc aic bg-#161616'>
+            <Text style={styles.welcome}>
+              Welcome to React Native!
+            </Text>
+            <Text style={styles.instructions}>
+              {initializing && 'Initializing please wait'}
+            </Text>
+            <Text style={styles.instructions}>
+              {instructions}
+            </Text>
+          </View>
         </View>
       </Drawer>
     );
@@ -49,12 +60,7 @@ export class App extends PureComponent {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#161616',
-  },
+
   welcome: {
     fontSize: 20,
     textAlign: 'center',
