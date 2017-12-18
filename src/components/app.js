@@ -9,6 +9,7 @@ import { Sidebar } from './sideBar';
 import { Header } from './header';
 import { Loader } from './loader';
 import { Welcome } from './welcome';
+import { Settings } from './settings';
 
 const mapStateToProps = (state) => ({ initializing: state.initializing });
 
@@ -39,6 +40,7 @@ export class App extends PureComponent {
               <Header drawer={this.drawer} />
               <Switch>
                 <Route exact path='/' component={Welcome} />
+                <Route exact path='/settings' component={Settings} />
               </Switch>
             </View>
           )} />
