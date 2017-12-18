@@ -46,16 +46,18 @@ export class Sidebar extends PureComponent {
           <TouchableOpacity cls='absolute left-1' onPress={this.closeDrawer}>
             <Image cls='h1 w1' source={require('fc_juarez/assets/img/back.png')} />
           </TouchableOpacity>
-          <Text cls='white f3 ff-permanent-marker'> FC Juarez <Text cls='contrast'>App </Text></Text>
+          <Link to='/' component={TouchableOpacity} >
+            <Text cls='white f3 ff-permanent-marker'> FC Juarez <Text cls='contrast'>App </Text></Text>
+          </Link>
           <Text cls='gray ff-ubu-b absolute' style={{ fontSize: sizes.f5 / 2, bottom: sizes.mb1 + sizes.mb3 }}>
             FC JÚAREZ | V1.0
           </Text>
         </View>
         <View cls='flx-i'>
-          <MenuElement path='/' image={require('fc_juarez/assets/img/menu/ball.png')} text='Próximo partido' />
-          <MenuElement path='/' image={require('fc_juarez/assets/img/menu/score.png')} text='Tabla general' />
-          <MenuElement path='/' image={require('fc_juarez/assets/img/menu/tv.png')} text='Calendario de partidos' />
-          <MenuElement path='/' image={require('fc_juarez/assets/img/menu/whistle.png')} text='Minuto a minuto' />
+          <MenuElement path='/next-match' image={require('fc_juarez/assets/img/menu/ball.png')} text='Próximo partido' />
+          <MenuElement path='/standings' image={require('fc_juarez/assets/img/menu/score.png')} text='Tabla general' />
+          <MenuElement path='/match-calendar' image={require('fc_juarez/assets/img/menu/tv.png')} text='Calendario de partidos' />
+          <MenuElement path='/the-minute' image={require('fc_juarez/assets/img/menu/whistle.png')} text='Minuto a minuto' />
           <MenuElement path='/settings' image={require('fc_juarez/assets/img/menu/timer.png')} text='Configuración' />
 
           <Text cls='gray ff-ubu-b absolute bottom-1 left-1' style={{ fontSize: sizes.f5 / 2 }}>

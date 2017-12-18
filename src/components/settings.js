@@ -10,7 +10,7 @@ export class Settings extends PureComponent {
   render() {
 
     return (
-      <View cls='bg-white flx-i'>
+      <View cls='flx-i'>
         <View cls='flx-i bg-primary'>
           <Image cls='absolute-fill rm-stretch' style={[styles.expand]} source={require('fc_juarez/assets/img/temp/settingsbg.png')} />
           <View cls='flx-row aic mt4 ml4 mr3'>

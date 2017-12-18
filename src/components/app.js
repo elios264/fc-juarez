@@ -10,6 +10,10 @@ import { Header } from './header';
 import { Loader } from './loader';
 import { Welcome } from './welcome';
 import { Settings } from './settings';
+import { NextMatch } from './nextMatch';
+import { MatchCalendar } from './matchCalendar';
+import { Standings } from './standings';
+import { TheMinute } from './theMinute';
 
 const mapStateToProps = (state) => ({ initializing: state.initializing });
 
@@ -41,6 +45,10 @@ export class App extends PureComponent {
               <Switch>
                 <Route exact path='/' component={Welcome} />
                 <Route exact path='/settings' component={Settings} />
+                <Route exact path='/next-match' component={NextMatch} />
+                <Route exact path='/match-calendar' component={MatchCalendar} />
+                <Route exact path='/standings' component={Standings} />
+                <Route exact path='/the-minute' component={TheMinute} />
               </Switch>
             </View>
           )} />
