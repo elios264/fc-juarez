@@ -7,7 +7,9 @@
     "regenerate-icon": "app-icon generate"
   },
   "rnpm": {
-    "assets": ["./assets/fonts"]
+    "assets": [
+      "./assets/fonts"
+    ]
   },
   "dependencies": {
     "lodash": "^4.17.4",
@@ -15,6 +17,7 @@
     "react": "16.0.0",
     "react-native": "0.51.0",
     "react-native-drawer-menu": "^0.2.5",
+    "react-native-scalable-image": "^0.2.2",
     "react-native-style-tachyons": "^3.5.1",
     "react-redux": "^5.0.6",
     "react-router-native": "^4.2.0",
