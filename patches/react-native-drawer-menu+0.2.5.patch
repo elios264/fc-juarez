@@ -1,0 +1,21 @@
+patch-package
+--- a/node_modules/react-native-drawer-menu/Drawer/index.js
++++ b/node_modules/react-native-drawer-menu/Drawer/index.js
+@@ -29,7 +29,7 @@ const types = {
+ };
+ 
+ const MAX = {
+-  maskAlpha: 0.5
++  maskAlpha: 1.0
+ };
+ 
+ export default class Drawer extends Component {
+@@ -44,7 +44,7 @@ export default class Drawer extends Component {
+     drawerPosition: positions.Left,
+     type: types.Default,
+     showMask: true,
+-    maskAlpha: 0.4,
++    maskAlpha: 0.8,
+     customStyles: {},
+     startCapture: false,
+     moveCapture: false

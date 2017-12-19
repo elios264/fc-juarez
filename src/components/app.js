@@ -53,14 +53,11 @@ export class App extends PureComponent {
             </View>
           )} />
         </Switch>
-
-
-
       </Drawer>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  flex: { flex: 1 }
+  flex: { flex: 1 },
 });
