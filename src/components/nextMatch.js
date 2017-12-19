@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { StyleSheet, View, Dimensions, Image, ScrollView, Text, TouchableOpacity, TouchableHighlight, TouchableNativeFeedback } from 'react-native';
+import { StyleSheet, View, Dimensions, Image, ScrollView, Text, TouchableHighlight } from 'react-native';
 import NativeTachyons, { sizes } from 'react-native-style-tachyons';
 import ScalableImage from 'react-native-scalable-image';
 import _ from 'lodash';
