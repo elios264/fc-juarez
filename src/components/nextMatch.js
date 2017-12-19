@@ -1,7 +1,8 @@
 import React, { PureComponent } from 'react';
-import { StyleSheet, View, Dimensions, Image, ScrollView, Text } from 'react-native';
+import { StyleSheet, View, Dimensions, Image, ScrollView, Text, TouchableOpacity, TouchableHighlight, TouchableNativeFeedback } from 'react-native';
 import NativeTachyons, { sizes } from 'react-native-style-tachyons';
 import ScalableImage from 'react-native-scalable-image';
+import _ from 'lodash';
 
 @NativeTachyons.wrap
 export class NextMatch extends PureComponent {
@@ -12,7 +13,7 @@ export class NextMatch extends PureComponent {
       <View cls='flx-i'>
         <View cls='flx-i bg-primary'>
           <Image cls='absolute-fill rm-cover' style={[styles.expand]} source={require('fc_juarez/assets/img/background.png')} />
-          <ScrollView cls='flx-i'>
+          <ScrollView cls='flx-i' alwaysBounceVertical={false} bounces={false}>
             <View cls='bb b--red'>
               <ScalableImage width={Dimensions.get('window').width} source={require('fc_juarez/assets/img/temp/nextMatchImg.png')} />
               <View cls='absolute bottom-0 right-0' style={[styles.triangleCorner]} />
@@ -38,14 +39,17 @@ export class NextMatch extends PureComponent {
                 <Image cls='w3 h3 rm-stretch' source={require('fc_juarez/assets/img/teams/doradosdesinaloa.png')} />
               </View>
             </View>
-            <View cls='ma4 mb0 bt b--#373737 pt3'>
+            <View cls='ma4 mb0 bt b--#373737 pt3 pb3'>
               <Text cls='white ff-ubu-b' style={[styles.smallText]}>RESUMEN</Text>
               <Text cls='white ff-ubu-b' style={[styles.smallerText]}>BRAVOS FC <Text cls='gray'>CIUDAD JUÁREZ</Text></Text>
-              <Text cls='white ff-ubu mt3' style={[styles.smallText]} >
+              <Text cls='white ff-ubu mt3 mb3' style={[styles.smallText]} >
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                 {'\n'}{'\n'}
                 Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
               </Text>
+              <TouchableHighlight onPress={_.noop} cls='bg-contrast pv2 jcc aic' underlayColor='#0c963e' >
+                <Text cls='#0b6b2e f6 ff-ubu-b'>Comprar boletos</Text>
+              </TouchableHighlight>
             </View>
           </ScrollView>
         </View>
