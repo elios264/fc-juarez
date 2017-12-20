@@ -8,11 +8,11 @@ export const palette = {
 export const fonts = {
   'permanent-marker': 'Permanent Marker',
   'ubu': 'Ubuntu',
-  'ubu-bi': 'Ubuntu Bold Italic',
-  'ubu-b': 'Ubuntu Bold',
-  'ubu-i': 'Ubuntu Italic',
-  'ubu-li': 'Ubuntu Light Italic',
-  'ubu-l': 'Ubuntu Light',
-  'ubu-mi': 'Ubuntu Medium Italic',
-  'ubu-m': 'Ubuntu Medium',
+  'ubu-bi': 'Ubuntu-BoldItalic',
+  'ubu-b': 'Ubuntu-Bold',
+  'ubu-i': 'Ubuntu-Italic',
+  'ubu-li': 'Ubuntu-LightItalic',
+  'ubu-l': 'Ubuntu-Light',
+  'ubu-mi': 'Ubuntu-MediumItalic',
+  'ubu-m': 'Ubuntu-Medium',
 };
