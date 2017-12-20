@@ -32,15 +32,15 @@ export class TheMinute extends PureComponent {
             <View cls='flx-row jcc aic h3 mh2' >
               <View cls='absolute left-0 flx-row aic ml2'>
                 <Image cls='w3 h3 rm-stretch' source={require('fc_juarez/assets/img/teams/fcjuarez.png')} />
-                <View cls='ml1'>
+                <View cls='ml1' style={[styles.teamInfo]}>
                   <Text cls='ff-ubu-b white' style={[styles.smallText]}>BRAVOS FC</Text>
                   <Text cls='ff-ubu-b gray' style={[styles.smallText]}>CIUDAD JÚAREZ</Text>
                 </View>
               </View>
               <Text cls='ff-ubu-b white f4'>VS</Text>
               <View cls='absolute right-0 flx-row aic ml2'>
-                <View cls='aife mr1'>
-                  <Text cls='ff-ubu-b white' style={[styles.smallText]}>DORADOS</Text>
+                <View cls='aife mr1' style={[styles.teamInfo]}>
+                  <Text cls='ff-ubu-b white tr' style={[styles.smallText]}>DORADOS</Text>
                   <Text cls='ff-ubu-b gray' style={[styles.smallText]} >SINALOA</Text>
                 </View>
                 <Image cls='w3 h3 rm-stretch' source={require('fc_juarez/assets/img/teams/doradosdesinaloa.png')} />
@@ -67,6 +67,9 @@ export class TheMinute extends PureComponent {
 }
 
 const styles = StyleSheet.create({
+  teamInfo: {
+    maxWidth: sizes.w3 + sizes.w2
+  },
   smallText: {
     fontSize: sizes.f5 / 1.5
   },

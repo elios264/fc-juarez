@@ -8,7 +8,7 @@ export const intialize = () => catchError(async(dispatch) => {
   await dispatch(appStart());
   //await ServiceApi.initialize(dispatch);
   //await ServiceApi.downloadAllData();
-  await new Promise((res) => setTimeout(res, 500));
+  await new Promise((res) => setTimeout(res, 5000));
 
   dispatch({ type: 'INITIALIZING', running: false });
 }, 'Ha ocurrido un error inicializando el sistema');
