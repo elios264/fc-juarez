@@ -39,7 +39,7 @@
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string></string>
+	<string/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSExceptionDomains</key>
@@ -52,6 +52,14 @@
 		</dict>
 	</dict>
 	<key>UIAppFonts</key>
-	<array/>
+	<array>
+		<string>Ubuntu-Bold.ttf</string>
+		<string>Ubuntu-BoldItalic.ttf</string>
+		<string>Ubuntu-Italic.ttf</string>
+		<string>Ubuntu-Light.ttf</string>
+		<string>Ubuntu-LightItalic.ttf</string>
+		<string>Ubuntu-Medium.ttf</string>
+		<string>Ubuntu-MediumItalic.ttf</string>
+	</array>
 </dict>
 </plist>
