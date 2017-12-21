@@ -1,4 +1,4 @@
-package com.fc_juarez;
+package com.mercatika.fc_juarez;
 
 import android.content.Intent;
 import android.os.Bundle;
