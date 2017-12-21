@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { StyleSheet, View, Dimensions, Image, ScrollView, Text } from 'react-native';
+import { StyleSheet, View, Dimensions, Image, ScrollView, Text, RefreshControl } from 'react-native';
 import NativeTachyons, { sizes } from 'react-native-style-tachyons';
 import ScalableImage from 'react-native-scalable-image';
 
@@ -18,13 +18,21 @@ const MatchUpdate = NativeTachyons.wrap(({ minute, desc, image }) => ( // eslint
 @NativeTachyons.wrap
 export class TheMinute extends PureComponent {
 
+  state = { refreshing: false };
+
+  onRefresh = async () => {
+    this.setState({ refreshing: true });
+    await new Promise((res) => setTimeout(res, 2000));
+    this.setState({ refreshing: false });
+  }
+
   render() {
 
     return (
       <View cls='flx-i'>
         <View cls='flx-i bg-primary'>
           <Image cls='absolute-fill rm-cover' style={[styles.expand]} source={require('fc_juarez/assets/img/background.png')} />
-          <ScrollView cls='flx-i' alwaysBounceVertical={false} bounces={false}>
+          <ScrollView cls='flx-i' refreshControl={<RefreshControl refreshing={this.state.refreshing} onRefresh={this.onRefresh} tintColor='white' />} >
             <View cls='aic mt3 mb3'>
               <Text cls='ff-ubu-b contrast f6 bg-transparent' >LIGA DE ASCENSO</Text>
               <Text cls='ff-ubu-b gray f6 bg-transparent' >03 MAR 2017 | ESTADIO JALISCO</Text>

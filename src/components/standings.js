@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { StyleSheet, View, Dimensions, Image, ScrollView, Text } from 'react-native';
+import { StyleSheet, View, Dimensions, Image, ScrollView, Text, RefreshControl } from 'react-native';
 import NativeTachyons, { sizes } from 'react-native-style-tachyons';
 import ScalableImage from 'react-native-scalable-image';
 
@@ -18,13 +18,21 @@ const Score = NativeTachyons.wrap(({ score }) => ( // eslint-disable-line react/
 @NativeTachyons.wrap
 export class Standings extends PureComponent {
 
+  state = { refreshing: false };
+
+  onRefresh = async () => {
+    this.setState({ refreshing: true });
+    await new Promise((res) => setTimeout(res, 2000));
+    this.setState({ refreshing: false });
+  }
+
   render() {
 
     return (
       <View cls='flx-i'>
         <View cls='flx-i bg-primary'>
           <Image cls='absolute-fill rm-cover' style={[styles.expand]} source={require('fc_juarez/assets/img/background.png')} />
-          <ScrollView cls='flx-i'>
+          <ScrollView cls='flx-i' refreshControl={<RefreshControl refreshing={this.state.refreshing} onRefresh={this.onRefresh} tintColor='white' />} >
             <Text cls='mv3 ml3 f3 ff-ubu-m white bg-transparent'>Tabla <Text cls='#AAAAAA'>general</Text></Text>
             <View cls='bt b--#373737' />
             <View cls='mt3 ml2 mr1 flx-row'>

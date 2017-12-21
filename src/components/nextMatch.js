@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { StyleSheet, View, Dimensions, Image, ScrollView, Text, TouchableHighlight } from 'react-native';
+import { StyleSheet, View, Dimensions, Image, ScrollView, Text, TouchableHighlight, RefreshControl } from 'react-native';
 import NativeTachyons, { sizes } from 'react-native-style-tachyons';
 import ScalableImage from 'react-native-scalable-image';
 import _ from 'lodash';
@@ -7,13 +7,21 @@ import _ from 'lodash';
 @NativeTachyons.wrap
 export class NextMatch extends PureComponent {
 
+  state = { refreshing: false };
+
+  onRefresh = async () => {
+    this.setState({ refreshing: true });
+    await new Promise((res) => setTimeout(res, 2000));
+    this.setState({ refreshing: false });
+  }
+
   render() {
 
     return (
       <View cls='flx-i'>
         <View cls='flx-i bg-primary'>
           <Image cls='absolute-fill rm-cover' style={[styles.expand]} source={require('fc_juarez/assets/img/background.png')} />
-          <ScrollView cls='flx-i' alwaysBounceVertical={false} bounces={false}>
+          <ScrollView cls='flx-i' refreshControl={<RefreshControl refreshing={this.state.refreshing} onRefresh={this.onRefresh} tintColor='white' />} >
             <View cls='bb b--red'>
               <ScalableImage width={Dimensions.get('window').width} source={require('fc_juarez/assets/img/temp/nextMatchImg.png')} />
               <View cls='absolute bottom-0 right-0' style={[styles.triangleCorner]} />

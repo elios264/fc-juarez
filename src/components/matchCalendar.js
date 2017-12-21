@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { StyleSheet, View, Dimensions, Image, ScrollView, Text, TouchableOpacity, TouchableHighlight } from 'react-native';
+import { StyleSheet, View, Dimensions, Image, ScrollView, Text, TouchableOpacity, TouchableHighlight, RefreshControl } from 'react-native';
 import NativeTachyons, { sizes } from 'react-native-style-tachyons';
 import ScalableImage from 'react-native-scalable-image';
 import _ from 'lodash';
@@ -25,6 +25,14 @@ const MatchInfo = NativeTachyons.wrap(({ team1, team2, image1, image2, goals1, g
 @NativeTachyons.wrap
 export class MatchCalendar extends PureComponent {
 
+  state = { refreshing: false };
+
+  onRefresh = async () => {
+    this.setState({ refreshing: true });
+    await new Promise((res) => setTimeout(res, 2000));
+    this.setState({ refreshing: false });
+  }
+
   openPicker = () => {
   }
 
@@ -35,7 +43,7 @@ export class MatchCalendar extends PureComponent {
       <View cls='flx-i'>
         <View cls='flx-i bg-primary'>
           <Image cls='absolute-fill rm-cover' style={[styles.expand]} source={require('fc_juarez/assets/img/background.png')} />
-          <ScrollView cls='flx-i'>
+          <ScrollView cls='flx-i' refreshControl={<RefreshControl refreshing={this.state.refreshing} onRefresh={this.onRefresh} tintColor='white' />} >
             <View cls='aic mv3 mh2 flx-row jcsb'>
               <Text cls='f5 mr3 ff-ubu-m white bg-transparent'>Calendario <Text cls='#AAAAAA'>de partidos</Text></Text>
               <TouchableOpacity cls='flx-i jcc bg-rgba(13,13,13,0.8)' onPress={this.openPicker} activeOpacity={0.8} >
