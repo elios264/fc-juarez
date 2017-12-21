@@ -26,22 +26,22 @@ export class TheMinute extends PureComponent {
           <Image cls='absolute-fill rm-cover' style={[styles.expand]} source={require('fc_juarez/assets/img/background.png')} />
           <ScrollView cls='flx-i' alwaysBounceVertical={false} bounces={false}>
             <View cls='aic mt3 mb3'>
-              <Text cls='ff-ubu-b contrast f6' >LIGA DE ASCENSO</Text>
-              <Text cls='ff-ubu-b gray f6' >03 MAR 2017 | ESTADIO JALISCO</Text>
+              <Text cls='ff-ubu-b contrast f6 bg-transparent' >LIGA DE ASCENSO</Text>
+              <Text cls='ff-ubu-b gray f6 bg-transparent' >03 MAR 2017 | ESTADIO JALISCO</Text>
             </View>
             <View cls='flx-row jcc aic h3 mh2' >
               <View cls='absolute left-0 flx-row aic ml2'>
                 <Image cls='w3 h3 rm-stretch' source={require('fc_juarez/assets/img/teams/fcjuarez.png')} />
                 <View cls='ml1' style={[styles.teamInfo]}>
-                  <Text cls='ff-ubu-b white' style={[styles.smallText]}>BRAVOS FC</Text>
-                  <Text cls='ff-ubu-b gray' style={[styles.smallText]}>CIUDAD JÚAREZ</Text>
+                  <Text cls='ff-ubu-b white bg-transparent' style={[styles.smallText]}>BRAVOS FC</Text>
+                  <Text cls='ff-ubu-b gray bg-transparent' style={[styles.smallText]}>CIUDAD JÚAREZ</Text>
                 </View>
               </View>
-              <Text cls='ff-ubu-b white f4'>VS</Text>
+              <Text cls='ff-ubu-b white f4 bg-transparent'>VS</Text>
               <View cls='absolute right-0 flx-row aic ml2'>
                 <View cls='aife mr1' style={[styles.teamInfo]}>
-                  <Text cls='ff-ubu-b white tr' style={[styles.smallText]}>DORADOS</Text>
-                  <Text cls='ff-ubu-b gray' style={[styles.smallText]} >SINALOA</Text>
+                  <Text cls='ff-ubu-b white tr bg-transparent' style={[styles.smallText]}>DORADOS</Text>
+                  <Text cls='ff-ubu-b gray bg-transparent' style={[styles.smallText]} >SINALOA</Text>
                 </View>
                 <Image cls='w3 h3 rm-stretch' source={require('fc_juarez/assets/img/teams/doradosdesinaloa.png')} />
               </View>

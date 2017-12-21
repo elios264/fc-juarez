@@ -14,15 +14,15 @@ export class Settings extends PureComponent {
         <View cls='flx-i bg-primary'>
           <Image cls='absolute-fill rm-stretch' style={[styles.expand]} source={require('fc_juarez/assets/img/temp/settingsbg.png')} />
           <View cls='flx-row aic mt4 ml4 mr3'>
-            <Text cls='flx-i white ff-ubu-b'>Activar alerta de partidos</Text>
+            <Text cls='flx-i white ff-ubu-b bg-transparent'>Activar alerta de partidos</Text>
             <Switch value onTintColor={palette.contrast} thumbTintColor='white' tintColor={palette.gray}/>
           </View>
           <View cls='flx-row aic mt4 ml4 mr3'>
-            <Text cls='flx-i white ff-ubu-b'>Activar alerta de goles</Text>
+            <Text cls='flx-i white ff-ubu-b bg-transparent'>Activar alerta de goles</Text>
             <Switch value onTintColor={palette.contrast} thumbTintColor='white' tintColor={palette.gray}/>
           </View>
           <View cls='flx-row aic mt4 ml4 mr3'>
-            <Text cls='flx-i white ff-ubu-b'>Activar alertas generales</Text>
+            <Text cls='flx-i white ff-ubu-b bg-transparent'>Activar alertas generales</Text>
             <Switch onTintColor={palette.contrast} thumbTintColor='white' tintColor={palette.gray}/>
           </View>
         </View>

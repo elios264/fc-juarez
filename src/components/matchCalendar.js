@@ -7,16 +7,16 @@ import _ from 'lodash';
 const MatchInfo = NativeTachyons.wrap(({ team1, team2, image1, image2, goals1, goals2, date, time, place, cat }) => ( // eslint-disable-line react/prop-types
   <View cls='aic mv3'>
     <View cls='flx-row aic jcc mb2'>
-      <Text cls='white ff-ubu-b mr2 f6 tr flx-i'>{team1}</Text>
+      <Text cls='white ff-ubu-b mr2 f6 tr flx-i bg-transparent'>{team1}</Text>
       <Image cls='pa1 rm-contain' style={[styles.logo]} source={image1} />
-      <Text cls='white ff-ubu-b mh2'>{goals1}<Text cls='gray'> vs </Text>{goals2}</Text>
+      <Text cls='white ff-ubu-b mh2 bg-transparent'>{goals1}<Text cls='gray'> vs </Text>{goals2}</Text>
       <Image cls='pa1 rm-contain' style={[styles.logo]} source={image2} />
-      <Text cls='white ff-ubu-b ml2 f6 tl flx-i'>{team2}</Text>
+      <Text cls='white ff-ubu-b ml2 f6 tl flx-i bg-transparent'>{team2}</Text>
     </View>
-    <Text cls='white ff-ubu-b mb1'>{date}<Text cls='gray'>  |  </Text>{time}</Text>
-    <Text cls='contrast ff-ubu-b mb3'>{place}<Text cls='gray'>  |  </Text>{cat}</Text>
+    <Text cls='white ff-ubu-b mb1 bg-transparent'>{date}<Text cls='gray'>  |  </Text>{time}</Text>
+    <Text cls='contrast ff-ubu-b mb3 bg-transparent'>{place}<Text cls='gray'>  |  </Text>{cat}</Text>
     <TouchableHighlight onPress={_.noop} cls='bg-contrast pv2 jcc aic ass' underlayColor='#0c963e' >
-      <Text cls='white f6 ff-ubu-b'>Ver más</Text>
+      <Text cls='white f6 ff-ubu-b bg-transparent'>Ver más</Text>
     </TouchableHighlight>
   </View>
 ));
@@ -37,7 +37,7 @@ export class MatchCalendar extends PureComponent {
           <Image cls='absolute-fill rm-cover' style={[styles.expand]} source={require('fc_juarez/assets/img/background.png')} />
           <ScrollView cls='flx-i'>
             <View cls='aic mv3 mh2 flx-row jcsb'>
-              <Text cls='f5 mr4 ff-ubu-m white'>Calendario <Text cls='#AAAAAA'>de partidos</Text></Text>
+              <Text cls='f5 mr3 ff-ubu-m white bg-transparent'>Calendario <Text cls='#AAAAAA'>de partidos</Text></Text>
               <TouchableOpacity cls='flx-i jcc bg-rgba(13,13,13,0.8)' onPress={this.openPicker} activeOpacity={0.8} >
                 <Text cls='ff-ubu-b white f6 ma2'>Ver apertura 2017</Text>
                 <View cls='absolute right-1' style={[styles.triangle]} />
@@ -45,7 +45,7 @@ export class MatchCalendar extends PureComponent {
             </View>
             <View cls='bt b--#373737' />
             <View cls='mh2 mv3'>
-              <Text cls='mb2 white ff-ubu-b'>Apertura 2017</Text>
+              <Text cls='mb2 white ff-ubu-b bg-transparent'>Apertura 2017</Text>
               <MatchInfo
                 team1='Celaya F.C.'
                 team2='FC Juárez'

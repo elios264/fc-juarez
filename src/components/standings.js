@@ -6,12 +6,12 @@ import ScalableImage from 'react-native-scalable-image';
 const TeamInfo = NativeTachyons.wrap(({ image, name }) => ( // eslint-disable-line react/prop-types
   <View cls='flx-row aic mv1 mr2 h3'>
     <Image source={image} cls='rm-contain' style={[styles.logoSize]} />
-    <Text cls='white ff-ubu-b f6 ml2 tc flx-i'>{name}</Text>
+    <Text cls='white ff-ubu-b f6 ml2 tc flx-i bg-transparent'>{name}</Text>
   </View>
 ));
 const Score = NativeTachyons.wrap(({ score }) => ( // eslint-disable-line react/prop-types
   <View cls='h3 jcc aife ml1 mr2 mv1'>
-    <Text cls='f6 ff-ubu-b white'>{score}</Text>
+    <Text cls='f6 ff-ubu-b white bg-transparent'>{score}</Text>
   </View>
 ));
 
@@ -25,12 +25,12 @@ export class Standings extends PureComponent {
         <View cls='flx-i bg-primary'>
           <Image cls='absolute-fill rm-cover' style={[styles.expand]} source={require('fc_juarez/assets/img/background.png')} />
           <ScrollView cls='flx-i'>
-            <Text cls='mv3 ml3 f3 ff-ubu-m white'>Tabla <Text cls='#AAAAAA'>general</Text></Text>
+            <Text cls='mv3 ml3 f3 ff-ubu-m white bg-transparent'>Tabla <Text cls='#AAAAAA'>general</Text></Text>
             <View cls='bt b--#373737' />
             <View cls='mt3 ml2 mr1 flx-row'>
               <View cls='flx-i' style={[styles.maxDesc]}>
                 <View cls='h2 jcc'>
-                  <Text cls='white ff-ubu'>Liga de ascenso</Text>
+                  <Text cls='white ff-ubu bg-transparent'>Liga de ascenso</Text>
                 </View>
                 <TeamInfo image={require('fc_juarez/assets/img/teams/celayafc.png')} name='Celaya F.C.' />
                 <TeamInfo image={require('fc_juarez/assets/img/teams/fcjuarez.png')} name='FC Juárez' />
@@ -42,7 +42,7 @@ export class Standings extends PureComponent {
               </View>
               <View>
                 <View cls='h2 jcc'>
-                  <Text cls='contrast ff-ubu-b ml1 mr2 f6'>JJ</Text>
+                  <Text cls='contrast ff-ubu-b ml1 mr2 f6 bg-transparent'>JJ</Text>
                 </View>
                 <Score score={15} />
                 <Score score={15} />
@@ -54,7 +54,7 @@ export class Standings extends PureComponent {
               </View>
               <View>
                 <View cls='h2 jcc'>
-                  <Text cls='contrast ff-ubu-b ml1 mr2 f6'>JG</Text>
+                  <Text cls='contrast ff-ubu-b ml1 mr2 f6 bg-transparent'>JG</Text>
                 </View>
                 <Score score={8} />
                 <Score score={8} />
@@ -66,7 +66,7 @@ export class Standings extends PureComponent {
               </View>
               <View>
                 <View cls='h2 jcc'>
-                  <Text cls='contrast ff-ubu-b ml1 mr2 f6'>JE</Text>
+                  <Text cls='contrast ff-ubu-b ml1 mr2 f6 bg-transparent'>JE</Text>
                 </View>
                 <Score score={4} />
                 <Score score={4} />
@@ -78,7 +78,7 @@ export class Standings extends PureComponent {
               </View>
               <View>
                 <View cls='h2 jcc'>
-                  <Text cls='contrast ff-ubu-b ml1 mr2 f6'>JP</Text>
+                  <Text cls='contrast ff-ubu-b ml1 mr2 f6 bg-transparent'>JP</Text>
                 </View>
                 <Score score={3} />
                 <Score score={3} />
@@ -90,7 +90,7 @@ export class Standings extends PureComponent {
               </View>
               <View>
                 <View cls='h2 jcc'>
-                  <Text cls='contrast ff-ubu-b ml1 mr2 f6'>GF</Text>
+                  <Text cls='contrast ff-ubu-b ml1 mr2 f6 bg-transparent'>GF</Text>
                 </View>
                 <Score score={17} />
                 <Score score={17} />
@@ -102,7 +102,7 @@ export class Standings extends PureComponent {
               </View>
               <View>
                 <View cls='h2 jcc'>
-                  <Text cls='contrast ff-ubu-b ml1 mr2 f6'>GC</Text>
+                  <Text cls='contrast ff-ubu-b ml1 mr2 f6 bg-transparent'>GC</Text>
                 </View>
                 <Score score={9} />
                 <Score score={9} />
@@ -114,7 +114,7 @@ export class Standings extends PureComponent {
               </View>
               <View>
                 <View cls='h2 jcc'>
-                  <Text cls='contrast ff-ubu-b ml1 mr2 f6'>DIF</Text>
+                  <Text cls='contrast ff-ubu-b ml1 mr2 f6 bg-transparent'>DIF</Text>
                 </View>
                 <Score score={8} />
                 <Score score={8} />
@@ -126,7 +126,7 @@ export class Standings extends PureComponent {
               </View>
               <View>
                 <View cls='h2 jcc'>
-                  <Text cls='contrast ff-ubu-b ml1 mr2 f6'>PTS</Text>
+                  <Text cls='contrast ff-ubu-b ml1 mr2 f6 bg-transparent'>PTS</Text>
                 </View>
                 <Score score={28} />
                 <Score score={28} />
