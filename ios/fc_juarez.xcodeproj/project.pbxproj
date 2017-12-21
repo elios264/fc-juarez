@@ -319,7 +319,6 @@
 		00E356EE1AD99517003FC87E /* fc_juarezTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fc_juarezTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* fc_juarezTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = fc_juarezTests.m; sourceTree = "<group>"; };
-		120DAAE9C50643FABE9A4C26 /* Ubuntu Bold Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu Bold Italic.ttf"; path = "../assets/fonts/Ubuntu Bold Italic.ttf"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* fc_juarez.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fc_juarez.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -334,20 +333,14 @@
 		2D02E47B1E0B4A5D006451C7 /* fc_juarez-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "fc_juarez-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* fc_juarez-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "fc_juarez-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		30FBEC7A96A2421AAF193AEE /* Ubuntu.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ubuntu.ttf; path = ../assets/fonts/Ubuntu.ttf; sourceTree = "<group>"; };
-		326A3215D4A644CB89E43049 /* Ubuntu Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu Light.ttf"; path = "../assets/fonts/Ubuntu Light.ttf"; sourceTree = "<group>"; };
 		43313435F3634DA4A046D2C4 /* Ubuntu-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-BoldItalic.ttf"; path = "../assets/fonts/Ubuntu-BoldItalic.ttf"; sourceTree = "<group>"; };
-		5389FCC8D0E843348782331D /* Ubuntu Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu Bold.ttf"; path = "../assets/fonts/Ubuntu Bold.ttf"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		794C7D1D30474BF2ABADC587 /* Permanent Marker.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Permanent Marker.ttf"; path = "../assets/fonts/Permanent Marker.ttf"; sourceTree = "<group>"; };
-		7EE898537A92455EBF7E9835 /* Ubuntu Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu Italic.ttf"; path = "../assets/fonts/Ubuntu Italic.ttf"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		97617A1BEC224E62ABFAFB4C /* Ubuntu-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-MediumItalic.ttf"; path = "../assets/fonts/Ubuntu-MediumItalic.ttf"; sourceTree = "<group>"; };
-		AC6DAD83A0364718A36B2BD7 /* Ubuntu Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu Medium.ttf"; path = "../assets/fonts/Ubuntu Medium.ttf"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
-		CED67B4E7D714B0C8E3466E1 /* Ubuntu Light Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu Light Italic.ttf"; path = "../assets/fonts/Ubuntu Light Italic.ttf"; sourceTree = "<group>"; };
 		ED853D46AA63440F98AD0944 /* Ubuntu-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Light.ttf"; path = "../assets/fonts/Ubuntu-Light.ttf"; sourceTree = "<group>"; };
-		F09F27D4B4BE4C219798D260 /* Ubuntu Medium Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu Medium Italic.ttf"; path = "../assets/fonts/Ubuntu Medium Italic.ttf"; sourceTree = "<group>"; };
 		F6566BAA026744D69B7E319B /* Ubuntu-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-LightItalic.ttf"; path = "../assets/fonts/Ubuntu-LightItalic.ttf"; sourceTree = "<group>"; };
 		FECDA92583154243AE1A89C8 /* Ubuntu-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Medium.ttf"; path = "../assets/fonts/Ubuntu-Medium.ttf"; sourceTree = "<group>"; };
 		FFA7D344A1DB4C07BAE43B6D /* Ubuntu-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Italic.ttf"; path = "../assets/fonts/Ubuntu-Italic.ttf"; sourceTree = "<group>"; };
@@ -605,13 +598,6 @@
 			isa = PBXGroup;
 			children = (
 				794C7D1D30474BF2ABADC587 /* Permanent Marker.ttf */,
-				120DAAE9C50643FABE9A4C26 /* Ubuntu Bold Italic.ttf */,
-				5389FCC8D0E843348782331D /* Ubuntu Bold.ttf */,
-				7EE898537A92455EBF7E9835 /* Ubuntu Italic.ttf */,
-				CED67B4E7D714B0C8E3466E1 /* Ubuntu Light Italic.ttf */,
-				326A3215D4A644CB89E43049 /* Ubuntu Light.ttf */,
-				F09F27D4B4BE4C219798D260 /* Ubuntu Medium Italic.ttf */,
-				AC6DAD83A0364718A36B2BD7 /* Ubuntu Medium.ttf */,
 				30FBEC7A96A2421AAF193AEE /* Ubuntu.ttf */,
 				1E3A0E4E3B3340A295D89BF6 /* Ubuntu-Bold.ttf */,
 				43313435F3634DA4A046D2C4 /* Ubuntu-BoldItalic.ttf */,
@@ -1237,6 +1223,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mercatika.fc-juarez";
 				PRODUCT_NAME = fc_juarez;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1255,6 +1242,7 @@
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mercatika.fc-juarez";
 				PRODUCT_NAME = fc_juarez;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1279,7 +1267,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.fc_juarez-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mercatika.fc-juarez";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -1306,7 +1294,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.fc_juarez-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.mercatika.fc-juarez";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
