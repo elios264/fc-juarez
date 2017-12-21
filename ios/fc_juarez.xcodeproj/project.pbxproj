@@ -41,6 +41,7 @@
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		8B700E241FEB214700C87D2D /* Permanent Marker.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 794C7D1D30474BF2ABADC587 /* Permanent Marker.ttf */; };
+		8BF5F3131FEC3CA1009BF261 /* screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BF5F2EF1FEC3CA1009BF261 /* screen.png */; };
 		9E8585810A0240F885E7D766 /* Ubuntu-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6566BAA026744D69B7E319B /* Ubuntu-LightItalic.ttf */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B332DCD087AE49189FE3B0D3 /* Ubuntu-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 43313435F3634DA4A046D2C4 /* Ubuntu-BoldItalic.ttf */; };
@@ -338,6 +339,7 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		794C7D1D30474BF2ABADC587 /* Permanent Marker.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Permanent Marker.ttf"; path = "../assets/fonts/Permanent Marker.ttf"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		8BF5F2EF1FEC3CA1009BF261 /* screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = screen.png; path = ../android/app/src/main/res/drawable/screen.png; sourceTree = "<group>"; };
 		97617A1BEC224E62ABFAFB4C /* Ubuntu-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-MediumItalic.ttf"; path = "../assets/fonts/Ubuntu-MediumItalic.ttf"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		ED853D46AA63440F98AD0944 /* Ubuntu-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Light.ttf"; path = "../assets/fonts/Ubuntu-Light.ttf"; sourceTree = "<group>"; };
@@ -482,6 +484,7 @@
 		13B07FAE1A68108700A75B9A /* fc_juarez */ = {
 			isa = PBXGroup;
 			children = (
+				8BF5F2EF1FEC3CA1009BF261 /* screen.png */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -1051,6 +1054,7 @@
 				EC07722BA8414E4283B14844 /* Ubuntu-Bold.ttf in Resources */,
 				B332DCD087AE49189FE3B0D3 /* Ubuntu-BoldItalic.ttf in Resources */,
 				8B700E241FEB214700C87D2D /* Permanent Marker.ttf in Resources */,
+				8BF5F3131FEC3CA1009BF261 /* screen.png in Resources */,
 				49C4D60822344B3E827FB7B3 /* Ubuntu-Italic.ttf in Resources */,
 				494A7CEEB82241C28EC7E90C /* Ubuntu-Light.ttf in Resources */,
 				9E8585810A0240F885E7D766 /* Ubuntu-LightItalic.ttf in Resources */,
