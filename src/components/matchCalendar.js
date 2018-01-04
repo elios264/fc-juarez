@@ -45,9 +45,9 @@ export class MatchCalendar extends PureComponent {
           <Image cls='absolute-fill rm-cover' style={[styles.expand]} source={require('fc_juarez/assets/img/background.png')} />
           <ScrollView cls='flx-i' refreshControl={<RefreshControl refreshing={this.state.refreshing} onRefresh={this.onRefresh} tintColor='white' />} >
             <View cls='aic mv3 mh2 flx-row jcsb'>
-              <Text cls='f5 mr3 ff-ubu-m white bg-transparent'>Calendario <Text cls='#AAAAAA'>de partidos</Text></Text>
-              <TouchableOpacity cls='flx-i jcc bg-rgba(13,13,13,0.8)' onPress={this.openPicker} activeOpacity={0.8} >
-                <Text cls='ff-ubu-b white f6 ma2'>Ver apertura 2017</Text>
+              <Text cls='f5 mr3 ff-ubu-m white bg-transparent flx-i'>Calendario <Text cls='#AAAAAA'>de partidos</Text></Text>
+              <TouchableOpacity cls='jcc bg-rgba(13,13,13,0.8)' onPress={this.openPicker} activeOpacity={0.8} >
+                <Text cls='ff-ubu-b white f6 ma2 mr5'>Ver apertura 2017</Text>
                 <View cls='absolute right-1' style={[styles.triangle]} />
               </TouchableOpacity>
             </View>

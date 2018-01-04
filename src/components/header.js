@@ -4,6 +4,7 @@ import { Text, View, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import NativeTachyons, { sizes } from 'react-native-style-tachyons';
 
 import { palette } from 'fc_juarez/src/theme';
+import { ifIphoneX } from 'fc_juarez/src/utils';
 
 @NativeTachyons.wrap
 export class Header extends PureComponent {
@@ -19,21 +20,19 @@ export class Header extends PureComponent {
   render() {
 
     return (
-      <View cls='bg-#111111 pb3 pt4 bb b--contrast' style={[styles.container]} >
+      <View cls='bg-#111111 pb3 bb b--contrast' style={[styles.container]} >
         <View cls='aic jcc flx-row'>
           <TouchableOpacity cls='absolute left-0 jcc w3 h3' onPress={this.openDrawer} >
             <Image cls='ml3 rm-contain w1' source={require('fc_juarez/assets/img/header/menu.png')} />
           </TouchableOpacity>
           <View cls='w3'>
-            <Image style={[styles.expand]} cls='rm-contain' source={require('fc_juarez/assets/img/header/logo1.png')} />
+            <Image style={[styles.expand]} cls='rm-contain' resizeMethod='resize' source={require('fc_juarez/assets/img/header/logo1.png')} />
           </View>
           <View cls='aic jcfe' style={[styles.rotate]}>
             <Text cls='white f4 ff-permanent-marker bg-transparent' > FC Juarez <Text cls='contrast'>App </Text></Text>
             <Text cls='gray f6 ff-permanent-marker bg-transparent' > ¡Siéntete bravo! </Text>
           </View>
-          <View cls='w2'>
-            <Image style={[styles.expand]} cls='rm-contain' source={require('fc_juarez/assets/img/header/logo2.png')} />
-          </View>
+          <View cls='w3' />
         </View>
         <View cls='absolute bottom-0 right-0' style={[styles.triangleCorner]} />
       </View>
@@ -43,7 +42,13 @@ export class Header extends PureComponent {
 
 const styles = StyleSheet.create({
   container: {
-    height: sizes.h2 + sizes.h3
+    ...ifIphoneX({
+      paddingTop: sizes.pt4,
+      height: sizes.h2 + sizes.h3
+    }, {
+      paddingTop: sizes.pt5,
+      height: sizes.h3 + sizes.h3
+    })
   },
   expand: {
     width: '100%',
