@@ -22,7 +22,7 @@ export class Welcome extends PureComponent {
         <View cls='flx-i'>
           <Image cls='absolute-fill rm-cover' style={[styles.expand]} source={require('fc_juarez/assets/img/temp/welcomebg.png')} />
           <ScrollView cls='flx-i' contentContainerStyle={styles.scrollContent} refreshControl={<RefreshControl refreshing={this.state.refreshing} onRefresh={this.onRefresh} tintColor='white' />} >
-            <View cls='mh5' >
+            <View cls='mh4' >
               <Image cls='rm-contain' style={[styles.expandHor]} source={require('fc_juarez/assets/img/temp/welcomebg2.png')} />
             </View>
           </ScrollView>
