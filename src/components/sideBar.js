@@ -1,8 +1,11 @@
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
-import { Text, View, Image, TouchableOpacity } from 'react-native';
+import { Text, View, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import NativeTachyons, { sizes } from 'react-native-style-tachyons';
 import { Link, withRouter } from 'react-router-native';
+
+import { ifIphoneX } from 'fc_juarez/src/utils';
+
 
 const MenuElement = NativeTachyons.wrap(({ image, text, path }) => (
   <Link to={path} component={TouchableOpacity} >
@@ -42,7 +45,7 @@ export class Sidebar extends PureComponent {
 
     return (
       <View cls='flx-i bg-primarydark'>
-        <View cls='bg-primary aic jcc' style={{ height: sizes.h2 + sizes.h3 }}>
+        <View cls='bg-primary aic jcc' style={[styles.header]}>
           <TouchableOpacity cls='absolute left-1 jcc aic w3 h3' onPress={this.closeDrawer}>
             <Image cls='h1 w1' source={require('fc_juarez/assets/img/back.png')} />
           </TouchableOpacity>
@@ -68,3 +71,14 @@ export class Sidebar extends PureComponent {
     );
   }
 }
+
+
+const styles = StyleSheet.create({
+  header: {
+    ...ifIphoneX({
+      height: sizes.h3 + sizes.h3
+    }, {
+      height: sizes.h2 + sizes.h3
+    })
+  },
+});

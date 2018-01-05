@@ -32,7 +32,6 @@ export class Header extends PureComponent {
             <Text cls='white f4 ff-permanent-marker bg-transparent' > FC Juarez <Text cls='contrast'>App </Text></Text>
             <Text cls='gray f6 ff-permanent-marker bg-transparent' > ¡Siéntete bravo! </Text>
           </View>
-          <View cls='w3' />
         </View>
         <View cls='absolute bottom-0 right-0' style={[styles.triangleCorner]} />
       </View>
@@ -43,11 +42,11 @@ export class Header extends PureComponent {
 const styles = StyleSheet.create({
   container: {
     ...ifIphoneX({
+      paddingTop: sizes.pt4 + sizes.pt3,
+      height: sizes.h3 + sizes.h3
+    }, {
       paddingTop: sizes.pt4,
       height: sizes.h2 + sizes.h3
-    }, {
-      paddingTop: sizes.pt5,
-      height: sizes.h3 + sizes.h3
     })
   },
   expand: {
