@@ -1,5 +1,5 @@
 import { combineReducers } from 'redux';
-//import { createCRUDObjectReducer } from './utils';
+import { createCRUDObjectReducer, createSingleObjectReducer } from './utils';
 
 const initializing = (state = false, action) => action.type === 'INITIALIZING' ? action.running : state;
 
@@ -11,7 +11,19 @@ const appInfo = (state = { isConnected: false, appState: 'unknown' }, action) =>
   }
 };
 
+const objects = combineReducers({
+  seasons: createCRUDObjectReducer('Season'),
+  tournaments: createCRUDObjectReducer('Tournament'),
+  gameMatches: createCRUDObjectReducer('GameMatch'),
+  teamsInfo: createCRUDObjectReducer('TeamInfo'),
+  nextMatch: createSingleObjectReducer('NextMatch'),
+  currentMatch: createSingleObjectReducer('CurrentMatch'),
+  welcomeBannerUrl: createSingleObjectReducer('WelcomeBannerUrl')
+});
+
+
 export const rootReducer = combineReducers({
   initializing,
   appInfo,
+  objects
 });

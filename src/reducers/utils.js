@@ -11,3 +11,12 @@ export const createCRUDObjectReducer = (prefix, key = 'id') => {
     }
   };
 };
+
+
+export const createSingleObjectReducer = (prefix) => (state = null, action) => {
+  switch (action.type) {
+    case `${prefix}_FETCHED`: return action.object;
+    case `${prefix}_REMOVED`: return undefined;
+    default: return state;
+  }
+};

@@ -10,6 +10,9 @@ import { fonts, palette, rem } from './theme';
 import { intialize } from './actions/initializers';
 import { rootReducer } from './reducers';
 
+require('moment');
+require('moment-timezone');
+
 NativeTachyons.build({ rem, fonts, colors: { palette } }, StyleSheet);
 
 const { App } = require('./components/app');
