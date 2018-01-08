@@ -33,7 +33,7 @@ export class GameMatch {
   get detailsId() { return this.attributes.detailsId; }
   get seasonId() { return this.attributes.SeasonId; }
   get tournamentId() { return this.attributes.TournamentId; }
-  get time() { return this.attributes.time; }
+  get time() { return moment(this.attributes.time); }
   get stadium() { return this.attributes.Stadium; }
   get versusTeam() { return this.attributes.VersusTeam; }
   get versusTeamAtHome() { return this.attributes.VersusTeamAtHome; }

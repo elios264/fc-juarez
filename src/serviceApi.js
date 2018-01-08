@@ -3,7 +3,7 @@ import moment from 'moment';
 import { Image } from 'react-native';
 
 
-export const SERVER_URL = 'http://192.168.1.67:8080';
+export const SERVER_URL = 'http://fcjuarez.com';
 const API_PATH = '/api.php';
 
 const SEASON_URL = '/Season?filter=Active,eq,1&columns=Title,SeasonId';
