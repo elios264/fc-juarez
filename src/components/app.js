@@ -4,7 +4,6 @@ import { StyleSheet, View, StatusBar } from 'react-native';
 import { connect } from 'react-redux';
 import Drawer from 'react-native-drawer-menu';
 import { Route, Switch } from 'react-router-native';
-import OneSignal from 'react-native-onesignal';
 
 import { Sidebar } from './sideBar';
 import { Header } from './header';
@@ -26,41 +25,6 @@ export class App extends PureComponent {
   }
 
   setDrawerRef = (ref) => this.drawer = ref;
-
-  componentWillMount() {
-    OneSignal.enableVibrate(true);
-    OneSignal.enableSound(true);
-    OneSignal.addEventListener('received', this.onReceived);
-    OneSignal.addEventListener('opened', this.onOpened);
-    OneSignal.addEventListener('registered', this.onRegistered);
-    OneSignal.addEventListener('ids', this.onIds);
-  }
-
-  componentWillUnmount() {
-    OneSignal.removeEventListener('received', this.onReceived);
-    OneSignal.removeEventListener('opened', this.onOpened);
-    OneSignal.removeEventListener('registered', this.onRegistered);
-    OneSignal.removeEventListener('ids', this.onIds);
-  }
-
-  onReceived(notification) {
-    console.log('Notification received: ', notification);
-  }
-
-  onOpened(openResult) {
-    console.log('Message: ', openResult.notification.payload.body);
-    console.log('Data: ', openResult.notification.payload.additionalData);
-    console.log('isActive: ', openResult.notification.isAppInFocus);
-    console.log('openResult: ', openResult);
-  }
-
-  onRegistered(notifData) {
-    console.log('Device had been registered for push notifications!', notifData);
-  }
-
-  onIds(device) {
-    console.log('Device info: ', device);
-  }
 
   render() {
     const { initializing } = this.props;

@@ -21,14 +21,12 @@
     "react": "16.0.0",
     "react-native": "0.51.0",
     "react-native-drawer-menu": "^0.2.5",
-    "react-native-onesignal": "^3.0.7",
     "react-native-scalable-image": "^0.2.2",
     "react-native-style-tachyons": "^3.5.1",
     "react-redux": "^5.0.6",
     "react-router-native": "^4.2.0",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
-    "rnkit-actionsheet-picker": "^1.1.0",
     "utf8": "^3.0.0"
   },
   "devDependencies": {

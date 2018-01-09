@@ -8,7 +8,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { loadFromServer } from 'fc_juarez/src/actions/initializers';
 import { Season, GameMatch, Tournament } from 'fc_juarez/src/objects';
-import { DataPicker } from 'rnkit-actionsheet-picker';
+//import { DataPicker } from 'rnkit-actionsheet-picker';
 
 @NativeTachyons.wrap
 class MatchInfo extends PureComponent {
@@ -81,15 +81,15 @@ export class MatchCalendar extends PureComponent {
   }
 
   openPicker = () => {
-    const { seasons } = this.props;
-    DataPicker.show({
-      dataSource: _.map(seasons, 'title'),
-      defaultSelected: [this.state.currentSeason.title],
-      cancelText: 'Cancelar',
-      doneText: 'Seleccionar',
-      onPickerConfirm: (txt, idx) => { this.setState({ currentSeason: seasons[idx] }); },
-      onPickerDidSelect: (txt, idx) => { this.setState({ currentSeason: seasons[idx] }); }
-    });
+    // const { seasons } = this.props;
+    // DataPicker.show({
+    //   dataSource: _.map(seasons, 'title'),
+    //   defaultSelected: [this.state.currentSeason.title],
+    //   cancelText: 'Cancelar',
+    //   doneText: 'Seleccionar',
+    //   onPickerConfirm: (txt, idx) => { this.setState({ currentSeason: seasons[idx] }); },
+    //   onPickerDidSelect: (txt, idx) => { this.setState({ currentSeason: seasons[idx] }); }
+    // });
   }
 
 
