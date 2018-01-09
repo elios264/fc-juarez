@@ -2,11 +2,12 @@ FC JUAREZ
 =======================
 Cliente Android & IOS
 
-Pantalla de no no hay informacion.
-Guardar datos en localStorage
-Cargar datos de localStorage
-Descargar datos conectar redux a las pantallas.
-
+- Descargar banners pub
+- pantallas de no encontrado
+- mejorar seleccion de torneo?
+- push notifications
+- arreglar iconos minuto a minuto
+- ubicacion de equipos...
 
 
 Datos necesarios:
