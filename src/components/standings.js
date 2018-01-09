@@ -1,32 +1,50 @@
+import _ from 'lodash';
+import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { StyleSheet, View, Dimensions, Image, ScrollView, Text, RefreshControl } from 'react-native';
 import NativeTachyons, { sizes } from 'react-native-style-tachyons';
 import ScalableImage from 'react-native-scalable-image';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { loadFromServer } from 'fc_juarez/src/actions/initializers';
+import { TeamInfo } from 'fc_juarez/src/objects';
 
-const TeamInfo = NativeTachyons.wrap(({ image, name }) => ( // eslint-disable-line react/prop-types
+const TeamHeader = NativeTachyons.wrap(({ image, name }) => ( // eslint-disable-line react/prop-types
   <View cls='flx-row aic mv1 mr2 h3'>
     <Image source={image} cls='rm-contain' style={[styles.logoSize]} />
     <Text cls='white ff-ubu-b f6 ml2 tc flx-i bg-transparent'>{name}</Text>
   </View>
 ));
+
 const Score = NativeTachyons.wrap(({ score }) => ( // eslint-disable-line react/prop-types
   <View cls='h3 jcc aife ml1 mr2 mv1'>
     <Text cls='f6 ff-ubu-b white bg-transparent'>{score}</Text>
   </View>
 ));
 
+const mapStateToProps = (state) => ({ teamsInfo: state.objects.teamsInfo });
+const mapDispatchToProps = (dispatch) => bindActionCreators({ loadFromServer }, dispatch);
+@connect(mapStateToProps, mapDispatchToProps)
 @NativeTachyons.wrap
 export class Standings extends PureComponent {
+
+  static propTypes = {
+    loadFromServer: PropTypes.func.isRequired,
+    teamsInfo: PropTypes.objectOf(PropTypes.instanceOf(TeamInfo)).isRequired,
+  }
 
   state = { refreshing: false };
 
   onRefresh = async () => {
     this.setState({ refreshing: true });
-    await new Promise((res) => setTimeout(res, 2000));
+    await this.props.loadFromServer();
     this.setState({ refreshing: false });
   }
 
   render() {
+    let { teamsInfo } = this.props;
+
+    teamsInfo = _.orderBy(teamsInfo, 'name');
 
     return (
       <View cls='flx-i'>
@@ -40,109 +58,55 @@ export class Standings extends PureComponent {
                 <View cls='h2 jcc'>
                   <Text cls='white ff-ubu bg-transparent'>Liga de ascenso</Text>
                 </View>
-                <TeamInfo image={require('fc_juarez/assets/img/teams/celayafc.png')} name='Celaya F.C.' />
-                <TeamInfo image={require('fc_juarez/assets/img/teams/fcjuarez.png')} name='FC Juárez' />
-                <TeamInfo image={require('fc_juarez/assets/img/teams/tmfutbolclub.png')} name='TM Futbol Club' />
-                <TeamInfo image={require('fc_juarez/assets/img/teams/clubatleticozacatepec.png')} name='Atlético Zacatepec' />
-                <TeamInfo image={require('fc_juarez/assets/img/teams/alebrijes.png')} name='Alebrijes' />
-                <TeamInfo image={require('fc_juarez/assets/img/teams/mineros.png')} name='Mineros' />
-                <TeamInfo image={require('fc_juarez/assets/img/teams/cafetaleros.png')} name='Cafetaleros' />
+                { _.map(teamsInfo, ({ name, logoUrl, id }) => <TeamHeader key={id} image={{ uri: logoUrl }} name={name} />)}
               </View>
               <View>
                 <View cls='h2 jcc'>
                   <Text cls='contrast ff-ubu-b ml1 mr2 f6 bg-transparent'>JJ</Text>
                 </View>
-                <Score score={15} />
-                <Score score={15} />
-                <Score score={15} />
-                <Score score={15} />
-                <Score score={15} />
-                <Score score={15} />
-                <Score score={15} />
+                { _.map(teamsInfo, ({ jj, id }) => <Score key={id} score={jj} />)}
               </View>
               <View>
                 <View cls='h2 jcc'>
                   <Text cls='contrast ff-ubu-b ml1 mr2 f6 bg-transparent'>JG</Text>
                 </View>
-                <Score score={8} />
-                <Score score={8} />
-                <Score score={8} />
-                <Score score={8} />
-                <Score score={8} />
-                <Score score={8} />
-                <Score score={8} />
+                { _.map(teamsInfo, ({ jg, id }) => <Score key={id} score={jg} />)}
               </View>
               <View>
                 <View cls='h2 jcc'>
                   <Text cls='contrast ff-ubu-b ml1 mr2 f6 bg-transparent'>JE</Text>
                 </View>
-                <Score score={4} />
-                <Score score={4} />
-                <Score score={4} />
-                <Score score={4} />
-                <Score score={4} />
-                <Score score={4} />
-                <Score score={4} />
+                { _.map(teamsInfo, ({ je, id }) => <Score key={id} score={je} />)}
               </View>
               <View>
                 <View cls='h2 jcc'>
                   <Text cls='contrast ff-ubu-b ml1 mr2 f6 bg-transparent'>JP</Text>
                 </View>
-                <Score score={3} />
-                <Score score={3} />
-                <Score score={3} />
-                <Score score={3} />
-                <Score score={3} />
-                <Score score={3} />
-                <Score score={3} />
+                { _.map(teamsInfo, ({ jp, id }) => <Score key={id} score={jp} />)}
               </View>
               <View>
                 <View cls='h2 jcc'>
                   <Text cls='contrast ff-ubu-b ml1 mr2 f6 bg-transparent'>GF</Text>
                 </View>
-                <Score score={17} />
-                <Score score={17} />
-                <Score score={17} />
-                <Score score={17} />
-                <Score score={17} />
-                <Score score={17} />
-                <Score score={17} />
+                { _.map(teamsInfo, ({ gf, id }) => <Score key={id} score={gf} />)}
               </View>
               <View>
                 <View cls='h2 jcc'>
                   <Text cls='contrast ff-ubu-b ml1 mr2 f6 bg-transparent'>GC</Text>
                 </View>
-                <Score score={9} />
-                <Score score={9} />
-                <Score score={9} />
-                <Score score={9} />
-                <Score score={9} />
-                <Score score={9} />
-                <Score score={9} />
+                { _.map(teamsInfo, ({ gc, id }) => <Score key={id} score={gc} />)}
               </View>
               <View>
                 <View cls='h2 jcc'>
                   <Text cls='contrast ff-ubu-b ml1 mr2 f6 bg-transparent'>DIF</Text>
                 </View>
-                <Score score={8} />
-                <Score score={8} />
-                <Score score={8} />
-                <Score score={8} />
-                <Score score={8} />
-                <Score score={8} />
-                <Score score={8} />
+                { _.map(teamsInfo, ({ dif, id }) => <Score key={id} score={dif} />)}
               </View>
               <View>
                 <View cls='h2 jcc'>
                   <Text cls='contrast ff-ubu-b ml1 mr2 f6 bg-transparent'>PTS</Text>
                 </View>
-                <Score score={28} />
-                <Score score={28} />
-                <Score score={28} />
-                <Score score={28} />
-                <Score score={28} />
-                <Score score={28} />
-                <Score score={128} />
+                { _.map(teamsInfo, ({ pts, id }) => <Score key={id} score={pts} />)}
               </View>
 
             </View>

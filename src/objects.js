@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import moment from 'moment';
 import { SERVER_URL } from './serviceApi';
+import { btoa } from './utils';
 
 export class Season {
   constructor(attributes) { this.attributes = attributes; }
@@ -29,6 +30,12 @@ export class GameMatch {
     this.attributes = { time, id, detailsId, SeasonId, Stadium, TournamentId, VersusTeam, VersusTeamAtHome, ScoreAway, ScoreHome, desc };
   }
 
+  get viewMoreUrl() {
+    return this.detailsId
+      ? `${SERVER_URL}/perfil-partidos-en-curso.php?${_.replace(btoa(`gp=${this.detailsId}`), '=', '')}`
+      : `${SERVER_URL}/perfil-partidos-por-jugar.php?${_.replace(btoa(`gf=${this.id}`), '=', '')}`;
+  }
+  get teamLogo() { return `${SERVER_URL}/binder/gamefuture/${this.id}-0.png`; }
   get id() { return this.attributes.id; }
   get detailsId() { return this.attributes.detailsId; }
   get seasonId() { return this.attributes.SeasonId; }
@@ -38,7 +45,7 @@ export class GameMatch {
   get versusTeam() { return this.attributes.VersusTeam; }
   get versusTeamAtHome() { return this.attributes.VersusTeamAtHome; }
   get desc() { return this.attributes.desc; }
-  get scorAway() { return this.attributes.ScoreAway; }
+  get scoreAway() { return this.attributes.ScoreAway; }
   get scoreHome() { return this.attributes.ScoreHome; }
 
 }

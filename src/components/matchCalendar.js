@@ -1,107 +1,123 @@
+import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
-import { StyleSheet, View, Dimensions, Image, ScrollView, Text, TouchableOpacity, TouchableHighlight, RefreshControl } from 'react-native';
+import { StyleSheet, View, Dimensions, Image, ScrollView, Text, TouchableOpacity, TouchableHighlight, RefreshControl, Linking } from 'react-native';
 import NativeTachyons, { sizes } from 'react-native-style-tachyons';
 import ScalableImage from 'react-native-scalable-image';
 import _ from 'lodash';
-
-const MatchInfo = NativeTachyons.wrap(({ team1, team2, image1, image2, goals1, goals2, date, time, place, cat }) => ( // eslint-disable-line react/prop-types
-  <View cls='aic mv3'>
-    <View cls='flx-row aic jcc mb2'>
-      <Text cls='white ff-ubu-b mr2 f6 tr flx-i bg-transparent'>{team1}</Text>
-      <Image cls='pa1 rm-contain' style={[styles.logo]} source={image1} />
-      <Text cls='white ff-ubu-b mh2 bg-transparent'>{goals1}<Text cls='gray'> vs </Text>{goals2}</Text>
-      <Image cls='pa1 rm-contain' style={[styles.logo]} source={image2} />
-      <Text cls='white ff-ubu-b ml2 f6 tl flx-i bg-transparent'>{team2}</Text>
-    </View>
-    <Text cls='white ff-ubu-b mb1 bg-transparent'>{date}<Text cls='gray'>  |  </Text>{time}</Text>
-    <Text cls='contrast ff-ubu-b mb3 bg-transparent'>{place}<Text cls='gray'>  |  </Text>{cat}</Text>
-    <TouchableHighlight onPress={_.noop} cls='bg-contrast pv2 jcc aic ass' underlayColor='#0c963e' >
-      <Text cls='white f6 ff-ubu-b bg-transparent'>Ver más</Text>
-    </TouchableHighlight>
-  </View>
-));
-
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { loadFromServer } from 'fc_juarez/src/actions/initializers';
+import { Season, GameMatch, Tournament } from 'fc_juarez/src/objects';
+import { DataPicker } from 'rnkit-actionsheet-picker';
 
 @NativeTachyons.wrap
-export class MatchCalendar extends PureComponent {
+class MatchInfo extends PureComponent {
 
-  state = { refreshing: false };
-
-  onRefresh = async () => {
-    this.setState({ refreshing: true });
-    await new Promise((res) => setTimeout(res, 2000));
-    this.setState({ refreshing: false });
+  static propTypes = {
+    tournament: PropTypes.instanceOf(Tournament).isRequired,
+    match: PropTypes.instanceOf(GameMatch).isRequired,
   }
 
-  openPicker = () => {
+
+  openViewMore = () => {
+    const { match: { viewMoreUrl } } = this.props;
+    Linking.openURL(viewMoreUrl);
   }
 
 
   render() {
+    const { match, tournament } = this.props;
+    const { time, stadium, scoreAway, scoreHome, versusTeam, versusTeamAtHome, teamLogo } = match;
+
+
+    const bravos = { name: 'FC Juárez', logo: require('fc_juarez/assets/img/teams/fcjuarez.png') };
+    const enemy = { name: versusTeam, logo: { uri: teamLogo } };
+
+    const fst = versusTeamAtHome ? enemy : bravos;
+    const snd = versusTeamAtHome ? bravos : enemy;
+
+    return (
+      <View cls='aic mv3'>
+        <View cls='flx-row aic jcc mb2'>
+          <Text cls='white ff-ubu-b mr2 f6 tr flx-i bg-transparent'>{fst.name}</Text>
+          <Image cls='pa1 rm-contain' style={[styles.logo]} source={fst.logo} />
+          <Text cls='white ff-ubu-b mh2 bg-transparent'>{scoreHome}<Text cls='gray'> vs </Text>{scoreAway}</Text>
+          <Image cls='pa1 rm-contain' style={[styles.logo]} source={snd.logo} />
+          <Text cls='white ff-ubu-b ml2 f6 tl flx-i bg-transparent'>{snd.name}</Text>
+        </View>
+        <Text cls='white ff-ubu-b mb1 bg-transparent'>{_.capitalize(time.format('MMM/DD/YYYY').replace(/\./, ''))}<Text cls='gray'>  |  </Text>{time.format('hh:mm A')}</Text>
+        <Text cls='contrast ff-ubu-b mb3 bg-transparent'>{stadium}<Text cls='gray'>  |  </Text>{tournament.title}</Text>
+        <TouchableHighlight onPress={this.openViewMore} cls='bg-contrast pv2 jcc aic ass' underlayColor='#0c963e' >
+          <Text cls='white f6 ff-ubu-b bg-transparent'>Ver más</Text>
+        </TouchableHighlight>
+      </View>
+    );
+  }
+}
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({ loadFromServer }, dispatch);
+const mapStateToProps = (state) => ({
+  gameMatches: state.objects.gameMatches,
+  seasons: _.values(state.objects.seasons),
+  tournaments: state.objects.tournaments
+});
+@connect(mapStateToProps, mapDispatchToProps)
+@NativeTachyons.wrap
+export class MatchCalendar extends PureComponent {
+
+  static propTypes = {
+    loadFromServer: PropTypes.func.isRequired,
+    seasons: PropTypes.arrayOf(PropTypes.instanceOf(Season)).isRequired,
+    tournaments: PropTypes.objectOf(PropTypes.instanceOf(Tournament)).isRequired,
+    gameMatches: PropTypes.objectOf(PropTypes.instanceOf(GameMatch)).isRequired,
+  }
+
+  state = { refreshing: false, currentSeason: _.last(this.props.seasons) };
+
+  onRefresh = async () => {
+    this.setState({ refreshing: true });
+    await this.props.loadFromServer();
+    this.setState({ refreshing: false });
+  }
+
+  openPicker = () => {
+    const { seasons } = this.props;
+    DataPicker.show({
+      dataSource: _.map(seasons, 'title'),
+      defaultSelected: [this.state.currentSeason.title],
+      cancelText: 'Cancelar',
+      doneText: 'Seleccionar',
+      onPickerConfirm: (txt, idx) => { this.setState({ currentSeason: seasons[idx] }); },
+      onPickerDidSelect: (txt, idx) => { this.setState({ currentSeason: seasons[idx] }); }
+    });
+  }
+
+
+  render() {
+    let { gameMatches, tournaments } = this.props;
+    const { currentSeason, refreshing } = this.state;
+
+    gameMatches = _(gameMatches)
+      .filter(['seasonId', _.get(currentSeason, 'id', -1)])
+      .orderBy(gameMatches, 'time', 'desc')
+      .value();
 
     return (
       <View cls='flx-i'>
         <View cls='flx-i bg-primary'>
           <Image cls='absolute-fill rm-cover' style={[styles.expand]} source={require('fc_juarez/assets/img/background.png')} />
-          <ScrollView cls='flx-i' refreshControl={<RefreshControl refreshing={this.state.refreshing} onRefresh={this.onRefresh} tintColor='white' />} >
+          <ScrollView cls='flx-i' refreshControl={<RefreshControl refreshing={refreshing} onRefresh={this.onRefresh} tintColor='white' />} >
             <View cls='aic mv3 mh2 flx-row jcsb'>
               <Text cls='f5 mr3 ff-ubu-m white bg-transparent flx-i'>Calendario <Text cls='#AAAAAA'>de partidos</Text></Text>
-              <TouchableOpacity cls='jcc bg-rgba(13,13,13,0.8)' onPress={this.openPicker} activeOpacity={0.8} >
-                <Text cls='ff-ubu-b white f6 ma2 mr5'>Ver apertura 2017</Text>
+              <TouchableOpacity cls='jcc bg-rgba(13,13,13,0.8)' onPress={currentSeason ? this.openPicker : _.noop} activeOpacity={0.8} >
+                <Text cls='ff-ubu-b white f6 ma2 mr5'>{currentSeason ? `Ver ${_.toLower(currentSeason.title)}` : 'Sin temporadas'}</Text>
                 <View cls='absolute right-1' style={[styles.triangle]} />
               </TouchableOpacity>
             </View>
             <View cls='bt b--#373737' />
             <View cls='mh2 mv3'>
-              <Text cls='mb2 white ff-ubu-b bg-transparent'>Apertura 2017</Text>
-              <MatchInfo
-                team1='Celaya F.C.'
-                team2='FC Juárez'
-                goals1={1}
-                goals2={1}
-                image1={require('fc_juarez/assets/img/teams/celayafc.png')}
-                image2={require('fc_juarez/assets/img/teams/fcjuarez.png')}
-                date='Jul/22/2017'
-                time='07:00 PM'
-                place='Olímpico Benito Juárez'
-                cat='Ascenso'
-              />
-              <MatchInfo
-                team1='Chivas'
-                team2='FC Juárez'
-                goals1={2}
-                goals2={1}
-                image1={require('fc_juarez/assets/img/teams/udeg.png')}
-                image2={require('fc_juarez/assets/img/teams/fcjuarez.png')}
-                date='Ago/22/2017'
-                time='07:00 PM'
-                place='Estadio Chivas'
-                cat='Copa Mx'
-              />
-              <MatchInfo
-                team1='Celaya F.C.'
-                team2='FC Juárez'
-                goals1={1}
-                goals2={1}
-                image1={require('fc_juarez/assets/img/teams/celayafc.png')}
-                image2={require('fc_juarez/assets/img/teams/fcjuarez.png')}
-                date='Jul/22/2017'
-                time='07:00 PM'
-                place='Olímpico Benito Juárez'
-                cat='Ascenso'
-              />
-              <MatchInfo
-                team1='Chivas'
-                team2='FC Juárez'
-                goals1={2}
-                goals2={1}
-                image1={require('fc_juarez/assets/img/teams/udeg.png')}
-                image2={require('fc_juarez/assets/img/teams/fcjuarez.png')}
-                date='Ago/22/2017'
-                time='07:00 PM'
-                place='Estadio Chivas'
-                cat='Copa Mx'
-              />
+              <Text cls='mb2 white ff-ubu-b bg-transparent'>{currentSeason ? currentSeason.title : 'Sin temporadas'}</Text>
+              {_.map(gameMatches, (match) => <MatchInfo key={match.id} match={match} tournament={tournaments[match.tournamentId]} />)}
             </View>
           </ScrollView>
         </View>

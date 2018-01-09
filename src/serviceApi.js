@@ -1,14 +1,14 @@
 import _ from 'lodash';
 import moment from 'moment';
 import { Image } from 'react-native';
-
+const utf8 = require('fc_juarez/node_modules/utf8');
 
 export const SERVER_URL = 'http://fcjuarez.com';
 const API_PATH = '/api.php';
 
 const SEASON_URL = '/Season?filter=Active,eq,1&columns=Title,SeasonId';
 const TOURNAMENT_URL = '/Tournament?filter=Active,eq,1&columns=Title,TournamentId';
-const GAME_MATCH_URL = `/GameFuture?columns=GameFutureId,SeasonId,TournamentId,Date,Hour,VersusTeam,VersusTeamAtHome,Stadium&filter[]=Active,eq,1&filter[]=Date,ge,${moment().subtract(6, 'months').format('YYYY-MM-DD')}`;
+const GAME_MATCH_URL = `/GameFuture?columns=GameFutureId,SeasonId,TournamentId,Date,Hour,VersusTeam,VersusTeamAtHome,Stadium&filter[]=Active,eq,1&filter[]=Date,ge,${moment().subtract(4, 'months').format('YYYY-MM-DD')}`;
 const GAME_MATCH_RESULTS_URL = (ids) => `/GamePresent?columns=GamePresentId,GameFutureId,ScoreHome,ScoreAway&filter=GameFutureId,in,${_.join(ids)}`;
 const GAME_MATCH_DETAILS_URL = (id) => `/GameFuture/${id}`;
 const GAME_MATCH_MINUTE_URL = (id) => `/GamePresentMinute?columns=GamePresentId,GameEventId,Minute,Description&filter=GamePresentId,eq,${id}`;
@@ -16,9 +16,13 @@ const WELCOME_BANNER_URL = '/Banner?order=InputDate,desc&page=1,1&columns=Banner
 const GENERAL_TABLE_URL = 'http://administrador.ligamx.net/webservices/prtl_web_jsondata.ashx?psWidget=PRTL_EstdClubDtll&objIDDivision=2&objIDTemporada=68&objIDTorneo=1';
 
 const normalizeData = ({ columns, records }) => _.map(records, (record) => _.zipObject(columns, record));
-const fetchJson = (url) => {
+const fetchJson = async (url, decode = true) => {
   console.log(`Fetching ${url}`);
-  return fetch(url).then((response) => response.json());
+  const response = await fetch(url);
+  let text = await response.text();
+  if (decode)
+    text = utf8.decode(JSON.stringify(JSON.parse(text)));
+  return JSON.parse(text);
 };
 const fileExists = async (url) => {
   const result = await fetch(url, { method: 'HEAD' });
@@ -77,7 +81,7 @@ export class ServiceApi {
   }
 
   static async downloadGeneralTableData() {
-    const response = await fetchJson(GENERAL_TABLE_URL);
+    const response = await fetchJson(GENERAL_TABLE_URL, false);
     return response.DatosJSON;
   }
 

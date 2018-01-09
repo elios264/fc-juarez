@@ -10,8 +10,10 @@ import { fonts, palette, rem } from './theme';
 import { intialize } from './actions/initializers';
 import { rootReducer } from './reducers';
 
-require('moment');
+const moment = require('moment');
+require('moment/locale/es');
 require('moment-timezone');
+moment.locale('es');
 
 NativeTachyons.build({ rem, fonts, colors: { palette } }, StyleSheet);
 
