@@ -17,7 +17,7 @@ const GENERAL_TABLE_URL = 'http://administrador.ligamx.net/webservices/prtl_web_
 
 const normalizeData = ({ columns, records }) => _.map(records, (record) => _.zipObject(columns, record));
 const fetchJson = async (url, decode = true) => {
-  console.log(`Fetching ${url}`);
+  __DEV__ && console.log(`Fetching ${url}`);
   const response = await fetch(url);
   let text = await response.text();
   if (decode)
