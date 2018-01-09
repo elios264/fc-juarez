@@ -1267,8 +1267,8 @@
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)..\node_modules\nnkit-actionsheet-pickerios/**",
-					"$(SRCROOT)..\node_modules\neact-native-onesignalios/**",
+					"\"$(SRCROOT)/../node_modules/rnkit-actionsheet-picker/ios/\"/**",
+					"\"$(SRCROOT)/../node_modules/react-native-onesignal/ios/\"/**",
 				);
 				INFOPLIST_FILE = fc_juarezTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1295,8 +1295,8 @@
 				DEVELOPMENT_TEAM = HU7Q2286D6;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)..\node_modules\nnkit-actionsheet-pickerios/**",
-					"$(SRCROOT)..\node_modules\neact-native-onesignalios/**",
+					"\"$(SRCROOT)/../node_modules/rnkit-actionsheet-picker/ios/\"/**",
+					"\"$(SRCROOT)/../node_modules/react-native-onesignal/ios/\"/**",
 				);
 				INFOPLIST_FILE = fc_juarezTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1381,8 +1381,8 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)..\node_modules\nnkit-actionsheet-pickerios/**",
-					"$(SRCROOT)..\node_modules\neact-native-onesignalios/**",
+					"\"$(SRCROOT)/../node_modules/rnkit-actionsheet-picker/ios/\"/**",
+					"\"$(SRCROOT)/../node_modules/react-native-onesignal/ios/\"/**",
 				);
 				INFOPLIST_FILE = "fc_juarez-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1418,8 +1418,8 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(SRCROOT)..\node_modules\nnkit-actionsheet-pickerios/**",
-					"$(SRCROOT)..\node_modules\neact-native-onesignalios/**",
+          "\"$(SRCROOT)/../node_modules/rnkit-actionsheet-picker/ios/\"/**",
+					"\"$(SRCROOT)/../node_modules/react-native-onesignal/ios/\"/**",
 				);
 				INFOPLIST_FILE = "fc_juarez-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
