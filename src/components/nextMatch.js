@@ -39,14 +39,14 @@ export class NextMatch extends PureComponent {
   renderNextMatch() {
     const { nextMatch, tournament } = this.props;
 
-    let { time, stadium, versusTeam, versusTeamAtHome, desc, teamLogo } = nextMatch;
+    let { time, stadium, versusTeam, versusTeamAtHome, desc, teamLogoUrl, bannerUrl } = nextMatch;
 
     stadium = _.toUpper(stadium);
     const matchTournament = _.toUpper(tournament.title);
     const matchDate = _.upperCase(time.format('DD MMM YYYY'));
 
-    const bravos = { name: 'BRAVOS FC', location: 'CIUDAD JÚAREZ', logo: require('fc_juarez/assets/img/teams/fcjuarez.png') };
-    const enemy = { name: _.toUpper(versusTeam), location: 'DESCONOCIDA', logo: { uri: teamLogo } };
+    const bravos = { name: 'BRAVOS FC', location: 'CIUDAD JÚAREZ', logo: require('fc_juarez/assets/img/fcjuarez.png') };
+    const enemy = { name: _.toUpper(versusTeam), location: 'DESCONOCIDA', logo: { uri: teamLogoUrl } };
 
     const fst = versusTeamAtHome ? enemy : bravos;
     const snd = versusTeamAtHome ? bravos : enemy;
@@ -54,7 +54,7 @@ export class NextMatch extends PureComponent {
     return (
       <View >
         <View cls='bb b--red'>
-          <ScalableImage width={Dimensions.get('window').width} source={require('fc_juarez/assets/img/temp/nextMatchImg.png')} />
+          <ScalableImage width={Dimensions.get('window').width} source={{ uri: bannerUrl }} />
           <View cls='absolute bottom-0 right-0' style={[styles.triangleCorner]} />
         </View>
         <View cls='aic mt3 mb3'>

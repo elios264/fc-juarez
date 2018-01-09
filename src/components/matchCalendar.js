@@ -27,11 +27,11 @@ class MatchInfo extends PureComponent {
 
   render() {
     const { match, tournament } = this.props;
-    const { time, stadium, scoreAway, scoreHome, versusTeam, versusTeamAtHome, teamLogo } = match;
+    const { time, stadium, scoreAway, scoreHome, versusTeam, versusTeamAtHome, teamLogoUrl } = match;
 
 
-    const bravos = { name: 'FC Juárez', logo: require('fc_juarez/assets/img/teams/fcjuarez.png') };
-    const enemy = { name: versusTeam, logo: { uri: teamLogo } };
+    const bravos = { name: 'FC Juárez', logo: require('fc_juarez/assets/img/fcjuarez.png') };
+    const enemy = { name: versusTeam, logo: { uri: teamLogoUrl } };
 
     const fst = versusTeamAtHome ? enemy : bravos;
     const snd = versusTeamAtHome ? bravos : enemy;

@@ -30,12 +30,13 @@ export class GameMatch {
     this.attributes = { time, id, detailsId, SeasonId, Stadium, TournamentId, VersusTeam, VersusTeamAtHome, ScoreAway, ScoreHome, desc };
   }
 
+  get bannerUrl() { return `${SERVER_URL}/binder/gamefuture/${this.id}-1.jpg`; }
   get viewMoreUrl() {
     return this.detailsId
       ? `${SERVER_URL}/perfil-partidos-en-curso.php?${_.replace(btoa(`gp=${this.detailsId}`), '=', '')}`
       : `${SERVER_URL}/perfil-partidos-por-jugar.php?${_.replace(btoa(`gf=${this.id}`), '=', '')}`;
   }
-  get teamLogo() { return `${SERVER_URL}/binder/gamefuture/${this.id}-0.png`; }
+  get teamLogoUrl() { return `${SERVER_URL}/binder/gamefuture/${this.id}-0.png`; }
   get id() { return this.attributes.id; }
   get detailsId() { return this.attributes.detailsId; }
   get seasonId() { return this.attributes.SeasonId; }

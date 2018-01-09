@@ -78,8 +78,8 @@ export class TheMinute extends PureComponent {
     const matchTournament = _.toUpper(tournament.title);
     const matchDate = _.upperCase(match.time.format('DD MMM YYYY'));
 
-    const bravos = { name: 'BRAVOS FC', location: 'CIUDAD JÚAREZ', logo: require('fc_juarez/assets/img/teams/fcjuarez.png') };
-    const enemy = { name: _.toUpper(match.versusTeam), location: 'DESCONOCIDA', logo: { uri: match.teamLogo } };
+    const bravos = { name: 'BRAVOS FC', location: 'CIUDAD JÚAREZ', logo: require('fc_juarez/assets/img/fcjuarez.png') };
+    const enemy = { name: _.toUpper(match.versusTeam), location: 'DESCONOCIDA', logo: { uri: match.teamLogoUrl } };
 
     const fst = match.versusTeamAtHome ? enemy : bravos;
     const snd = match.versusTeamAtHome ? bravos : enemy;
