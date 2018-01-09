@@ -103,6 +103,8 @@ android {
         targetSdkVersion 22
         versionCode 3
         versionName "1.0"
+        manifestPlaceholders = [onesignal_app_id: "5c13208c-4b79-4a14-bf39-bee0a9515b7a",
+                                onesignal_google_project_number: "REMOTE"]
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
@@ -148,6 +150,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-onesignal')
     compile project(':rnkit-actionsheet-picker')
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:23.0.1"
