@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -42,10 +43,10 @@
 		8B700E241FEB214700C87D2D /* Permanent Marker.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 794C7D1D30474BF2ABADC587 /* Permanent Marker.ttf */; };
 		8BF5F3131FEC3CA1009BF261 /* screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BF5F2EF1FEC3CA1009BF261 /* screen.png */; };
 		9E8585810A0240F885E7D766 /* Ubuntu-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6566BAA026744D69B7E319B /* Ubuntu-LightItalic.ttf */; };
+		A10109B5277A40C1BD20BE1B /* libRNKitASPickerView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B52F111F5574191BA821791 /* libRNKitASPickerView.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B332DCD087AE49189FE3B0D3 /* Ubuntu-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 43313435F3634DA4A046D2C4 /* Ubuntu-BoldItalic.ttf */; };
 		EC07722BA8414E4283B14844 /* Ubuntu-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E3A0E4E3B3340A295D89BF6 /* Ubuntu-Bold.ttf */; };
-		A10109B5277A40C1BD20BE1B /* libRNKitASPickerView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0B52F111F5574191BA821791 /* libRNKitASPickerView.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -238,6 +239,13 @@
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
 		};
+		8B4F8886200478AF00ED159B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E571527F56234C8493866AD5 /* RNKitASPickerView.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNKitASPickerView;
+		};
 		8B700DD31FEB1EE200C87D2D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */;
@@ -320,6 +328,7 @@
 		00E356EE1AD99517003FC87E /* fc_juarezTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fc_juarezTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* fc_juarezTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = fc_juarezTests.m; sourceTree = "<group>"; };
+		0B52F111F5574191BA821791 /* libRNKitASPickerView.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNKitASPickerView.a; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
 		13B07F961A680F5B00A75B9A /* fc_juarez.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fc_juarez.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -339,15 +348,15 @@
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
 		794C7D1D30474BF2ABADC587 /* Permanent Marker.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Permanent Marker.ttf"; path = "../assets/fonts/Permanent Marker.ttf"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
+		8B76F88320054A4400ABAB1D /* fc_juarez.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = fc_juarez.entitlements; path = fc_juarez/fc_juarez.entitlements; sourceTree = "<group>"; };
 		8BF5F2EF1FEC3CA1009BF261 /* screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = screen.png; path = ../android/app/src/main/res/drawable/screen.png; sourceTree = "<group>"; };
 		97617A1BEC224E62ABFAFB4C /* Ubuntu-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-MediumItalic.ttf"; path = "../assets/fonts/Ubuntu-MediumItalic.ttf"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
+		E571527F56234C8493866AD5 /* RNKitASPickerView.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNKitASPickerView.xcodeproj; path = "../node_modules/rnkit-actionsheet-picker/ios/RNKitASPickerView.xcodeproj"; sourceTree = "<group>"; };
 		ED853D46AA63440F98AD0944 /* Ubuntu-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Light.ttf"; path = "../assets/fonts/Ubuntu-Light.ttf"; sourceTree = "<group>"; };
 		F6566BAA026744D69B7E319B /* Ubuntu-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-LightItalic.ttf"; path = "../assets/fonts/Ubuntu-LightItalic.ttf"; sourceTree = "<group>"; };
 		FECDA92583154243AE1A89C8 /* Ubuntu-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Medium.ttf"; path = "../assets/fonts/Ubuntu-Medium.ttf"; sourceTree = "<group>"; };
 		FFA7D344A1DB4C07BAE43B6D /* Ubuntu-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Italic.ttf"; path = "../assets/fonts/Ubuntu-Italic.ttf"; sourceTree = "<group>"; };
-		E571527F56234C8493866AD5 /* RNKitASPickerView.xcodeproj */ = {isa = PBXFileReference; name = "RNKitASPickerView.xcodeproj"; path = "../node_modules/rnkit-actionsheet-picker/ios/RNKitASPickerView.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		0B52F111F5574191BA821791 /* libRNKitASPickerView.a */ = {isa = PBXFileReference; name = "libRNKitASPickerView.a"; path = "libRNKitASPickerView.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -487,6 +496,7 @@
 		13B07FAE1A68108700A75B9A /* fc_juarez */ = {
 			isa = PBXGroup;
 			children = (
+				8B76F88320054A4400ABAB1D /* fc_juarez.entitlements */,
 				8BF5F2EF1FEC3CA1009BF261 /* screen.png */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -575,6 +585,7 @@
 				00E356EF1AD99517003FC87E /* fc_juarezTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				B1E29665B869408FA241EF78 /* Resources */,
+				8B4F885F200478AD00ED159B /* Recovered References */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -588,6 +599,22 @@
 				00E356EE1AD99517003FC87E /* fc_juarezTests.xctest */,
 				2D02E47B1E0B4A5D006451C7 /* fc_juarez-tvOS.app */,
 				2D02E4901E0B4A5D006451C7 /* fc_juarez-tvOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8B4F885F200478AD00ED159B /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				0B52F111F5574191BA821791 /* libRNKitASPickerView.a */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		8B4F8883200478AE00ED159B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8B4F8887200478AF00ED159B /* libRNKitASPickerView.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -708,6 +735,14 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = HU7Q2286D6;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -781,6 +816,10 @@
 				{
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
+				},
+				{
+					ProductGroup = 8B4F8883200478AE00ED159B /* Products */;
+					ProjectRef = E571527F56234C8493866AD5 /* RNKitASPickerView.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -967,6 +1006,13 @@
 			fileType = archive.ar;
 			path = libRCTText.a;
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8B4F8887200478AF00ED159B /* libRNKitASPickerView.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNKitASPickerView.a;
+			remoteRef = 8B4F8886200478AF00ED159B /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		8B700DD41FEB1EE200C87D2D /* libRCTBlob-tvOS.a */ = {
@@ -1187,23 +1233,23 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)..\node_modules\nnkit-actionsheet-pickerios/**",
+				);
 				INFOPLIST_FILE = fc_juarezTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/fc_juarez.app/fc_juarez";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)\..\node_modules\rnkit-actionsheet-picker\ios/**",
-				);
 			};
 			name = Debug;
 		};
@@ -1213,23 +1259,23 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = HU7Q2286D6;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)..\node_modules\nnkit-actionsheet-pickerios/**",
+				);
 				INFOPLIST_FILE = fc_juarezTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/fc_juarez.app/fc_juarez";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)\..\node_modules\rnkit-actionsheet-picker\ios/**",
-				);
 			};
 			name = Release;
 		};
@@ -1237,9 +1283,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = fc_juarez/fc_juarez.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = HU7Q2286D6;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)..\node_modules\nnkit-actionsheet-pickerios/**",
+				);
 				INFOPLIST_FILE = fc_juarez/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -1250,10 +1301,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mercatika.fc-juarez";
 				PRODUCT_NAME = fc_juarez;
 				VERSIONING_SYSTEM = "apple-generic";
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)\..\node_modules\rnkit-actionsheet-picker\ios/**",
-				);
 			};
 			name = Debug;
 		};
@@ -1261,8 +1308,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = fc_juarez/fc_juarez.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HU7Q2286D6;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)..\node_modules\nnkit-actionsheet-pickerios/**",
+				);
 				INFOPLIST_FILE = fc_juarez/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -1273,10 +1325,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mercatika.fc-juarez";
 				PRODUCT_NAME = fc_juarez;
 				VERSIONING_SYSTEM = "apple-generic";
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)\..\node_modules\rnkit-actionsheet-picker\ios/**",
-				);
 			};
 			name = Release;
 		};
@@ -1293,8 +1341,16 @@
 				DEVELOPMENT_TEAM = HU7Q2286D6;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)..\node_modules\nnkit-actionsheet-pickerios/**",
+				);
 				INFOPLIST_FILE = "fc_juarez-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1304,14 +1360,6 @@
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)\..\node_modules\rnkit-actionsheet-picker\ios/**",
-				);
 			};
 			name = Debug;
 		};
@@ -1328,8 +1376,16 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = HU7Q2286D6;
 				GCC_NO_COMMON_BLOCKS = YES;
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)..\node_modules\nnkit-actionsheet-pickerios/**",
+				);
 				INFOPLIST_FILE = "fc_juarez-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
@@ -1339,14 +1395,6 @@
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.2;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
-				HEADER_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(SRCROOT)\..\node_modules\rnkit-actionsheet-picker\ios/**",
-				);
 			};
 			name = Release;
 		};
@@ -1364,15 +1412,15 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "fc_juarez-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.fc_juarez-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/fc_juarez-tvOS.app/fc_juarez-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
 			};
 			name = Debug;
 		};
@@ -1390,15 +1438,15 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "fc_juarez-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.fc_juarez-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/fc_juarez-tvOS.app/fc_juarez-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-				);
 			};
 			name = Release;
 		};
