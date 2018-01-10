@@ -3,8 +3,6 @@ FC JUAREZ
 Cliente Android & IOS
 
 - Descargar banners pub
-- pantallas de no encontrado
-- mejorar seleccion de torneo?
 - push notifications
 - arreglar iconos minuto a minuto
 - ubicacion de equipos...

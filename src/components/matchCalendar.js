@@ -99,7 +99,7 @@ export class MatchCalendar extends PureComponent {
 
     gameMatches = _(gameMatches)
       .filter(['seasonId', _.get(currentSeason, 'id', -1)])
-      .orderBy(gameMatches, 'time', 'desc')
+      .sortBy(gameMatches, 'time')
       .value();
 
     return (

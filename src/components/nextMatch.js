@@ -60,6 +60,7 @@ export class NextMatch extends PureComponent {
         <View cls='aic mt3 mb3'>
           <Text cls='ff-ubu-b contrast f6 bg-transparent' >{matchTournament}</Text>
           <Text cls='ff-ubu-b gray f6 bg-transparent' >{matchDate} | {stadium}</Text>
+          <Text cls='ff-ubu-b gray f6 bg-transparent' >{time.format('hh:mm A')}</Text>
         </View>
         <View cls='flx-row jcc aic h3 mh2' >
           <View cls='absolute left-0 flx-row aic ml2'>
