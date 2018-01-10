@@ -7,12 +7,12 @@ import { appStart } from './appState';
 import { ServiceApi } from 'fc_juarez/src/serviceApi';
 import { GameMatch, GameMatchDetails, Season, Tournament, TeamInfo } from 'fc_juarez/src/objects';
 
-
 export const intialize = () => catchError(async(dispatch, getState) => {
   dispatch({ type: 'INITIALIZING', running: true });
 
   await dispatch(appStart());
   await dispatch(getState().appInfo.isConnected ? loadFromServer() : loadFromStorage());
+  dispatch(downloadPushSettings());
 
   dispatch({ type: 'INITIALIZING', running: false });
 }, 'Ha ocurrido un error inicializando el sistema', (dispatch) => {
@@ -78,3 +78,13 @@ export const loadFromServer = () => catchError(async (dispatch, getState) => {
 
   dispatch(saveToStorage());
 }, 'No se han podido descargar los datos del servidor');
+
+export const updatePushSettings = (settingName, value) => catchError(async (dispatch) => {
+  ServiceApi.updatePushSettings(settingName, value);
+  await dispatch(downloadPushSettings());
+}, 'No se han podido actualizar las preferencias');
+
+export const downloadPushSettings = () => catchError(async (dispatch) => {
+  const newSettings = await ServiceApi.downloadPushSettings();
+  dispatch({ type: 'PUSH_SETTINGS_CHANGED', state: newSettings });
+}, 'No se han podido descargar las preferencias');

@@ -9,6 +9,9 @@ Cliente Android & IOS
 - arreglar iconos minuto a minuto
 - ubicacion de equipos...
 
+- location ios pushs
+- php schedule pushs
+
 
 Datos necesarios:
 

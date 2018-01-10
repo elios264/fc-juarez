@@ -1,34 +1,64 @@
+import PropTypes from 'prop-types';
+
 import React, { PureComponent } from 'react';
 import { StyleSheet, View, Image, Text, Switch, Dimensions } from 'react-native';
+import { bindActionCreators } from 'redux';
 import NativeTachyons from 'react-native-style-tachyons';
 import ScalableImage from 'react-native-scalable-image';
+import { connect } from 'react-redux';
 
 import { palette } from 'fc_juarez/src/theme';
+import { updatePushSettings } from 'fc_juarez/src/actions/initializers';
 
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({ updatePushSettings }, dispatch);
+const mapStateToProps = (state) => ({
+  isConnected: state.appInfo.isConnected,
+  pushPermissions: state.appInfo.pushPermissions,
+  pushSettings: state.appInfo.pushSettings,
+});
+
+@connect(mapStateToProps, mapDispatchToProps)
 @NativeTachyons.wrap
 export class Settings extends PureComponent {
 
+  static propTypes = {
+    pushPermissions: PropTypes.object,
+    isConnected: PropTypes.bool.isRequired,
+    updatePushSettings: PropTypes.func.isRequired,
+    pushSettings: PropTypes.object.isRequired,
+  }
+
   render() {
+    const { isConnected, pushSettings, updatePushSettings } = this.props;
+    const { receiveMatchAlerts, receiveGoalsAlerts, receiveGeneralAlerts } = pushSettings;
 
     return (
       <View cls='flx-i bg-white'>
         <View cls='flx-i bg-primary'>
-
           <Image cls='absolute-fill rm-cover' style={[styles.expand]} source={require('fc_juarez/assets/img/settingsbg.png')} />
           <ScalableImage cls='absolute bottom-0 left-0' width={Dimensions.get('window').width} source={require('fc_juarez/assets/img/green-bar.png')} />
 
+          { !isConnected &&
+            <View cls='flx-row aic mt4 ml4 mr3'>
+              <Text cls='flx-i yellow ff-ubu-b bg-transparent'>Necesitas estar conectado para poder modificar las preferencias</Text>
+            </View>
+          }
+
           <View cls='flx-row aic mt4 ml4 mr3'>
             <Text cls='flx-i white ff-ubu-b bg-transparent'>Activar alerta de partidos</Text>
-            <Switch value onTintColor={palette.contrast} thumbTintColor='white' tintColor={palette.gray}/>
+            <Switch value={receiveMatchAlerts} disabled={!isConnected} onValueChange={updatePushSettings.bind(null, 'receiveMatchAlerts')} onTintColor={isConnected ? palette.contrast : palette.gray} thumbTintColor='white' tintColor={palette.gray}/>
           </View>
           <View cls='flx-row aic mt4 ml4 mr3'>
             <Text cls='flx-i white ff-ubu-b bg-transparent'>Activar alerta de goles</Text>
-            <Switch value onTintColor={palette.contrast} thumbTintColor='white' tintColor={palette.gray}/>
+            <Switch value={receiveGoalsAlerts} disabled={!isConnected} onValueChange={updatePushSettings.bind(null, 'receiveGoalsAlerts')} onTintColor={isConnected ? palette.contrast : palette.gray} thumbTintColor='white' tintColor={palette.gray}/>
           </View>
           <View cls='flx-row aic mt4 ml4 mr3'>
             <Text cls='flx-i white ff-ubu-b bg-transparent'>Activar alertas generales</Text>
-            <Switch onTintColor={palette.contrast} thumbTintColor='white' tintColor={palette.gray}/>
+            <Switch value={receiveGeneralAlerts} disabled={!isConnected} onValueChange={updatePushSettings.bind(null, 'receiveGeneralAlerts')} onTintColor={isConnected ? palette.contrast : palette.gray} thumbTintColor='white' tintColor={palette.gray}/>
           </View>
+
+          {/* <Text cls='white f5 ff-ubu' >{JSON.stringify(this.props.pushPermissions)}</Text> */}
         </View>
         <View cls='h4 pa2'>
           <Image style={[styles.expand]} source={require('fc_juarez/assets/img/temp/welcomead.png')} />

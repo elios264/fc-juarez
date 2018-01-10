@@ -1,4 +1,6 @@
 import { AppState, NetInfo } from 'react-native';
+import OneSignal from 'react-native-onesignal';
+
 
 const subscribeToNetworkChanged = async (handler) => {
   NetInfo.isConnected.addEventListener('connectionChange', handler);
@@ -21,7 +23,14 @@ export const appStart = () => async (dispatch) => {
     __DEV__ && console.log({ type: 'APPSTATE_CHANGED', state });
     dispatch({ type: 'APPSTATE_CHANGED', state });
   };
+  const permissionsHandler = (state) => {
+    __DEV__ && console.log({ type: 'PUSH_PERMISSIONS_CHANGED', state });
+    dispatch({ type: 'PUSH_PERMISSIONS_CHANGED', state });
+  };
 
-  await subscribeToNetworkChanged(networkListener);
-  await subscribeToAppStateChanged(appStateListener);
+  const task = subscribeToNetworkChanged(networkListener);
+  subscribeToAppStateChanged(appStateListener),
+  OneSignal.getPermissionSubscriptionState(permissionsHandler);
+
+  await task;
 };

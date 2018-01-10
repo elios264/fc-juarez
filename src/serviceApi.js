@@ -1,6 +1,8 @@
 import _ from 'lodash';
 import moment from 'moment';
 import { Image } from 'react-native';
+import OneSignal from 'react-native-onesignal';
+
 const utf8 = require('fc_juarez/node_modules/utf8');
 
 export const SERVER_URL = 'http://fcjuarez.com';
@@ -83,6 +85,15 @@ export class ServiceApi {
   static async downloadGeneralTableData() {
     const response = await fetchJson(GENERAL_TABLE_URL, false);
     return response.DatosJSON;
+  }
+
+  static updatePushSettings(settingName, value) {
+    OneSignal.sendTag(settingName, `${Number(value)}`);
+  }
+
+  static async downloadPushSettings() {
+    const tags = await new Promise((res) => OneSignal.getTags(res));
+    return _.mapValues(tags || { }, (str) => !!Number(str));
   }
 
 }
