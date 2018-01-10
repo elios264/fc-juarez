@@ -11,8 +11,15 @@ export const intialize = () => catchError(async(dispatch, getState) => {
   dispatch({ type: 'INITIALIZING', running: true });
 
   await dispatch(appStart());
-  await dispatch(getState().appInfo.isConnected ? loadFromServer() : loadFromStorage());
-  dispatch(downloadPushSettings());
+
+  if (getState().appInfo.isConnected) {
+    await dispatch(loadFromServer());
+    const settings = await dispatch(downloadPushSettings());
+    if (_.isEmpty(settings)) await dispatch(initializePushSettings());
+  } else {
+    await dispatch(loadFromStorage());
+  }
+
 
   dispatch({ type: 'INITIALIZING', running: false });
 }, 'Ha ocurrido un error inicializando el sistema', (dispatch) => {
@@ -87,4 +94,12 @@ export const updatePushSettings = (settingName, value) => catchError(async (disp
 export const downloadPushSettings = () => catchError(async (dispatch) => {
   const newSettings = await ServiceApi.downloadPushSettings();
   dispatch({ type: 'PUSH_SETTINGS_CHANGED', state: newSettings });
+  return newSettings;
 }, 'No se han podido descargar las preferencias');
+
+export const initializePushSettings = () => catchError(async (dispatch) => {
+  ServiceApi.updatePushSettings('receiveMatchAlerts', true);
+  ServiceApi.updatePushSettings('receiveGoalsAlerts', true);
+  ServiceApi.updatePushSettings('receiveGeneralAlerts', true);
+  await dispatch(downloadPushSettings());
+}, 'No se ha podido registrar el dispositivo para recibir notificaciones');

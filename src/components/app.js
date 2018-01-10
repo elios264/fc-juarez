@@ -40,10 +40,11 @@ export class App extends PureComponent {
   }
 
   onReceived(notification) {
-    console.log('Notification received: ', notification);
+    console.log('NOTIFICATION RECEIVED: ', notification);
   }
 
   onOpened(openResult) {
+    console.log('NOTIFICATION OPENED: ');
     console.log('Message: ', openResult.notification.payload.body);
     console.log('Data: ', openResult.notification.payload.additionalData);
     console.log('isActive: ', openResult.notification.isAppInFocus);
