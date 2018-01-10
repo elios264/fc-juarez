@@ -33,14 +33,14 @@ export class App extends PureComponent {
   }
 
   componentWillUnmount() {
-      OneSignal.removeEventListener('received', this.onReceived);
-      OneSignal.removeEventListener('opened', this.onOpened);
-      OneSignal.removeEventListener('registered', this.onRegistered);
-      OneSignal.removeEventListener('ids', this.onIds);
+    OneSignal.removeEventListener('received', this.onReceived);
+    OneSignal.removeEventListener('opened', this.onOpened);
+    OneSignal.removeEventListener('registered', this.onRegistered);
+    OneSignal.removeEventListener('ids', this.onIds);
   }
 
   onReceived(notification) {
-      console.log("Notification received: ", notification);
+    console.log('Notification received: ', notification);
   }
 
   onOpened(openResult) {
@@ -51,12 +51,12 @@ export class App extends PureComponent {
   }
 
   onRegistered(notifData) {
-      console.log("Device had been registered for push notifications!", notifData);
+    console.log('Device had been registered for push notifications!', notifData);
   }
 
   onIds(device) {
     console.log('Device info: ', device);
-  }  
+  }
 
   setDrawerRef = (ref) => this.drawer = ref;
 
