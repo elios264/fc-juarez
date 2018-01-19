@@ -95,7 +95,7 @@ export class TheMinute extends PureComponent {
             <Image cls='w3 h3 rm-stretch' source={fst.logo} />
             <Text cls='flx-i ml2 ff-ubu-b white bg-transparent' style={[styles.smallText]}>{fst.name}</Text>
           </View>
-          <Text cls='ff-ubu-b white f4 bg-transparent mh2'>VS</Text>
+          <Text cls='f4 white ff-ubu-b mh2 bg-transparent'>{match.scoreHome}<Text cls='gray'>  vs  </Text>{match.scoreAway}</Text>
           <View cls='flx-i flx-row aic ml2 jcfe'>
             <Text cls='flx-i ff-ubu-b white bg-transparent tr mr2' style={[styles.smallText]}>{snd.name}</Text>
             <Image cls='w3 h3 rm-stretch' source={snd.logo} />

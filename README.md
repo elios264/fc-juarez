@@ -10,14 +10,10 @@ Tareas pendientes:
 [ ] - Push notifications agendar dia de partido y 3 antes
 [ ] - Push notifications otros mensajes
 [ ] - Push notifications cancelar partidos.
-[ ] - mostrar total marcador en minuto a minuto
+[X] - mostrar total marcador en minuto a minuto
 [X] - Arreglar iconos minuto a minutos
 [X] - Remover ubicacion equipo rival
 [X] - Checar en todas pantallas textos largos.
-
-
-Iconos minuto a minuto:
-https://www.dropbox.com/s/3xls5m1b5vw9ysg/icons.zip?dl=0
 
 Dias antes de partido notificacion:
 3 dias antes y el dia del partido
