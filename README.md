@@ -6,10 +6,11 @@ Tareas pendientes:
 
 [ ] - Banners publicitarios
 [ ] - En IOS isConnected no es confiable
-[ ] - Push notifications goles
 [ ] - Push notifications agendar dia de partido y 3 antes
-[ ] - Push notifications otros mensajes
 [ ] - Push notifications cancelar partidos.
+[ ] - Android push notfic icon
+[X] - Push notifications otros mensajes
+[X] - Push notifications goles
 [X] - mostrar total marcador en minuto a minuto
 [X] - Arreglar iconos minuto a minutos
 [X] - Remover ubicacion equipo rival

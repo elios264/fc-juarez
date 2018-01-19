@@ -33,7 +33,15 @@
       $response = curl_exec($ch);
       curl_close($ch);
 
-      return $response;
+      $response = json_decode ($response, true);
+
+      if (array_key_exists('error', $response)) {
+        var_dump($response['error']);
+        return null;
+      }
+      else {
+       return $response['id'];
+      }
     }
 
 
@@ -1638,15 +1646,10 @@
 
         if ($dbResult) {
           $response = sendNotification(array(
-            'title' => 'TITLE HERE',
-            'message' => 'MESSAGE HERE',
-            'segment' => 'MATCH_GOAL_ALERTS'
+            'title' => $arrData[GameEventAction],
+            'message' => $arrData[Description],
+            'segment' => $arrData[GameEventId] === '14' ? 'MATCH_GOAL_ALERTS' : 'GENERAL_ALERTS'
           ));
-          $return["allresponses"] = $response;
-          $return = json_encode( $return);
-
-          print("\n\nJSON received:\n");
-          print(json_encode($arrData));
         }
 
         return $dbResult;
@@ -1712,6 +1715,15 @@
         }
 
         $db->closeConnection();
+
+        if ($dbResult) {
+          $response = sendNotification(array(
+            'title' => $arrData[GameEventAction],
+            'message' => $arrData[Description],
+            'segment' => $arrData[GameEventId] === '14' ? 'MATCH_GOAL_ALERTS' : 'GENERAL_ALERTS'
+          ));
+        }
+
         return $dbResult;
 
     }
