@@ -2,6 +2,40 @@
 
     include('../../lib/idbmanager.php');
 
+    function sendNotification($data){
+      $title = $data['title'];
+      $message = $data['message'];
+      $segment = $data['segment'];
+
+      $content = array( "en" => $message );
+      $subtitle = array( "en" => $title );
+
+      $fields = array(
+        'app_id' => "5c13208c-4b79-4a14-bf39-bee0a9515b7a",
+        'included_segments' => array($segment),
+        'data' => array("foo" => "bar"),
+        'contents' => $content,
+        'headings' => $subtitle
+      );
+
+      $fields = json_encode($fields);
+
+      $ch = curl_init();
+      curl_setopt($ch, CURLOPT_URL, "https://onesignal.com/api/v1/notifications");
+      curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json; charset=utf-8',
+                             'Authorization: Basic OWQxNWZlY2QtZmU3ZC00NzVmLTg4NzEtOTQ2YTUwMzVlNDE4'));
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+      curl_setopt($ch, CURLOPT_HEADER, FALSE);
+      curl_setopt($ch, CURLOPT_POST, TRUE);
+      curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
+      curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+
+      $response = curl_exec($ch);
+      curl_close($ch);
+
+      return $response;
+    }
+
 
 // <editor-fold defaultstate="collapsed" desc=" Data Format Functions ">
 
@@ -1601,6 +1635,20 @@
         }
 
         $db->closeConnection();
+
+        if ($dbResult) {
+          $response = sendNotification(array(
+            'title' => 'TITLE HERE',
+            'message' => 'MESSAGE HERE',
+            'segment' => 'MATCH_GOAL_ALERTS'
+          ));
+          $return["allresponses"] = $response;
+          $return = json_encode( $return);
+
+          print("\n\nJSON received:\n");
+          print(json_encode($arrData));
+        }
+
         return $dbResult;
 
     }

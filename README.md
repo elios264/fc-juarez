@@ -6,6 +6,8 @@ Cliente Android & IOS
 - push notifications
 - arreglar iconos minuto a minuto
 - ubicacion de equipos...
+- checar en todas paginas textos largos.
+
 
 - location ios pushs
 - php schedule pushs
