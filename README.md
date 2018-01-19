@@ -2,40 +2,23 @@ FC JUAREZ
 =======================
 Cliente Android & IOS
 
-- Descargar banners pub
-- push notifications
-- arreglar iconos minuto a minuto
-- ubicacion de equipos...
-- checar en todas paginas textos largos.
+Tareas pendientes:
+
+[ ] - Banners publicitarios
+[ ] - En IOS isConnected no es confiable
+[ ] - Push notifications goles
+[ ] - Push notifications agendar dia de partido y 3 antes
+[ ] - Push notifications otros mensajes
+[ ] - Push notifications cancelar partidos.
+[ ] - mostrar total marcador en minuto a minuto
+[X] - Arreglar iconos minuto a minutos
+[X] - Remover ubicacion equipo rival
+[X] - Checar en todas pantallas textos largos.
 
 
-- location ios pushs
-- php schedule pushs
+Iconos minuto a minuto:
+https://www.dropbox.com/s/3xls5m1b5vw9ysg/icons.zip?dl=0
 
-
-Datos necesarios:
-
-- Banner mas reciente /api.php/Banner?order=InputDate,desc&page=1,1&columns=BannerId
-- Temporadas (Season)
-- Torneos (Tournament)
-- Partidos (GameFuture) /api.php/GameFuture?columns=GameFutureId,SeasonId,TournamentId,Date,Hour,VersusTeam,VersusTeamAtHome,Stadium&filter[]=Active,eq,1&filter[]=Date,ge,2017-06-16
-- Resultados (GamePresent)
-    /api.php/GamePresent?columns=GamePresentId,GameFutureId,ScoreHome,ScoreAway
-    /api.php/GamePresent?columns=GamePresentId,GameFutureId,ScoreHome,ScoreAway&filter=GameFutureId,in,1,2,3
-- Proximo Partido //De los partidos futuros obtener el mas reciente de la fecha actual para adelante,
-    /api.php/GameFuture/{id}
-- Minuto a minuto (GamePresentMinute) //De los partidos presentes obtener el mas reciente de la fecha actual o anterior
-    /api.php/GamePresentMinute?columns=GamePresentId,GameEventId,Minute,Description&filter=GamePresentId,eq,{GamePresentId}
-- Tabla general
-    http://administrador.ligamx.net/webservices/prtl_web_jsondata.ashx?psWidget=PRTL_EstdClubDtll&objIDDivision=2&objIDTemporada=68&objIDTorneo=1
-
-
-  Descargar:
-    Url de banner mas reciente,
-    Lista de temporadas,
-    Lista de torneos,
-    Lista de Partidos,
-    Lista de resultados,
-    Detalles de proximo partido,
-    Informacion de minuto a minuto,
-    Informacion de tabla general.
+Dias antes de partido notificacion:
+3 dias antes y el dia del partido
+3 dias " En 3 dias vive la emoción de ser Bravo, el nombre del equipo de casa y el contrincante.

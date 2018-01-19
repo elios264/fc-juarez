@@ -45,8 +45,8 @@ export class NextMatch extends PureComponent {
     const matchTournament = _.toUpper(tournament.title);
     const matchDate = _.upperCase(time.format('DD MMM YYYY'));
 
-    const bravos = { name: 'BRAVOS FC', location: 'CIUDAD JÚAREZ', logo: require('fc_juarez/assets/img/fcjuarez.png') };
-    const enemy = { name: _.toUpper(versusTeam), location: 'DESCONOCIDA', logo: { uri: teamLogoUrl } };
+    const bravos = { name: 'BRAVOS FC', logo: require('fc_juarez/assets/img/fcjuarez.png') };
+    const enemy = { name: _.toUpper(versusTeam), logo: { uri: teamLogoUrl } };
 
     const fst = versusTeamAtHome ? enemy : bravos;
     const snd = versusTeamAtHome ? bravos : enemy;
@@ -63,19 +63,13 @@ export class NextMatch extends PureComponent {
           <Text cls='ff-ubu-b gray f6 bg-transparent' >{time.format('hh:mm A')}</Text>
         </View>
         <View cls='flx-row jcc aic h3 mh2' >
-          <View cls='absolute left-0 flx-row aic ml2'>
+          <View cls='flx-i flx-row aic ml2'>
             <Image cls='w3 h3 rm-stretch' source={fst.logo} />
-            <View cls='ml1'>
-              <Text cls='ff-ubu-b white bg-transparent' style={[styles.smallText]}>{fst.name}</Text>
-              <Text cls='ff-ubu-b gray bg-transparent' style={[styles.smallText]}>{fst.location}</Text>
-            </View>
+            <Text cls='flx-i ml2 ff-ubu-b white bg-transparent' style={[styles.smallText]}>{fst.name}</Text>
           </View>
-          <Text cls='ff-ubu-b white f4 bg-transparent'>VS</Text>
-          <View cls='absolute right-0 flx-row aic ml2'>
-            <View cls='aife mr1'>
-              <Text cls='ff-ubu-b white bg-transparent' style={[styles.smallText]}>{snd.name}</Text>
-              <Text cls='ff-ubu-b gray bg-transparent' style={[styles.smallText]} >{snd.location}</Text>
-            </View>
+          <Text cls='ff-ubu-b white f4 bg-transparent mh2'>VS</Text>
+          <View cls='flx-i flx-row aic ml2 jcfe'>
+            <Text cls='flx-i ff-ubu-b white bg-transparent tr mr2' style={[styles.smallText]}>{snd.name}</Text>
             <Image cls='w3 h3 rm-stretch' source={snd.logo} />
           </View>
         </View>

@@ -10,26 +10,26 @@ import { loadFromServer } from 'fc_juarez/src/actions/initializers';
 import { Tournament, GameMatch, GameMatchDetails } from 'fc_juarez/src/objects';
 
 const icons = {
-  '1': require('fc_juarez/assets/img/icons/cup1.png'),
-  '2': require('fc_juarez/assets/img/icons/cup2.png'),
-  '3': require('fc_juarez/assets/img/icons/cup1.png'),
-  '4': require('fc_juarez/assets/img/icons/cup2.png'),
-  '5': require('fc_juarez/assets/img/icons/cup1.png'),
-  '6': require('fc_juarez/assets/img/icons/cup2.png'),
-  '7': require('fc_juarez/assets/img/icons/field.png'),
-  '8': require('fc_juarez/assets/img/icons/yellowCard.png'),
-  '9': require('fc_juarez/assets/img/icons/redCard.png'),
-  '10': require('fc_juarez/assets/img/icons/flags.png'),
-  '11': require('fc_juarez/assets/img/icons/goal.png'),
-  '12': require('fc_juarez/assets/img/icons/noIdea.png'),
-  '13': require('fc_juarez/assets/img/icons/corner.png'),
-  '14': require('fc_juarez/assets/img/icons/ball.png'),
-  '15': require('fc_juarez/assets/img/icons/tennis.png'),
-  '16': require('fc_juarez/assets/img/icons/yellowCard.png'),
-  '17': require('fc_juarez/assets/img/icons/ambulance.png'),
-  '18': require('fc_juarez/assets/img/icons/noIdea.png'),
-  '19': require('fc_juarez/assets/img/icons/goal.png'),
-  '20': require('fc_juarez/assets/img/icons/player1.png'),
+  '1': require('fc_juarez/assets/img/icons/1.png'),
+  '2': require('fc_juarez/assets/img/icons/2.png'),
+  '3': require('fc_juarez/assets/img/icons/3.png'),
+  '4': require('fc_juarez/assets/img/icons/4.png'),
+  '5': require('fc_juarez/assets/img/icons/5.png'),
+  '6': require('fc_juarez/assets/img/icons/6.png'),
+  '7': require('fc_juarez/assets/img/icons/7.png'),
+  '8': require('fc_juarez/assets/img/icons/8.png'),
+  '9': require('fc_juarez/assets/img/icons/9.png'),
+  '10': require('fc_juarez/assets/img/icons/10.png'),
+  '11': require('fc_juarez/assets/img/icons/11.png'),
+  '12': require('fc_juarez/assets/img/icons/12.png'),
+  '13': require('fc_juarez/assets/img/icons/13.png'),
+  '14': require('fc_juarez/assets/img/icons/14.png'),
+  '15': require('fc_juarez/assets/img/icons/15.png'),
+  '16': require('fc_juarez/assets/img/icons/16.png'),
+  '17': require('fc_juarez/assets/img/icons/17.png'),
+  '18': require('fc_juarez/assets/img/icons/18.png'),
+  '19': require('fc_juarez/assets/img/icons/19.png'),
+  '20': require('fc_juarez/assets/img/icons/20.png'),
 };
 
 
@@ -40,7 +40,7 @@ const MatchUpdate = NativeTachyons.wrap(({ minute, desc, image }) => ( // eslint
     </Text>
     <Image cls='tint-contrast w3 h2 rm-contain mv1' source={image} />
     <Text cls='flx-i white ff-ubu-m f6'>
-      {desc}
+      {_.replace(desc, /(<([^>]+)>)/ig, '')}
     </Text>
   </View>
 ));
@@ -78,8 +78,8 @@ export class TheMinute extends PureComponent {
     const matchTournament = _.toUpper(tournament.title);
     const matchDate = _.upperCase(match.time.format('DD MMM YYYY'));
 
-    const bravos = { name: 'BRAVOS FC', location: 'CIUDAD JÚAREZ', logo: require('fc_juarez/assets/img/fcjuarez.png') };
-    const enemy = { name: _.toUpper(match.versusTeam), location: 'DESCONOCIDA', logo: { uri: match.teamLogoUrl } };
+    const bravos = { name: 'BRAVOS FC', logo: require('fc_juarez/assets/img/fcjuarez.png') };
+    const enemy = { name: _.toUpper(match.versusTeam), logo: { uri: match.teamLogoUrl } };
 
     const fst = match.versusTeamAtHome ? enemy : bravos;
     const snd = match.versusTeamAtHome ? bravos : enemy;
@@ -91,19 +91,13 @@ export class TheMinute extends PureComponent {
           <Text cls='ff-ubu-b gray f6 bg-transparent' >{matchDate} | {stadium}</Text>
         </View>
         <View cls='flx-row jcc aic h3 mh2' >
-          <View cls='absolute left-0 flx-row aic ml2'>
+          <View cls='flx-i flx-row aic ml2'>
             <Image cls='w3 h3 rm-stretch' source={fst.logo} />
-            <View cls='ml1' style={[styles.teamInfo]}>
-              <Text cls='ff-ubu-b white bg-transparent' style={[styles.smallText]}>{fst.name}</Text>
-              <Text cls='ff-ubu-b gray bg-transparent' style={[styles.smallText]}>{fst.location}</Text>
-            </View>
+            <Text cls='flx-i ml2 ff-ubu-b white bg-transparent' style={[styles.smallText]}>{fst.name}</Text>
           </View>
-          <Text cls='ff-ubu-b white f4 bg-transparent'>VS</Text>
-          <View cls='absolute right-0 flx-row aic ml2'>
-            <View cls='aife mr1' style={[styles.teamInfo]}>
-              <Text cls='ff-ubu-b white tr bg-transparent' style={[styles.smallText]}>{snd.name}</Text>
-              <Text cls='ff-ubu-b gray bg-transparent' style={[styles.smallText]} >{snd.location}</Text>
-            </View>
+          <Text cls='ff-ubu-b white f4 bg-transparent mh2'>VS</Text>
+          <View cls='flx-i flx-row aic ml2 jcfe'>
+            <Text cls='flx-i ff-ubu-b white bg-transparent tr mr2' style={[styles.smallText]}>{snd.name}</Text>
             <Image cls='w3 h3 rm-stretch' source={snd.logo} />
           </View>
         </View>
@@ -140,9 +134,6 @@ export class TheMinute extends PureComponent {
 }
 
 const styles = StyleSheet.create({
-  teamInfo: {
-    maxWidth: sizes.w3 + sizes.w2
-  },
   smallText: {
     fontSize: sizes.f5 / 1.5
   },
