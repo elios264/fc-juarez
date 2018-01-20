@@ -32,16 +32,14 @@ CREATE DEFINER=`fcjuarez_sysadm`@`%` PROCEDURE `UpdateGameFuture`(
 	IN `pLinkAddress1` VARCHAR(300),
 	IN `pLinkAddress2` VARCHAR(300),
 	IN `pActive` BOOLEAN,
+  IN `pPn1` VARCHAR(50),
+  IN `pPn2` VARCHAR(50),
 	IN `pLastUpdateBy` INT,
 	OUT `pReturnValue` INT,
 	OUT `pReturnMessage` VARCHAR(200)
 
+
 )
-LANGUAGE SQL
-NOT DETERMINISTIC
-CONTAINS SQL
-SQL SECURITY DEFINER
-COMMENT ''
 SP:BEGIN
 
 
@@ -114,6 +112,8 @@ SP:BEGIN
         LinkAddress1 = pLinkAddress1,
         LinkAddress2 = pLinkAddress2,
 		Active = pActive,
+        pnId1 = pPn1,
+        pnId2 = pPn2,
 		LastUpdateBy = pLastUpdateBy,
 		LastUpdateDate = NOW()
 	WHERE

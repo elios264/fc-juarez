@@ -31,15 +31,21 @@
       curl_setopt($ch, CURLOPT_POST, TRUE);
       curl_setopt($ch, CURLOPT_POSTFIELDS, $fields);
       curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+      curl_setopt($ch, CURLOPT_TIMEOUT, 3);
 
       $response = curl_exec($ch);
       curl_close($ch);
 
       $response = json_decode ($response, true);
 
+      if (!$response) {
+        echo 'PUSH NOTIFICATION SCHEDULING FAILED';
+        return 'NULL';
+      }
+
       if (array_key_exists('error', $response)) {
         var_dump($response['error']);
-        return null;
+        return 'NULL';
       }
       else {
        return $response['id'];
@@ -86,13 +92,17 @@
       $ids = [];
 
       if ($match['Active'] === '0')
-        return $ids;
+        return ['NULL', 'NULL'];
 
       $notifs = getNotificationsFromMatch($match);
       foreach($notifs as $item) {
-        $id = sendNotification($item);
-        if ($id) array_push($ids, $id);
+        array_push($ids, sendNotification($item));
       }
+
+      $size = sizeof($ids);
+      if ($size === 0) $ids = ['NULL', 'NULL'];
+      if ($size === 1) $ids[1] = 'NULL';
+
       return $ids;
     }
 
@@ -1166,6 +1176,8 @@
             return false;
         }
 
+        $pnIds = scheduleMatchNotifications($arrData);
+
         $query = 'CALL InsertGameFuture( ' .
         $arrData[SeasonId] . ', ' .
         $arrData[TournamentId] . ', ' .
@@ -1183,6 +1195,8 @@
         fstrnotreq($arrData[LinkAddress1]) . ', ' .
         fstrnotreq($arrData[LinkAddress2]) . ', ' .
         fbolreq($arrData[Active]) . ', ' .
+        fstrnotreq($pnIds[0]) . ', ' .
+        fstrnotreq($pnIds[1]) . ', ' .
 
         $arrData[LastUpdateBy] . ',
         @NextId, @ReturnValue, @ReturnMessage ); ';
@@ -1218,7 +1232,6 @@
         }
 
         $db->closeConnection();
-        if ($dbResult) var_dump(scheduleMatchNotifications($arrData));
         return $dbResult;
 
     }
@@ -1231,6 +1244,9 @@
             $returnMessage = $db->getErrorMessage();
             return false;
         }
+
+        $pnIds = scheduleMatchNotifications($arrData);
+
 
         $query = 'CALL UpdateGameFuture( ' .
         $arrData[GameFutureId] . ", " .
@@ -1268,6 +1284,8 @@
         fstrnotreq($arrData[LinkAddress1]) . ', ' .
         fstrnotreq($arrData[LinkAddress2]) . ', ' .
         fbolreq($arrData[Active]) . ', ' .
+        fstrnotreq($pnIds[0]) . ', ' .
+        fstrnotreq($pnIds[1]) . ', ' .
 
         $arrData[LastUpdateBy] . ',
         @ReturnValue, @ReturnMessage ); ';
@@ -1302,7 +1320,6 @@
         }
 
         $db->closeConnection();
-        if ($dbResult) var_dump(scheduleMatchNotifications($arrData));
         return $dbResult;
 
     }

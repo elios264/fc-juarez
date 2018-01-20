@@ -1,54 +1,29 @@
 CREATE DEFINER=`fcjuarez_sysadm`@`%` PROCEDURE `InsertGameFuture`(
-	IN `pSeasonId` INT,
-	IN `pTournamentId` INT,
-	IN `pWeek` INT,
-	IN `pDate` DATETIME,
-	IN `pHour` TIME,
-	IN `pTitle` VARCHAR(300),
-	IN `pSubtitle` VARCHAR(300),
-	IN `pDescription` TEXT,
-	IN `pVersusTeam` VARCHAR(100),
-	IN `pVersusTeamAtHome` BOOLEAN,
-	IN `pStadium` VARCHAR(50),
-	IN `pCity` VARCHAR(50),
-	IN `pAddress` VARCHAR(100),
-	IN `pLinkAddress1` VARCHAR(300),
-	IN `pLinkAddress2` VARCHAR(300),
-	IN `pActive` BOOLEAN,
-	IN `pLastUpdateBy` INT,
-	OUT `pNextId` INT,
-	OUT `pReturnValue` INT,
-	OUT `pReturnMessage` VARCHAR(200)
+IN pSeasonId INT,
+IN pTournamentId INT,
+IN pWeek INT,
+IN pDate DATETIME,
+IN pHour TIME,
+IN pTitle VARCHAR(300),
+IN pSubtitle VARCHAR(300),
+IN pDescription TEXT,
+IN pVersusTeam VARCHAR(100),
+IN pVersusTeamAtHome BOOLEAN,
+IN pStadium VARCHAR(50),
+IN pCity VARCHAR(50),
+IN pAddress VARCHAR(100),
+IN pLinkAddress1 VARCHAR(300),
+IN pLinkAddress2 VARCHAR(300),
+IN pActive BOOLEAN,
+IN pPn1 VARCHAR(50),
+IN pPn2 VARCHAR(50),
+IN pLastUpdateBy INT,
 
-,
-	IN `pSeasonId` INT,
-	IN `pTournamentId` INT,
-	IN `pWeek` INT,
-	IN `pDate` DATETIME,
-	IN `pHour` TIME,
-	IN `pTitle` VARCHAR(300),
-	IN `pSubtitle` VARCHAR(300),
-	IN `pDescription` TEXT,
-	IN `pVersusTeam` VARCHAR(100),
-	IN `pVersusTeamAtHome` BOOLEAN,
-	IN `pStadium` VARCHAR(50),
-	IN `pCity` VARCHAR(50),
-	IN `pAddress` VARCHAR(100),
-	IN `pLinkAddress1` VARCHAR(300),
-	IN `pLinkAddress2` VARCHAR(300),
-	IN `pActive` BOOLEAN,
-	IN `pLastUpdateBy` INT,
-	OUT `pNextId` INT,
-	OUT `pReturnValue` INT,
-	OUT `pReturnMessage` VARCHAR(200)
-
+OUT pNextId INT,
+OUT pReturnValue INT,
+OUT pReturnMessage VARCHAR(200)
 
 )
-LANGUAGE SQL
-NOT DETERMINISTIC
-CONTAINS SQL
-SQL SECURITY DEFINER
-COMMENT ''
 SP:BEGIN
 
 	SET AUTOCOMMIT=0;
@@ -79,7 +54,9 @@ SP:BEGIN
         pActive,
 		NOW(),
 		pLastUpdateBy,
-		NOW();
+		NOW(),
+        pPn1,
+        pPn2;
 
 	IF ROW_COUNT() <> 1 THEN
 		ROLLBACK;
