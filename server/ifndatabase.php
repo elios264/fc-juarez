@@ -7,16 +7,18 @@
       $message = $data['message'];
       $segment = $data['segment'];
 
-      $content = array( "en" => $message );
-      $subtitle = array( "en" => $title );
 
       $fields = array(
         'app_id' => "5c13208c-4b79-4a14-bf39-bee0a9515b7a",
         'included_segments' => array($segment),
-        'data' => array("foo" => "bar"),
-        'contents' => $content,
-        'headings' => $subtitle
+        /*'data' => array("foo" => "bar"),*/
+        'contents' => array( "en" => $message ),
+        'headings' => array( "en" => $title ),
       );
+
+      if (array_key_exists('send_after', $data)) {
+        $fields['send_after'] = $data['send_after'];
+      }
 
       $fields = json_encode($fields);
 
@@ -42,6 +44,56 @@
       else {
        return $response['id'];
       }
+    }
+    function getNotificationsFromMatch($match) {
+      $versusTeam = $match['VersusTeam'];
+      $atHome = $match['VersusTeamAtHome'];
+      $date = $match['Date'];
+      $hour = $match['GameHour'];
+      $minute =  $match['GameMinute'];
+      $ampm = $match['GameAMPM'];
+
+
+      $notifications = [];
+      $notifFormat = 'Y-m-d H:i:s TO';
+      $title = $atHome === '0' ? ($versusTeam.' vs FC Juarez') : ('FC Juarez vs '.$versusTeam);
+      $current = new DateTime('now', new DateTimeZone('America/Chihuahua'));
+      $matchDate = DateTime::createFromFormat('Y-m-d h:i a T', $date. ' '.$hour.':'.$minute. ' '.strtolower($ampm). ' America/Chihuahua');
+      $notifDate = DateTime::createFromFormat('Y-m-d h:i a T', $date. ' '.$hour.':'.$minute. ' '.strtolower($ampm). ' America/Chihuahua')->sub(new DateInterval('PT1H'));
+      $preNotifDate = $matchDate->sub(new DateInterval('P3D'));
+
+      if ($preNotifDate > $current) { //if we can still send the preMatch notification.
+        $preNotif = array(
+          'title' => $title,
+          'message' => 'En 3 dias vive la emoción de ser Bravo',
+          'segment' => 'MATCH_NEW_ALERTS',
+          'send_after' => $preNotifDate->format($notifFormat),
+        );
+        array_push($notifications, $preNotif);
+      }
+      if ($notifDate > $current) { //if we can still send the match notification.
+        $notif = array(
+          'title' => $title,
+          'message' => '¡En una hora vive la emoción de ser Bravo!',
+          'segment' => 'MATCH_NEW_ALERTS',
+          'send_after' => $notifDate->format($notifFormat),
+        );
+        array_push($notifications, $notif);  }
+
+      return $notifications;
+    }
+    function scheduleMatchNotifications($match) {
+      $ids = [];
+
+      if ($match['Active'] === '0')
+        return $ids;
+
+      $notifs = getNotificationsFromMatch($match);
+      foreach($notifs as $item) {
+        $id = sendNotification($item);
+        if ($id) array_push($ids, $id);
+      }
+      return $ids;
     }
 
 
@@ -1166,6 +1218,7 @@
         }
 
         $db->closeConnection();
+        if ($dbResult) var_dump(scheduleMatchNotifications($arrData));
         return $dbResult;
 
     }
@@ -1249,6 +1302,7 @@
         }
 
         $db->closeConnection();
+        if ($dbResult) var_dump(scheduleMatchNotifications($arrData));
         return $dbResult;
 
     }
