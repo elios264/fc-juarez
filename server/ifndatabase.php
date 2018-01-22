@@ -11,13 +11,15 @@
       $fields = array(
         'app_id' => "5c13208c-4b79-4a14-bf39-bee0a9515b7a",
         'included_segments' => array($segment),
-        /*'data' => array("foo" => "bar"),*/
         'contents' => array( "en" => $message ),
         'headings' => array( "en" => $title ),
       );
 
       if (array_key_exists('send_after', $data)) {
         $fields['send_after'] = $data['send_after'];
+      }
+      if (array_key_exists('data', $data)) {
+        $fields['data'] = $data['data'];
       }
 
       $fields = json_encode($fields);
@@ -98,6 +100,7 @@
           'message' => 'En 3 dias vive la emoción de ser Bravo',
           'segment' => 'MATCH_NEW_ALERTS',
           'send_after' => $preNotifDate->format($notifFormat),
+          'data' => array("page" => "matchCalendar" ),
         );
         array_push($notifications, $preNotif);
       }
@@ -1351,7 +1354,7 @@
 
     }
 
-    function deleteGameFuture( $id, &$returnMessage ) {
+    function deleteGameFuture( $arrData, &$returnMessage ) {
 
         $db = new iDBManager();
 
@@ -1359,6 +1362,10 @@
             $returnMessage = $db->getErrorMessage();
             return false;
         }
+
+        $id = $arrData['p1'];
+        cancelNotification($arrData['pnId1']);
+        cancelNotification($arrData['pnId2']);
 
         $query = "CALL DeleteGameFuture($id, @ReturnValue, @ReturnMessage ); SELECT @ReturnValue AS ReturnValue, @ReturnMessage AS ReturnMessage";
         //$query = "CALL SelectGenerationRecent( @ReturnValue, @ReturnMessage ); SELECT @ReturnValue AS ReturnValue, @ReturnMessage AS ReturnMessage";
@@ -1746,7 +1753,8 @@
           $response = sendNotification(array(
             'title' => $arrData[GameEventAction],
             'message' => $arrData[Description],
-            'segment' => $arrData[GameEventId] === '14' ? 'MATCH_GOAL_ALERTS' : 'GENERAL_ALERTS'
+            'segment' => $arrData[GameEventId] === '14' ? 'MATCH_GOAL_ALERTS' : 'GENERAL_ALERTS',
+            'data' =>  array("page" => "minute"),
           ));
         }
 

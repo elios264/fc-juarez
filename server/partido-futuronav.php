@@ -92,7 +92,7 @@
 
             if ( strpos($fa, 'D') )
                 echo '
-                <a href="partido-futuro.php?' . encodeString('p1=' . $row[GameFutureId] ) . '"
+                <a href="partido-futuro.php?' . encodeString('p1=' . $row[GameFutureId].'&pnId1='.$row['pnId1'].'&pnId2='.$row['pnId2'] ) . '"
                 onClick="return window.confirm('. "'Eliminar registro seleccionado?'". ')" class="mrgn-l-sm"><i class="fa fa-times fa-lg text-danger" aria-hidden="true"></i></a>';
 
             echo '

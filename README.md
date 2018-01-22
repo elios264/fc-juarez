@@ -8,7 +8,7 @@ Tareas pendientes:
 [ ] - Android push notfic icon
 [ ] - codepush integrate.
 [ ] - push notifications appMapping.
-[ ] - Push notifications cancelar partidos.
+[X] - Push notifications cancelar partidos.
 [X] - En IOS isConnected no es confiable
 [X] - Push notifications agendar dia de partido y 3 antes
 [X] - Push notifications otros mensajes

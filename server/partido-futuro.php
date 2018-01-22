@@ -192,7 +192,7 @@
 
 
     if ( isset($queryParams[p1]) ){
-        $result = deleteGameFuture($queryParams[p1], $returnMessage);
+        $result = deleteGameFuture($queryParams, $returnMessage);
         if ($result) header('Location:' . $phpSelf);
     }
 
