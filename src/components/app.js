@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Drawer from 'react-native-drawer-menu';
 import { Route, Switch } from 'react-router-native';
 import OneSignal from 'react-native-onesignal';
+import _ from 'lodash';
 
 import { Sidebar } from './sideBar';
 import { Header } from './header';
@@ -26,37 +27,20 @@ export class App extends PureComponent {
   }
 
   componentWillMount() {
-    OneSignal.addEventListener('received', this.onReceived);
     OneSignal.addEventListener('opened', this.onOpened);
-    OneSignal.addEventListener('registered', this.onRegistered);
-    OneSignal.addEventListener('ids', this.onIds);
   }
 
   componentWillUnmount() {
-    OneSignal.removeEventListener('received', this.onReceived);
     OneSignal.removeEventListener('opened', this.onOpened);
-    OneSignal.removeEventListener('registered', this.onRegistered);
-    OneSignal.removeEventListener('ids', this.onIds);
   }
 
-  onReceived(notification) {
-    console.log('NOTIFICATION RECEIVED: ', notification);
-  }
-
-  onOpened(openResult) {
-    console.log('NOTIFICATION OPENED: ');
-    console.log('Message: ', openResult.notification.payload.body);
-    console.log('Data: ', openResult.notification.payload.additionalData);
-    console.log('isActive: ', openResult.notification.isAppInFocus);
-    console.log('openResult: ', openResult);
-  }
-
-  onRegistered(notifData) {
-    console.log('Device had been registered for push notifications!', notifData);
-  }
-
-  onIds(device) {
-    console.log('Device info: ', device);
+  onOpened = (openResult) => {
+    const pageToNavigate = _.get(openResult, 'notification.payload.additionalData.page');
+    switch (pageToNavigate) {
+      case 'minute': this.props.history.push('/the-minute'); break;
+      case 'matchCalendar': this.props.history.push('/next-match'); break;
+      default: break;
+    }
   }
 
   setDrawerRef = (ref) => this.drawer = ref;

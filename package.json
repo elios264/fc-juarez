@@ -21,7 +21,7 @@
     "react": "16.2.0",
     "react-native": "0.52.0",
     "react-native-drawer-menu": "^0.2.5",
-    "react-native-onesignal": "^3.0.7",
+    "react-native-onesignal": "^3.0.8",
     "react-native-scalable-image": "^0.3.5",
     "react-native-style-tachyons": "^3.5.1",
     "react-redux": "^5.0.6",
