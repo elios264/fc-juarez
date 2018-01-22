@@ -5,8 +5,7 @@ Cliente Android & IOS
 Tareas pendientes:
 
 [ ] - Banners publicitarios
-[ ] - Android push notfic icon
-[ ] - codepush integrate.
+[X] - Android push notfic icon
 [X] - push notifications appMapping.
 [X] - Push notifications cancelar partidos.
 [X] - En IOS isConnected no es confiable
