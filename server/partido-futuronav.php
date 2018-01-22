@@ -18,7 +18,7 @@
 
     if ( strlen($queryString) )$queryParams =  getQueryStringParameters($queryString);
     if ( strlen($javaString) )$javaParams =  getQueryStringParameters($javaString);
-    
+
     $fa   = (isset($queryParams[p1]) && strlen($queryParams[p1]) ) ? $queryParams[p1] : '';
     $rpp  = (isset($queryParams[p2]) && strlen($queryParams[p2]) ) ? $queryParams[p2] : 5;
     $page = (isset($queryParams[p3]) && strlen($queryParams[p3]) ) ? $queryParams[p3] : 1;
@@ -39,7 +39,7 @@
     $arrData[RecordsPerPage] = $recordsPerPage;
 
     $result = selectGameFuture($arrData, $totalTableRows, $recordset, $returnMessage );
-    
+
     echo '
     <table class="table table-striped table-hover table-bordered">
     <thead>
@@ -51,33 +51,33 @@
         </tr>
     </thead>
     <tbody>';
-    
+
     if (count($recordset)){
         foreach ( $recordset as $row ){
-            
+
             $versusTeamAt = $row[VersusTeamAtHome] ? 'Casa' : 'Visita';
-            
+
             echo '
         <tr>
             <td><strong>' . $row[VersusTeam] . '</strong><br/>';
 
             $images = '';
             for ($i=0; $i<=6; $i++){
-             
+
                 $fileExt = $i == 0 ? 'png' : 'jpg';
                 if ($i == 0) $label = 'Logo Equipo';
                 if ($i == 1) $label = 'Banner';
                 if ($i >= 2) $label = 'Imagen / ' . ($i-1);
-                
+
                 $filename = "../binder/gamefuture/$row[GameFutureId]-$i.$fileExt";
                 if (file_exists($filename)){
                     if (strlen($images)) $images .= '<br/>';
                     $images .= '<a href="' . $filename . '?' . rand(1,32000) . '" target="_blank">' . $label . ' Ver</a>';
-                    $images .= ' | <a href="partido-futuro.php?' . encodeString("df=$filename") . '" style="color:red" 
+                    $images .= ' | <a href="partido-futuro.php?' . encodeString("df=$filename") . '" style="color:red"
                     onClick="return window.confirm('. "'Eliminar " . $label . "?'" . ')">Eliminar</a>';
                 }
             }
-            
+
             $images .= '<br/><a href="../perfil-partidos-por-jugar.php?' . encodeString("gf=$row[GameFutureId]") . '" target="_blank">Ver Datos Juego</a>';
 
             echo $images . '
@@ -85,33 +85,35 @@
             <td><div>' . $versusTeamAt . '</div></td>
             <td><div>' . $row[Date] . '</div></td>
             <td>';
-            
+
             if ( strpos($fa, 'U') )
                 echo '
                 <a href="javascript:updateData(' . $row[GameFutureId] . ')"><i class="fa fa-cog fa-lg base-dark" aria-hidden="true"></i></a>';
-                
+
             if ( strpos($fa, 'D') )
                 echo '
-                <a href="partido-futuro.php?' . encodeString('p1=' . $row[GameFutureId] ) . '" 
+                <a href="partido-futuro.php?' . encodeString('p1=' . $row[GameFutureId] ) . '"
                 onClick="return window.confirm('. "'Eliminar registro seleccionado?'". ')" class="mrgn-l-sm"><i class="fa fa-times fa-lg text-danger" aria-hidden="true"></i></a>';
 
-            echo '     
+            echo '
             </td>
         </tr>';
         }
     }
-     
+
     echo '
     </tbody>
     </table>';
-    
-    
+
+
     echo '
     <div style="display:none;">';
 
     if (count($recordset))
         foreach ( $recordset as $row )
             echo '
+        <input type="hidden" id="form[pnId1' . $row[GameFutureId] . ']" name="form[pnId1' . $row[GameFutureId] . ']"  value="'. $row[pnId1] . '"  />
+        <input type="hidden" id="form[pnId2' . $row[GameFutureId] . ']" name="form[pnId2' . $row[GameFutureId] . ']"  value="'. $row[pnId2] . '"  />
         <input type="text" id="form[SeasonId' . $row[GameFutureId] . ']" name="form[InitialSeasonId' . $row[GameFutureId] . ']"  value="'. $row[SeasonId] . '"  />
         <input type="text" id="form[TournamentId' . $row[GameFutureId] . ']" name="form[InitialTournamentId' . $row[GameFutureId] . ']"  value="'. $row[TournamentId] . '"  />
         <input type="text" id="form[Week' . $row[GameFutureId] . ']" name="form[InitialWeek' . $row[GameFutureId] . ']"  value="'. $row[Week] . '"  />
@@ -131,47 +133,47 @@
         <input type="text" id="form[LinkAddress1' . $row[GameFutureId] . ']" name="form[InitialLinkAddress1' . $row[GameFutureId] . ']"  value="'. $row[LinkAddress1] . '"  />
         <input type="text" id="form[LinkAddress2' . $row[GameFutureId] . ']" name="form[InitialLinkAddress2' . $row[GameFutureId] . ']"  value="'. $row[LinkAddress2] . '"  />
         <input type="text" id="form[Active' . $row[GameFutureId] . ']" name="form[InitialActive' . $row[GameFutureId] . ']"  value="'. $row[Active] . '"  />';
-    
+
     echo '
         <input type="text" name="form[Key]" value="' . $key . '" />
         <input type="text" name="form[Page]" value="' . $page . '" />
     </div>';
-    
-    
+
+
     if ($totalTableRows > $recordsPerPage){
-        
+
         echo '
     <div class="col-sm-12">
-      
+
         <div class="col-sm-6 pull-right">
         <div class="row">
-        	
+
             <ul class="pagination pull-right">';
-        
+
         if ($page > 1 )
             echo '
                 <li><a onclick="javascript:getDataReturnText(' . "'" . $phpSelf . encodeString(
-                'p1=' . $fa . 
+                'p1=' . $fa .
                 '&p2=' . $rpp .
                 '&p3=' . ($page-1) .
                 '&p4=' . $key) . "', 'divRecords'" . ');insertData();' . '"><i class="fa fa-angle-left"></i>&nbsp;ANTERIOR</a></li>';
-             
+
         if ($page < ceil($totalTableRows / $recordsPerPage ) )
             echo '
                 <li><a onclick="javascript:getDataReturnText(' . "'" . $phpSelf . encodeString(
-                'p1=' . $fa . 
+                'p1=' . $fa .
                 '&p2=' . $rpp .
                 '&p3=' . ($page+1) .
                 '&p4=' . $key) . "', 'divRecords'" . ');insertData();' . '">SIGUIENTE&nbsp;<i class="fa fa-angle-right"></i></a></li>';
-        
+
         echo '
             </ul>
-            
+
         </div>
         </div>
-    
+
     </div>';
-        
+
     }
 
 ?>

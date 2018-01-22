@@ -148,6 +148,8 @@
             $arrData[InitialLinkAddress1] = $arrData['InitialLinkAddress1' . $id];
             $arrData[InitialLnikAddress2] = $arrData['InitialLinkAddress2' . $id];
             $arrData[InitialActive] = $arrData['InitialActive' . $id];
+            $arrData[pnId1] = $arrData['pnId1' . $id];
+            $arrData[pnId1] = $arrData['pnId1' . $id];
 
             $arrData[LastUpdateBy] = $plenary[User][UserId];
 
@@ -266,6 +268,8 @@ font-family: 'Exo', sans-serif;
         $('#form\\[VersusTeamAtHome\\]').val( $('#form\\[VersusTeamAtHome' + fieldId + '\\]').val() );
         $('#form\\[VersusTeamAtHome\\]').change();
 
+        document.getElementById('form[pnId1]').value = document.getElementById('form[pnId1' + fieldId + ']').value;
+        document.getElementById('form[pnId2]').value = document.getElementById('form[pnId2' + fieldId + ']').value;
         document.getElementById('form[Stadium]').value = document.getElementById('form[Stadium' + fieldId + ']').value;
         document.getElementById('form[City]').value = document.getElementById('form[City' + fieldId + ']').value;
         document.getElementById('form[Address]').value = document.getElementById('form[Address' + fieldId + ']').value;
@@ -382,6 +386,8 @@ font-family: 'Exo', sans-serif;
             <h3 class="text-capitalize"><?= $module ?></h3>
         </div>
 
+        <input type="hidden" id="form[pnId1]" name="form[pnId1]" value="<?= $arrData[pnId1] ?>" />
+        <input type="hidden" id="form[pnId2]" name="form[pnId2]" value="<?= $arrData[pnId2] ?>" />
         <input type="hidden" id="actionFlag" name="actionFlag" value="<?= $actionFlag ?>" />
         <input type="hidden" id="form[Id]" name="form[GameFutureId]" value="<?= $arrData[GameFutureId] ?>" />
 
