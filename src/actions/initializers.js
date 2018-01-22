@@ -7,19 +7,20 @@ import { appStart } from './appState';
 import { ServiceApi } from 'fc_juarez/src/serviceApi';
 import { GameMatch, GameMatchDetails, Season, Tournament, TeamInfo } from 'fc_juarez/src/objects';
 
-export const intialize = () => catchError(async(dispatch, getState) => {
+export const intialize = () => catchError(async(dispatch) => {
   dispatch({ type: 'INITIALIZING', running: true });
 
-  await dispatch(appStart());
+  dispatch(appStart());
 
-  if (getState().appInfo.isConnected) {
-    await dispatch(loadFromServer());
-    const settings = await dispatch(downloadPushSettings());
-    if (_.isEmpty(settings)) await dispatch(initializePushSettings());
-  } else {
+  const success = await dispatch(loadFromServer());
+  if (!success) {
     await dispatch(loadFromStorage());
   }
 
+  const pushSettings = await dispatch(downloadPushSettings());
+  if (_.isEmpty(pushSettings)) {
+    await dispatch(initializePushSettings());
+  }
 
   dispatch({ type: 'INITIALIZING', running: false });
 }, 'Ha ocurrido un error inicializando el sistema', (dispatch) => {
@@ -43,13 +44,11 @@ export const loadFromStorage = () => catchError(async (dispatch) => {
   } });
 
 }, 'No se han podido recargar los datos del almacenamiento interno');
-
 export const saveToStorage = () => catchError(async (dispatch, getState) => {
   const data = getState().objects;
   const jsonData = JSON.stringify(data);
   await AsyncStorage.setItem('offline-match-data', jsonData);
 }, 'No se han podido guardar los datos en el almacenamiento interno para uso offline');
-
 export const loadFromServer = () => catchError(async (dispatch, getState) => {
   const [seasons, tournaments, gameMatches, welcomeBannerUrl, generalTableData] = await Promise.all([
     ServiceApi.downloadSeasons(),
@@ -84,22 +83,18 @@ export const loadFromServer = () => catchError(async (dispatch, getState) => {
   }
 
   dispatch(saveToStorage());
-}, 'No se han podido descargar los datos del servidor');
-
-export const updatePushSettings = (settingName, value) => catchError(async (dispatch) => {
-  ServiceApi.updatePushSettings(settingName, value);
-  await dispatch(downloadPushSettings());
+  return true;
+}, 'No se han podido descargar los datos del servidor', false);
+export const updatePushSettings = (settingName, value) => catchError((dispatch, getState) => {
+  dispatch({ type: 'PUSH_SETTINGS_CHANGED', settingName, value });
+  ServiceApi.updatePushSettings(getState().pushSettings);
 }, 'No se han podido actualizar las preferencias');
-
-export const downloadPushSettings = () => catchError(async (dispatch) => {
+export const downloadPushSettings = () => catchError(async (dispatch, getState) => {
   const newSettings = await ServiceApi.downloadPushSettings();
   dispatch({ type: 'PUSH_SETTINGS_CHANGED', state: newSettings });
-  return newSettings;
+  return getState().pushSettings;
 }, 'No se han podido descargar las preferencias');
-
-export const initializePushSettings = () => catchError(async (dispatch) => {
-  ServiceApi.updatePushSettings('receiveMatchAlerts', true);
-  ServiceApi.updatePushSettings('receiveGoalsAlerts', true);
-  ServiceApi.updatePushSettings('receiveGeneralAlerts', true);
-  await dispatch(downloadPushSettings());
+export const initializePushSettings = () => catchError((dispatch, getState) => {
+  dispatch({ type: 'PUSH_SETTINGS_CHANGED', state: { receiveGeneralAlerts: true, receiveGoalsAlerts: true, receiveMatchAlerts: true } });
+  ServiceApi.updatePushSettings(getState().pushSettings);
 }, 'No se ha podido registrar el dispositivo para recibir notificaciones');

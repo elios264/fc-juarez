@@ -3,12 +3,20 @@ import { createCRUDObjectReducer, createSingleObjectReducer } from './utils';
 
 const initializing = (state = false, action) => action.type === 'INITIALIZING' ? action.running : state;
 
-const appInfo = (state = { isConnected: false, appState: 'unknown', pushPermissions: undefined, pushSettings: { receiveMatchAlerts: false, receiveGoalsAlerts: false, receiveGeneralAlerts: false } }, action) => {
+const pushSettings = (state = { receiveMatchAlerts: false, receiveGoalsAlerts: false, receiveGeneralAlerts: false }, action) => {
+  if (action.type !== 'PUSH_SETTINGS_CHANGED')
+    return state;
+
+  if (action.state)
+    return action.state;
+  else
+    return { ...state, [action.settingName]: action.value };
+};
+
+const appInfo = (state = { appState: 'unknown', pushPermissions: undefined }, action) => {
   switch (action.type) {
-    case 'NETWORK_CHANGED': return { ...state, isConnected: action.isConnected };
     case 'APPSTATE_CHANGED': return { ...state, appState: action.state };
     case 'PUSH_PERMISSIONS_CHANGED': return { ...state, pushPermissions: action.state };
-    case 'PUSH_SETTINGS_CHANGED': return { ...state, pushSettings: action.state };
     default: return state;
   }
 };
@@ -27,5 +35,6 @@ const objects = combineReducers({
 export const rootReducer = combineReducers({
   initializing,
   appInfo,
-  objects
+  objects,
+  pushSettings
 });

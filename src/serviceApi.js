@@ -87,13 +87,15 @@ export class ServiceApi {
     return response.DatosJSON;
   }
 
-  static updatePushSettings(settingName, value) {
-    OneSignal.sendTag(settingName, `${Number(value)}`);
+  static updatePushSettings(settings) {
+    OneSignal.sendTags(_.mapValues(settings, (value) => `${Number(value)}`));
   }
 
   static async downloadPushSettings() {
-    const tags = await new Promise((res) => OneSignal.getTags(res));
-    return _.mapValues(tags || { }, (str) => !!Number(str));
+    let tags = new Promise((res) => OneSignal.getTags(res));
+    const timeout = new Promise((res) => setTimeout(res, 5000));
+    tags = await Promise.race([tags, timeout]) || {};
+    return _.mapValues(tags, (str) => !!Number(str));
   }
 
 }
