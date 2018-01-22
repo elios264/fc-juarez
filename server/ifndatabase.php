@@ -51,6 +51,30 @@
        return $response['id'];
       }
     }
+    function cancelNotification($notifId) {
+      if (!$notifId) return false;
+
+      $ch = curl_init();
+
+      curl_setopt($ch, CURLOPT_URL, "https://onesignal.com/api/v1/notifications/".$notifId."?app_id=5c13208c-4b79-4a14-bf39-bee0a9515b7a");
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
+      curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
+      curl_setopt($ch, CURLOPT_TIMEOUT, 3);
+      curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: Basic OWQxNWZlY2QtZmU3ZC00NzVmLTg4NzEtOTQ2YTUwMzVlNDE4'));
+
+
+      $response = curl_exec($ch);
+      curl_close($ch);
+
+      $response = json_decode ($response, true);
+
+      if (!$response) {
+        echo 'PUSH NOTIFICATION cancelling FAILED';
+        return false;
+      }
+
+      return true;
+    }
     function getNotificationsFromMatch($match) {
       $versusTeam = $match['VersusTeam'];
       $atHome = $match['VersusTeamAtHome'];
@@ -91,8 +115,9 @@
     function scheduleMatchNotifications($match) {
       $ids = [];
 
-      if ($match['Active'] === '0')
+      if (!$match['Active']) {
         return ['NULL', 'NULL'];
+      }
 
       $notifs = getNotificationsFromMatch($match);
       foreach($notifs as $item) {
@@ -1241,10 +1266,12 @@
         $db = new iDBManager();
 
         if ( !$db->openConnection() ){
-            $returnMessage = $db->getErrorMessage();
-            return false;
+          $returnMessage = $db->getErrorMessage();
+          return false;
         }
 
+        cancelNotification($arrData['pnId1']);
+        cancelNotification($arrData['pnId2']);
         $pnIds = scheduleMatchNotifications($arrData);
 
 
