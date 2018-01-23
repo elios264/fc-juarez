@@ -1,13 +1,15 @@
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
-import { StyleSheet, View, Image, Dimensions, ScrollView, RefreshControl } from 'react-native';
+import { StyleSheet, View, Image, Dimensions, ScrollView, RefreshControl, TouchableHighlight } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import _ from 'lodash';
 import NativeTachyons from 'react-native-style-tachyons';
 import ScalableImage from 'react-native-scalable-image';
 import { loadFromServer } from 'fc_juarez/src/actions/initializers';
+import { Advertisement } from 'fc_juarez/src/objects';
 
-const mapStateToProps = (state) => ({ welcomeBannerUrl: state.objects.welcomeBannerUrl });
+const mapStateToProps = (state) => ({ welcomeBannerUrl: state.objects.welcomeBannerUrl, ad: state.objects.ads[Advertisement.BigAd] });
 const mapDispatchToProps = (dispatch) => bindActionCreators({ loadFromServer }, dispatch);
 @connect(mapStateToProps, mapDispatchToProps)
 @NativeTachyons.wrap
@@ -15,7 +17,8 @@ export class Welcome extends PureComponent {
 
   static propTypes = {
     loadFromServer: PropTypes.func.isRequired,
-    welcomeBannerUrl: PropTypes.string
+    welcomeBannerUrl: PropTypes.string,
+    ad: PropTypes.instanceOf(Advertisement)
   }
 
   state = { refreshing: false };
@@ -28,7 +31,7 @@ export class Welcome extends PureComponent {
 
   render() {
 
-    const { welcomeBannerUrl } = this.props;
+    const { welcomeBannerUrl, ad } = this.props;
 
     return (
       <View cls='bg-white flx-i'>
@@ -42,7 +45,9 @@ export class Welcome extends PureComponent {
           <ScalableImage cls='absolute bottom-0 left-0' width={Dimensions.get('window').width} source={require('fc_juarez/assets/img/green-bar.png')} />
         </View>
         <View cls='h4 pa2'>
-          <Image style={[styles.expand]} source={require('fc_juarez/assets/img/temp/welcomead.png')} />
+          <TouchableHighlight onPress={ad ? ad.openTarget : _.noop} >
+            <Image style={[styles.expand]} source={ ad ? { uri: ad.url } : require('fc_juarez/assets/img/ads/bigAd.png')} />
+          </TouchableHighlight>
         </View>
       </View>
     );

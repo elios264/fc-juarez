@@ -1,13 +1,13 @@
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
-import { StyleSheet, View, Dimensions, Image, ScrollView, Text, RefreshControl } from 'react-native';
+import { StyleSheet, View, Dimensions, Image, ScrollView, Text, RefreshControl, TouchableHighlight } from 'react-native';
 import NativeTachyons, { sizes } from 'react-native-style-tachyons';
 import ScalableImage from 'react-native-scalable-image';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { loadFromServer } from 'fc_juarez/src/actions/initializers';
-import { Tournament, GameMatch, GameMatchDetails } from 'fc_juarez/src/objects';
+import { Tournament, GameMatch, GameMatchDetails, Advertisement } from 'fc_juarez/src/objects';
 
 const icons = {
   '1': require('fc_juarez/assets/img/icons/1.png'),
@@ -49,6 +49,7 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({ loadFromServer }, 
 const mapStateToProps = (state) => ({
   currentMatch: state.objects.currentMatch,
   tournament: state.objects.tournaments[_.get(state.objects.currentMatch, 'match.tournamentId')],
+  ad: state.objects.ads[Advertisement.SmallAd]
 });
 @connect(mapStateToProps, mapDispatchToProps)
 @NativeTachyons.wrap
@@ -61,6 +62,7 @@ export class TheMinute extends PureComponent {
       match: PropTypes.instanceOf(GameMatch).isRequired,
       details: PropTypes.arrayOf(PropTypes.instanceOf(GameMatchDetails)).isRequired
     }),
+    ad: PropTypes.instanceOf(Advertisement)
   }
 
   state = { refreshing: false };
@@ -113,7 +115,7 @@ export class TheMinute extends PureComponent {
   }
 
   render() {
-    const { currentMatch, tournament } = this.props;
+    const { currentMatch, tournament, ad } = this.props;
 
     const contents = currentMatch && tournament
       ? this.renderDetails()
@@ -127,7 +129,9 @@ export class TheMinute extends PureComponent {
             {contents}
           </ScrollView>
         </View>
-        <ScalableImage width={Dimensions.get('window').width} source={require('fc_juarez/assets/img/temp/ad.png')} />
+        <TouchableHighlight onPress={ad ? ad.openTarget : _.noop} >
+          <ScalableImage width={Dimensions.get('window').width} source={ ad ? { uri: ad.url } : require('fc_juarez/assets/img/ads/smallAd.png')} />
+        </TouchableHighlight>
       </View>
     );
   }

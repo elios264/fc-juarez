@@ -5,7 +5,7 @@ import { AsyncStorage } from 'react-native';
 import { catchError } from './utils';
 import { appStart } from './appState';
 import { ServiceApi } from 'fc_juarez/src/serviceApi';
-import { GameMatch, GameMatchDetails, Season, Tournament, TeamInfo } from 'fc_juarez/src/objects';
+import { GameMatch, GameMatchDetails, Season, Tournament, TeamInfo, Advertisement } from 'fc_juarez/src/objects';
 
 export const intialize = () => catchError(async(dispatch) => {
   dispatch({ type: 'INITIALIZING', running: true });
@@ -50,18 +50,20 @@ export const saveToStorage = () => catchError(async (dispatch, getState) => {
   await AsyncStorage.setItem('offline-match-data', jsonData);
 }, 'No se han podido guardar los datos en el almacenamiento interno para uso offline');
 export const loadFromServer = () => catchError(async (dispatch, getState) => {
-  const [seasons, tournaments, gameMatches, welcomeBannerUrl, generalTableData] = await Promise.all([
+  const [seasons, tournaments, gameMatches, welcomeBannerUrl, generalTableData, advertisement] = await Promise.all([
     ServiceApi.downloadSeasons(),
     ServiceApi.downloadTournaments(),
     ServiceApi.downloadGameMatches(),
     ServiceApi.downloadWelcomeBanner(),
     ServiceApi.downloadGeneralTableData(),
+    ServiceApi.downloadAdvertisements(),
   ]);
 
   dispatch({ type: 'Season_FETCHED', objects: _.map(seasons, (attributes) => new Season(attributes)) });
   dispatch({ type: 'Tournament_FETCHED', objects: _.map(tournaments, (attributes) => new Tournament(attributes)) });
   dispatch({ type: 'GameMatch_FETCHED', objects: _.map(gameMatches, (attributes) => new GameMatch(attributes)) });
   dispatch({ type: 'TeamInfo_FETCHED', objects: _.map(generalTableData, (attributes) => new TeamInfo(attributes)) });
+  dispatch({ type: 'Advertisement_FETCHED', objects: _.map(advertisement, (attributes) => new Advertisement(attributes)) });
   dispatch({ type: 'WelcomeBannerUrl_FETCHED', object: welcomeBannerUrl });
 
   const current = moment();

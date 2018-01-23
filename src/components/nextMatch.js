@@ -7,12 +7,13 @@ import _ from 'lodash';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { loadFromServer } from 'fc_juarez/src/actions/initializers';
-import { GameMatch, Tournament } from 'fc_juarez/src/objects';
+import { GameMatch, Tournament, Advertisement } from 'fc_juarez/src/objects';
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ loadFromServer }, dispatch);
 const mapStateToProps = (state) => ({
   nextMatch: state.objects.nextMatch,
   tournament: state.objects.tournaments[_.get(state.objects.nextMatch, 'tournamentId')],
+  ad: state.objects.ads[Advertisement.SmallAd]
 });
 @connect(mapStateToProps, mapDispatchToProps)
 @NativeTachyons.wrap
@@ -22,6 +23,7 @@ export class NextMatch extends PureComponent {
     loadFromServer: PropTypes.func.isRequired,
     nextMatch: PropTypes.instanceOf(GameMatch),
     tournament: PropTypes.instanceOf(Tournament),
+    ad: PropTypes.instanceOf(Advertisement)
   }
 
   state = { refreshing: false };
@@ -88,7 +90,7 @@ export class NextMatch extends PureComponent {
   }
 
   render() {
-    const { nextMatch } = this.props;
+    const { nextMatch, ad } = this.props;
 
     const contents = nextMatch
       ? this.renderNextMatch()
@@ -102,7 +104,9 @@ export class NextMatch extends PureComponent {
             {contents}
           </ScrollView>
         </View>
-        <ScalableImage width={Dimensions.get('window').width} source={require('fc_juarez/assets/img/temp/ad.png')} />
+        <TouchableHighlight onPress={ad ? ad.openTarget : _.noop} >
+          <ScalableImage width={Dimensions.get('window').width} source={ ad ? { uri: ad.url } : require('fc_juarez/assets/img/ads/smallAd.png')} />
+        </TouchableHighlight>
       </View>
     );
   }

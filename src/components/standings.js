@@ -1,13 +1,13 @@
 import _ from 'lodash';
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
-import { StyleSheet, View, Dimensions, Image, ScrollView, Text, RefreshControl } from 'react-native';
+import { StyleSheet, View, Dimensions, Image, ScrollView, Text, RefreshControl, TouchableHighlight } from 'react-native';
 import NativeTachyons, { sizes } from 'react-native-style-tachyons';
 import ScalableImage from 'react-native-scalable-image';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { loadFromServer } from 'fc_juarez/src/actions/initializers';
-import { TeamInfo } from 'fc_juarez/src/objects';
+import { TeamInfo, Advertisement } from 'fc_juarez/src/objects';
 
 const TeamHeader = NativeTachyons.wrap(({ image, name }) => ( // eslint-disable-line react/prop-types
   <View cls='flx-row aic mv1 mr2 h3'>
@@ -22,7 +22,7 @@ const Score = NativeTachyons.wrap(({ score }) => ( // eslint-disable-line react/
   </View>
 ));
 
-const mapStateToProps = (state) => ({ teamsInfo: state.objects.teamsInfo });
+const mapStateToProps = (state) => ({ teamsInfo: state.objects.teamsInfo, ad: state.objects.ads[Advertisement.SmallAd] });
 const mapDispatchToProps = (dispatch) => bindActionCreators({ loadFromServer }, dispatch);
 @connect(mapStateToProps, mapDispatchToProps)
 @NativeTachyons.wrap
@@ -31,6 +31,7 @@ export class Standings extends PureComponent {
   static propTypes = {
     loadFromServer: PropTypes.func.isRequired,
     teamsInfo: PropTypes.objectOf(PropTypes.instanceOf(TeamInfo)).isRequired,
+    ad: PropTypes.instanceOf(Advertisement)
   }
 
   state = { refreshing: false };
@@ -42,7 +43,7 @@ export class Standings extends PureComponent {
   }
 
   render() {
-    let { teamsInfo } = this.props;
+    let { teamsInfo, ad } = this.props;
 
     teamsInfo = _.orderBy(teamsInfo, 'name');
 
@@ -112,7 +113,9 @@ export class Standings extends PureComponent {
             </View>
           </ScrollView>
         </View>
-        <ScalableImage width={Dimensions.get('window').width} source={require('fc_juarez/assets/img/temp/ad.png')} />
+        <TouchableHighlight onPress={ad ? ad.openTarget : _.noop} >
+          <ScalableImage width={Dimensions.get('window').width} source={ ad ? { uri: ad.url } : require('fc_juarez/assets/img/ads/smallAd.png')} />
+        </TouchableHighlight>
       </View>
     );
   }

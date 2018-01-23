@@ -7,7 +7,7 @@ import _ from 'lodash';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { loadFromServer } from 'fc_juarez/src/actions/initializers';
-import { Season, GameMatch, Tournament } from 'fc_juarez/src/objects';
+import { Season, GameMatch, Tournament, Advertisement } from 'fc_juarez/src/objects';
 import { DataPicker } from 'rnkit-actionsheet-picker';
 
 @NativeTachyons.wrap
@@ -59,7 +59,8 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({ loadFromServer }, 
 const mapStateToProps = (state) => ({
   gameMatches: state.objects.gameMatches,
   seasons: _.values(state.objects.seasons),
-  tournaments: state.objects.tournaments
+  tournaments: state.objects.tournaments,
+  ad: state.objects.ads[Advertisement.SmallAd]
 });
 @connect(mapStateToProps, mapDispatchToProps)
 @NativeTachyons.wrap
@@ -70,6 +71,7 @@ export class MatchCalendar extends PureComponent {
     seasons: PropTypes.arrayOf(PropTypes.instanceOf(Season)).isRequired,
     tournaments: PropTypes.objectOf(PropTypes.instanceOf(Tournament)).isRequired,
     gameMatches: PropTypes.objectOf(PropTypes.instanceOf(GameMatch)).isRequired,
+    ad: PropTypes.instanceOf(Advertisement)
   }
 
   state = { refreshing: false, currentSeason: _.last(this.props.seasons) };
@@ -94,7 +96,7 @@ export class MatchCalendar extends PureComponent {
 
 
   render() {
-    let { gameMatches, tournaments } = this.props;
+    let { gameMatches, tournaments, ad } = this.props;
     const { currentSeason, refreshing } = this.state;
 
     gameMatches = _(gameMatches)
@@ -121,7 +123,9 @@ export class MatchCalendar extends PureComponent {
             </View>
           </ScrollView>
         </View>
-        <ScalableImage width={Dimensions.get('window').width} source={require('fc_juarez/assets/img/temp/ad.png')} />
+        <TouchableHighlight onPress={ad ? ad.openTarget : _.noop} >
+          <ScalableImage width={Dimensions.get('window').width} source={ ad ? { uri: ad.url } : require('fc_juarez/assets/img/ads/smallAd.png')} />
+        </TouchableHighlight>
       </View>
     );
   }

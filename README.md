@@ -4,7 +4,8 @@ Cliente Android & IOS
 
 Tareas pendientes:
 
-[ ] - Banners publicitarios
+[ ] - imagenes offline
+[X] - Banners publicitarios
 [X] - settings desactivar si no hay permiso de notificaciones.
 [X] - Android push notfic icon
 [X] - push notifications appMapping.

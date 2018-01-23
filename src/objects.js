@@ -1,5 +1,6 @@
 import _ from 'lodash';
 import moment from 'moment';
+import { Linking } from 'react-native';
 import { SERVER_URL } from './serviceApi';
 import { btoa } from './utils';
 
@@ -17,6 +18,22 @@ export class Tournament {
   get title() { return this.attributes.Title; }
 }
 
+export class Advertisement {
+  constructor(attributes) {
+    this.attributes = attributes;
+    this.cacheBurster = _.random(5000);
+  }
+
+  get id() { return this.attributes.AdvertisementId; }
+  get url() { return `${SERVER_URL}/binder/ads/${this.id}.jpg?${this.cacheBurster}`; }
+  get target() { return this.attributes.LinkAddress; }
+
+  openTarget = () => this.target && Linking.openURL(this.target)
+
+  static BigAd = 6;
+  static SmallAd = 7;
+}
+
 export class GameMatch {
 
   constructor(attributes) {
@@ -27,10 +44,11 @@ export class GameMatch {
     const detailsId = GamePresentId;
     const desc = Description || Title || Subtitle;
 
+    this.cacheBurster = _.random(5000);
     this.attributes = { time, id, detailsId, SeasonId, Stadium, TournamentId, VersusTeam, VersusTeamAtHome, ScoreAway, ScoreHome, desc };
   }
 
-  get bannerUrl() { return `${SERVER_URL}/binder/gamefuture/${this.id}-1.jpg`; }
+  get bannerUrl() { return `${SERVER_URL}/binder/gamefuture/${this.id}-1.jpg?${this.cacheBurster}`; }
   get viewMoreUrl() {
     return this.detailsId
       ? `${SERVER_URL}/perfil-partidos-en-curso.php?${_.replace(btoa(`gp=${this.detailsId}`), '=', '')}`

@@ -26,6 +26,7 @@ const objects = combineReducers({
   tournaments: createCRUDObjectReducer('Tournament'),
   gameMatches: createCRUDObjectReducer('GameMatch'),
   teamsInfo: createCRUDObjectReducer('TeamInfo'),
+  ads: createCRUDObjectReducer('Advertisement'),
   nextMatch: createSingleObjectReducer('NextMatch'),
   currentMatch: createSingleObjectReducer('CurrentMatch'),
   welcomeBannerUrl: createSingleObjectReducer('WelcomeBannerUrl')
