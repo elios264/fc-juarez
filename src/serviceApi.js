@@ -2,8 +2,7 @@ import _ from 'lodash';
 import moment from 'moment';
 import { Image } from 'react-native';
 import OneSignal from 'react-native-onesignal';
-
-const utf8 = require('fc_juarez/node_modules/utf8');
+import { utf8ArrayToStr } from 'fc_juarez/src/utils';
 
 export const SERVER_URL = 'http://fcjuarez.com';
 const API_PATH = '/api.php';
@@ -23,9 +22,11 @@ const fetchJson = async (url, decode = true) => {
   __DEV__ && console.log(`Fetching ${url}`);
   const response = await fetch(url);
   let text = await response.text();
-  if (decode)
-    text = utf8.decode(JSON.stringify(JSON.parse(text)));
-  return JSON.parse(text);
+  if (decode) {
+    text = utf8ArrayToStr(_.map(JSON.stringify(JSON.parse(text)), (c) => c.codePointAt(0)));
+  }
+  const result = JSON.parse(text);
+  return result;
 };
 const fileExists = async (url) => {
   const result = await fetch(url, { method: 'HEAD' });

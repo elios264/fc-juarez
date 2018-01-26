@@ -7,7 +7,7 @@ Tareas pendientes:
 [ ] - imagenes offline
 [ ] - Carrusel
 [ ] - el proximo partido que te lleve a la pag de prox.
-[ ] - saltos de linea en proximo partido
+[X] - saltos de linea en proximo partido
 [X] - recargar si se abre desde notificacion.
 [X] - checar permisos cuando entre a settings
 [X] - Quitar App

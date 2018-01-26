@@ -9,7 +9,6 @@ const subscribeToAppStateChanged = (handler) => {
 
 export const appStart = () => (dispatch) => {
   const permissionsHandler = (state) => {
-    __DEV__ && console.log({ type: 'PUSH_PERMISSIONS_CHANGED', state });
     dispatch({ type: 'PUSH_PERMISSIONS_CHANGED', state });
   };
   const appStateListener = (state) => {

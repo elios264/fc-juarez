@@ -8,6 +8,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { loadFromServer } from 'fc_juarez/src/actions/initializers';
 import { GameMatch, Tournament, Advertisement } from 'fc_juarez/src/objects';
+import { br2nl } from 'fc_juarez/src/utils';
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ loadFromServer }, dispatch);
 const mapStateToProps = (state) => ({
@@ -79,7 +80,7 @@ export class NextMatch extends PureComponent {
           <Text cls='white ff-ubu-b bg-transparent' style={[styles.smallText]}>RESUMEN</Text>
           <Text cls='white ff-ubu-b bg-transparent' style={[styles.smallerText]}>BRAVOS FC <Text cls='gray'>CIUDAD JUÁREZ</Text></Text>
           <Text cls='white ff-ubu mt3 mb3 bg-transparent' style={[styles.smallText]} >
-            {desc}
+            {br2nl(desc)}
           </Text>
           <TouchableHighlight onPress={this.buyTickets} cls='bg-contrast pv2 jcc aic' underlayColor='#0c963e' >
             <Text cls='#0b6b2e f6 ff-ubu-b'>Comprar boletos</Text>
