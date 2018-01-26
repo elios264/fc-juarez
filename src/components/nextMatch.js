@@ -2,7 +2,6 @@ import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { StyleSheet, View, Dimensions, Image, ScrollView, Text, TouchableHighlight, RefreshControl, Linking } from 'react-native';
 import NativeTachyons, { sizes } from 'react-native-style-tachyons';
-import ScalableImage from 'react-native-scalable-image';
 import Carousel from 'react-native-snap-carousel';
 import _ from 'lodash';
 import { bindActionCreators } from 'redux';
@@ -10,7 +9,7 @@ import { connect } from 'react-redux';
 
 import { loadFromServer } from 'fc_juarez/src/actions/initializers';
 import { GameMatch, Tournament, Advertisement } from 'fc_juarez/src/objects';
-import { br2nl } from 'fc_juarez/src/utils';
+import { br2nl, CacheableImage, CacheableScalableImage } from 'fc_juarez/src/utils';
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ loadFromServer }, dispatch);
 const mapStateToProps = (state) => ({
@@ -45,7 +44,7 @@ export class NextMatch extends PureComponent {
 
     return (
       <View cls='bb b--red'>
-        <ScalableImage width={Dimensions.get('window').width} source={{ uri: url }} />
+        <CacheableScalableImage width={Dimensions.get('window').width} source={{ uri: url }} />
         <View cls='absolute bottom-0 right-0' style={[styles.triangleCorner]} />
       </View>
     );
@@ -83,13 +82,13 @@ export class NextMatch extends PureComponent {
         </View>
         <View cls='flx-row jcc aic h3 mh2' >
           <View cls='flx-i flx-row aic ml2'>
-            <Image cls='w3 h3 rm-stretch' source={fst.logo} />
+            <CacheableImage cls='w3 h3 rm-stretch' source={fst.logo} />
             <Text cls='flx-i ml2 ff-ubu-b white bg-transparent' style={[styles.smallText]}>{fst.name}</Text>
           </View>
           <Text cls='ff-ubu-b white f4 bg-transparent mh2'>VS</Text>
           <View cls='flx-i flx-row aic ml2 jcfe'>
             <Text cls='flx-i ff-ubu-b white bg-transparent tr mr2' style={[styles.smallText]}>{snd.name}</Text>
-            <Image cls='w3 h3 rm-stretch' source={snd.logo} />
+            <CacheableImage cls='w3 h3 rm-stretch' source={snd.logo} />
           </View>
         </View>
         <View cls='ma4 mb0 bt b--#373737 pt3 pb3'>
@@ -122,7 +121,7 @@ export class NextMatch extends PureComponent {
           </ScrollView>
         </View>
         <TouchableHighlight onPress={ad ? ad.openTarget : _.noop} >
-          <ScalableImage width={Dimensions.get('window').width} source={ ad ? { uri: ad.url } : require('fc_juarez/assets/img/ads/smallAd.png')} />
+          <CacheableScalableImage width={Dimensions.get('window').width} source={ ad ? { uri: ad.url } : require('fc_juarez/assets/img/ads/smallAd.png')} />
         </TouchableHighlight>
       </View>
     );

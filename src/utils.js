@@ -1,6 +1,31 @@
-import { Dimensions, Platform } from 'react-native';
+import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import _ from 'lodash';
+import { Dimensions, Platform, Image } from 'react-native';
+import ScalableImage from 'react-native-scalable-image';
+import imageCacheHoc from 'react-native-image-cache-hoc';
 
 const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
+const imageLocalHoc = (ImageComponent) => {
+  const CacheableImageComponent = imageCacheHoc(ImageComponent, { validProtocols: ['http', 'https'], cachePruneTriggerLimit: 1024 * 1024 * 30 });
+
+  return class extends PureComponent {
+    static cacheFile = CacheableImageComponent.cacheFile;
+    static flush = CacheableImageComponent.flush;
+
+    static propTypes = {
+      source: PropTypes.oneOfType([PropTypes.object, PropTypes.number]).isRequired,
+    };
+
+    render() {
+      const { source, ...rest } = this.props;
+      const Component = _.isNumber(source) ? ImageComponent : CacheableImageComponent;
+
+      return <Component {...rest} source={source} />;
+    }
+  };
+
+};
 
 export const debounceCall = (method, delay = 250) => {
   let timeout = null;
@@ -84,3 +109,6 @@ export const utf8ArrayToStr = (array) => {
 export const br2nl = (str) => {
   return str.replace(/<br\s*\/?>/mg, '\n');
 };
+
+export const CacheableImage = imageLocalHoc(Image);
+export const CacheableScalableImage = imageLocalHoc(ScalableImage);

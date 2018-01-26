@@ -8,6 +8,7 @@ import NativeTachyons from 'react-native-style-tachyons';
 import ScalableImage from 'react-native-scalable-image';
 import { loadFromServer } from 'fc_juarez/src/actions/initializers';
 import { Advertisement } from 'fc_juarez/src/objects';
+import { CacheableImage } from 'fc_juarez/src/utils';
 
 const mapStateToProps = (state) => ({ welcomeBannerUrl: state.objects.welcomeBannerUrl, ad: state.objects.ads[Advertisement.BigAd] });
 const mapDispatchToProps = (dispatch) => bindActionCreators({ loadFromServer }, dispatch);
@@ -36,7 +37,7 @@ export class Welcome extends PureComponent {
     return (
       <View cls='bg-white flx-i'>
         <View cls='flx-i'>
-          <Image cls='absolute-fill rm-cover' style={[styles.expand]} source={welcomeBannerUrl ? { uri: welcomeBannerUrl } : require('fc_juarez/assets/img/welcomebg.png')} />
+          <CacheableImage cls='absolute-fill rm-cover' style={[styles.expand]} source={welcomeBannerUrl ? { uri: welcomeBannerUrl } : require('fc_juarez/assets/img/welcomebg.png')} />
           <ScrollView cls='flx-i' contentContainerStyle={styles.scrollContent} refreshControl={<RefreshControl refreshing={this.state.refreshing} onRefresh={this.onRefresh} tintColor='white' />} >
             <View cls='mh4' >
               {!welcomeBannerUrl && <Image cls='rm-contain' style={[styles.expandHor]} source={require('fc_juarez/assets/img/welcomebg2.png')} />}
@@ -46,7 +47,7 @@ export class Welcome extends PureComponent {
         </View>
         <View cls='h4 pa2'>
           <TouchableHighlight onPress={ad ? ad.openTarget : _.noop} >
-            <Image style={[styles.expand]} source={ ad ? { uri: ad.url } : require('fc_juarez/assets/img/ads/bigAd.png')} />
+            <CacheableImage style={[styles.expand]} source={ ad ? { uri: ad.url } : require('fc_juarez/assets/img/ads/bigAd.png')} />
           </TouchableHighlight>
         </View>
       </View>

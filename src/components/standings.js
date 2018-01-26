@@ -3,15 +3,16 @@ import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { StyleSheet, View, Dimensions, Image, ScrollView, Text, RefreshControl, TouchableHighlight } from 'react-native';
 import NativeTachyons, { sizes } from 'react-native-style-tachyons';
-import ScalableImage from 'react-native-scalable-image';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { loadFromServer } from 'fc_juarez/src/actions/initializers';
 import { TeamInfo, Advertisement } from 'fc_juarez/src/objects';
+import { CacheableImage, CacheableScalableImage } from 'fc_juarez/src/utils';
+
 
 const TeamHeader = NativeTachyons.wrap(({ image, name }) => ( // eslint-disable-line react/prop-types
   <View cls='flx-row aic mv1 mr2 h3'>
-    <Image source={image} cls='rm-contain' style={[styles.logoSize]} />
+    <CacheableImage source={image} cls='rm-contain' style={[styles.logoSize]} />
     <Text cls='white ff-ubu-b f6 ml2 tc flx-i bg-transparent'>{name}</Text>
   </View>
 ));
@@ -114,7 +115,7 @@ export class Standings extends PureComponent {
           </ScrollView>
         </View>
         <TouchableHighlight onPress={ad ? ad.openTarget : _.noop} >
-          <ScalableImage width={Dimensions.get('window').width} source={ ad ? { uri: ad.url } : require('fc_juarez/assets/img/ads/smallAd.png')} />
+          <CacheableScalableImage width={Dimensions.get('window').width} source={ ad ? { uri: ad.url } : require('fc_juarez/assets/img/ads/smallAd.png')} />
         </TouchableHighlight>
       </View>
     );

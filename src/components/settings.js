@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import { palette } from 'fc_juarez/src/theme';
 import { updatePushSettings } from 'fc_juarez/src/actions/initializers';
 import { Advertisement } from 'fc_juarez/src/objects';
+import { CacheableImage } from 'fc_juarez/src/utils';
 
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ updatePushSettings }, dispatch);
@@ -64,7 +65,7 @@ export class Settings extends PureComponent {
         </View>
         <View cls='h4 pa2'>
           <TouchableHighlight onPress={ad ? ad.openTarget : _.noop} >
-            <Image style={[styles.expand]} source={ ad ? { uri: ad.url } : require('fc_juarez/assets/img/ads/bigAd.png')} />
+            <CacheableImage style={[styles.expand]} source={ ad ? { uri: ad.url } : require('fc_juarez/assets/img/ads/bigAd.png')} />
           </TouchableHighlight>
         </View>
       </View>

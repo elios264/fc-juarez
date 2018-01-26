@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
 import { StyleSheet, View, Dimensions, Image, ScrollView, Text, RefreshControl, TouchableHighlight } from 'react-native';
 import NativeTachyons, { sizes } from 'react-native-style-tachyons';
-import ScalableImage from 'react-native-scalable-image';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { loadFromServer } from 'fc_juarez/src/actions/initializers';
 import { Tournament, GameMatch, GameMatchDetails, Advertisement } from 'fc_juarez/src/objects';
+import { CacheableImage, CacheableScalableImage } from 'fc_juarez/src/utils';
 
 const icons = {
   '1': require('fc_juarez/assets/img/icons/1.png'),
@@ -94,13 +94,13 @@ export class TheMinute extends PureComponent {
         </View>
         <View cls='flx-row jcc aic h3 mh2' >
           <View cls='flx-i flx-row aic ml2'>
-            <Image cls='w3 h3 rm-stretch' source={fst.logo} />
+            <CacheableImage cls='w3 h3 rm-stretch' source={fst.logo} />
             <Text cls='flx-i ml2 ff-ubu-b white bg-transparent' style={[styles.smallText]}>{fst.name}</Text>
           </View>
           <Text cls='f4 white ff-ubu-b mh2 bg-transparent'>{match.scoreHome}<Text cls='gray'>  vs  </Text>{match.scoreAway}</Text>
           <View cls='flx-i flx-row aic ml2 jcfe'>
             <Text cls='flx-i ff-ubu-b white bg-transparent tr mr2' style={[styles.smallText]}>{snd.name}</Text>
-            <Image cls='w3 h3 rm-stretch' source={snd.logo} />
+            <CacheableImage cls='w3 h3 rm-stretch' source={snd.logo} />
           </View>
         </View>
         <View cls='mh4 mt4 mb3 bt b--#373737' />
@@ -130,7 +130,7 @@ export class TheMinute extends PureComponent {
           </ScrollView>
         </View>
         <TouchableHighlight onPress={ad ? ad.openTarget : _.noop} >
-          <ScalableImage width={Dimensions.get('window').width} source={ ad ? { uri: ad.url } : require('fc_juarez/assets/img/ads/smallAd.png')} />
+          <CacheableScalableImage width={Dimensions.get('window').width} source={ ad ? { uri: ad.url } : require('fc_juarez/assets/img/ads/smallAd.png')} />
         </TouchableHighlight>
       </View>
     );

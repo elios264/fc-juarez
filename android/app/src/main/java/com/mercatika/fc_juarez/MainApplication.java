@@ -3,6 +3,7 @@ package com.mercatika.fc_juarez;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.RNFetchBlob.RNFetchBlobPackage;
 import com.geektime.rnonesignalandroid.ReactNativeOneSignalPackage;
 import io.rnkit.actionsheetpicker.ASPickerViewPackage;
 import com.facebook.react.ReactNativeHost;
@@ -25,6 +26,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+          new RNFetchBlobPackage(),
           new ReactNativeOneSignalPackage(),
           new ASPickerViewPackage()
       );
