@@ -5,6 +5,12 @@ Cliente Android & IOS
 Tareas pendientes:
 
 [ ] - imagenes offline
+[ ] - checar permisos cuando entre a settings
+[ ] - recargar si se abre desde notificacion.
+[ ] - Carrusel
+[ ] - el proximo partido que te lleve a la pag de prox.
+[ ] - saltos de linea en proximo partido
+[X] - Quitar App
 [X] - Banners publicitarios
 [X] - settings desactivar si no hay permiso de notificaciones.
 [X] - Android push notfic icon

@@ -29,7 +29,7 @@ export class Header extends PureComponent {
             <Image style={[styles.expand]} cls='rm-contain' resizeMethod='resize' source={require('fc_juarez/assets/img/header/logo1.png')} />
           </View>
           <View cls='aic jcfe' style={[styles.rotate]}>
-            <Text cls='white f4 ff-permanent-marker bg-transparent' > FC Juarez <Text cls='contrast'>App </Text></Text>
+            <Text cls='white f4 ff-permanent-marker bg-transparent' > FC Juarez </Text>
             <Text cls='gray f6 ff-permanent-marker bg-transparent' > ¡Siéntete bravo! </Text>
           </View>
         </View>

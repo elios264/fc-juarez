@@ -15,7 +15,7 @@ export class Loader extends PureComponent {
         <Image cls='absolute-fill rm-cover' style={[styles.background]} source={require('fc_juarez/assets/img/loader/background.png')} />
         <Image cls='w5 h5 rm-contain' source={require('fc_juarez/assets/img/loader/logoBig.png')} />
         <View cls='aic jcfe' style={[styles.rotate]}>
-          <Text cls='white f3 ff-permanent-marker bg-transparent' > FC Juarez <Text cls='contrast'>App </Text></Text>
+          <Text cls='white f3 ff-permanent-marker bg-transparent' > FC Juarez </Text>
           <Text cls='gray f5 ff-permanent-marker bg-transparent' > ¡Siéntete bravo! </Text>
         </View>
         <View cls='aic absolute' style={[styles.loader]}>

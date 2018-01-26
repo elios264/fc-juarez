@@ -50,7 +50,7 @@ export class Sidebar extends PureComponent {
             <Image cls='h1 w1' source={require('fc_juarez/assets/img/back.png')} />
           </TouchableOpacity>
           <Link to='/' component={TouchableOpacity} >
-            <Text cls='white f3 ff-permanent-marker'> FC Juarez <Text cls='contrast'>App </Text></Text>
+            <Text cls='white f3 ff-permanent-marker'> FC Juarez </Text>
           </Link>
           <Text cls='gray ff-ubu-b absolute' style={{ fontSize: sizes.f5 / 2, bottom: sizes.mb1 + sizes.mb3 }}>
             FC JÚAREZ | V1.0
