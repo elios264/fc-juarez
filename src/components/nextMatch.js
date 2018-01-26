@@ -3,9 +3,11 @@ import React, { PureComponent } from 'react';
 import { StyleSheet, View, Dimensions, Image, ScrollView, Text, TouchableHighlight, RefreshControl, Linking } from 'react-native';
 import NativeTachyons, { sizes } from 'react-native-style-tachyons';
 import ScalableImage from 'react-native-scalable-image';
+import Carousel from 'react-native-snap-carousel';
 import _ from 'lodash';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+
 import { loadFromServer } from 'fc_juarez/src/actions/initializers';
 import { GameMatch, Tournament, Advertisement } from 'fc_juarez/src/objects';
 import { br2nl } from 'fc_juarez/src/utils';
@@ -39,10 +41,20 @@ export class NextMatch extends PureComponent {
     Linking.openURL('https://fcjuarez.boletosenlinea.events/');
   }
 
+  renderBanner = NativeTachyons.wrap(({ item: url }) => {
+
+    return (
+      <View cls='bb b--red'>
+        <ScalableImage width={Dimensions.get('window').width} source={{ uri: url }} />
+        <View cls='absolute bottom-0 right-0' style={[styles.triangleCorner]} />
+      </View>
+    );
+  });
+
   renderNextMatch() {
     const { nextMatch, tournament } = this.props;
 
-    let { time, stadium, versusTeam, versusTeamAtHome, desc, teamLogoUrl, bannerUrl } = nextMatch;
+    let { time, stadium, versusTeam, versusTeamAtHome, desc, teamLogoUrl, bannerUrls } = nextMatch;
 
     stadium = _.toUpper(stadium);
     const matchTournament = _.toUpper(tournament.title);
@@ -56,10 +68,14 @@ export class NextMatch extends PureComponent {
 
     return (
       <View >
-        <View cls='bb b--red'>
-          <ScalableImage width={Dimensions.get('window').width} source={{ uri: bannerUrl }} />
-          <View cls='absolute bottom-0 right-0' style={[styles.triangleCorner]} />
-        </View>
+        <Carousel
+          data={bannerUrls}
+          autoplay loop
+          useScrollView lockScrollWhileSnapping
+          renderItem={this.renderBanner}
+          sliderWidth={Dimensions.get('window').width}
+          itemWidth={Dimensions.get('window').width}
+        />
         <View cls='aic mt3 mb3'>
           <Text cls='ff-ubu-b contrast f6 bg-transparent' >{matchTournament}</Text>
           <Text cls='ff-ubu-b gray f6 bg-transparent' >{matchDate} | {stadium}</Text>

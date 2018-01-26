@@ -63,6 +63,17 @@ export class ServiceApi {
 
   static async downloadFullMatch(id) {
     const response = await fetchJson(`${SERVER_URL}${API_PATH}${GAME_MATCH_DETAILS_URL(id)}`); // eslint-disable-line new-cap
+
+    if (response) {
+      const id = response['GameFutureId'];
+      let banners = _.times(6, (num) => `${SERVER_URL}/binder/gamefuture/${id}-${num + 1}.jpg?${_.random(5000)}`);
+      banners = _.map(banners, async (url) => ({ url, exists: await fileExists(url) }));
+      banners = await Promise.all(banners);
+      banners = _(banners).filter('exists').map('url').value();
+      response.banners = banners;
+      await Promise.all(_.map(banners, Image.prefetch));
+    }
+
     return response;
   }
 
