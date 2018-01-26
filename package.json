@@ -19,10 +19,10 @@
     "moment-timezone": "^0.5.14",
     "prop-types": "^15.6.0",
     "react": "16.2.0",
-    "react-native": "0.52.1",
+    "react-native": "0.52.2",
     "react-native-drawer-menu": "^0.2.5",
     "react-native-onesignal": "^3.0.9",
-    "react-native-scalable-image": "^0.3.5",
+    "react-native-scalable-image": "^0.4.0",
     "react-native-style-tachyons": "^3.5.1",
     "react-redux": "^5.0.6",
     "react-router-native": "^4.2.0",
@@ -38,7 +38,7 @@
     "babel-preset-react-native": "4.0.0",
     "eslint": "^4.16.0",
     "eslint-plugin-import": "^2.8.0",
-    "eslint-plugin-react": "^7.5.1",
+    "eslint-plugin-react": "^7.6.0",
     "patch-package": "^5.0.0",
     "react-native-ci-tools": "^1.1.0"
   }
