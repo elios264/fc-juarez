@@ -16,13 +16,10 @@ class MatchInfo extends PureComponent {
   static propTypes = {
     tournament: PropTypes.instanceOf(Tournament).isRequired,
     match: PropTypes.instanceOf(GameMatch).isRequired,
+    onViewMore: PropTypes.func.isRequired,
   }
 
-
-  openViewMore = () => {
-    const { match: { viewMoreUrl } } = this.props;
-    Linking.openURL(viewMoreUrl);
-  }
+  openViewMore = () => this.props.onViewMore(this.props.match);
 
 
   render() {
@@ -57,6 +54,7 @@ class MatchInfo extends PureComponent {
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ loadFromServer }, dispatch);
 const mapStateToProps = (state) => ({
+  nextMatch: state.objects.nextMatch,
   gameMatches: state.objects.gameMatches,
   seasons: _.values(state.objects.seasons),
   tournaments: state.objects.tournaments,
@@ -71,6 +69,7 @@ export class MatchCalendar extends PureComponent {
     seasons: PropTypes.arrayOf(PropTypes.instanceOf(Season)).isRequired,
     tournaments: PropTypes.objectOf(PropTypes.instanceOf(Tournament)).isRequired,
     gameMatches: PropTypes.objectOf(PropTypes.instanceOf(GameMatch)).isRequired,
+    nextMatch: PropTypes.instanceOf(GameMatch),
     ad: PropTypes.instanceOf(Advertisement)
   }
 
@@ -81,6 +80,15 @@ export class MatchCalendar extends PureComponent {
     await this.props.loadFromServer();
     this.setState({ refreshing: false });
   }
+  openViewMore = ({ viewMoreUrl, id }) => {
+    const { history, nextMatch } = this.props;
+
+    if (_.get(nextMatch, 'id') === id)
+      history.replace('/next-match');
+    else
+      Linking.openURL(viewMoreUrl);
+  }
+
 
   openPicker = () => {
     const { seasons } = this.props;
@@ -119,7 +127,7 @@ export class MatchCalendar extends PureComponent {
             <View cls='bt b--#373737' />
             <View cls='mh2 mv3'>
               <Text cls='mb2 white ff-ubu-b bg-transparent'>{currentSeason ? currentSeason.title : 'Sin temporadas'}</Text>
-              {_.map(gameMatches, (match) => <MatchInfo key={match.id} match={match} tournament={tournaments[match.tournamentId]} />)}
+              {_.map(gameMatches, (match) => <MatchInfo key={match.id} match={match} tournament={tournaments[match.tournamentId]} onViewMore={this.openViewMore} />)}
             </View>
           </ScrollView>
         </View>
