@@ -4,7 +4,7 @@ Cliente Android & IOS
 
 Tareas pendientes:
 
-[ ] - imagenes offline
+[X] - imagenes offline
 [X] - Carrusel
 [X] - el proximo partido que te lleve a la pag de prox.
 [X] - saltos de linea en proximo partido
