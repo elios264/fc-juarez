@@ -8,12 +8,12 @@ import ScalableImage from 'react-native-scalable-image';
 import { connect } from 'react-redux';
 
 import { palette } from 'fc_juarez/src/theme';
-import { updatePushSettings } from 'fc_juarez/src/actions/initializers';
+import { updatePushSettings, getPushPermissions } from 'fc_juarez/src/actions/pushNotifications';
 import { Advertisement } from 'fc_juarez/src/objects';
 import { CacheableImage } from 'fc_juarez/src/utils';
 
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({ updatePushSettings }, dispatch);
+const mapDispatchToProps = (dispatch) => bindActionCreators({ updatePushSettings, getPushPermissions }, dispatch);
 const mapStateToProps = (state) => ({
   notificationsAllowed: state.appInfo.pushPermissions.notificationsEnabled,
   pushSettings: state.pushSettings,
@@ -27,8 +27,13 @@ export class Settings extends PureComponent {
   static propTypes = {
     notificationsAllowed: PropTypes.bool,
     updatePushSettings: PropTypes.func.isRequired,
+    getPushPermissions: PropTypes.func.isRequired,
     pushSettings: PropTypes.object.isRequired,
     ad: PropTypes.instanceOf(Advertisement)
+  }
+
+  componentWillMount() {
+    this.props.getPushPermissions();
   }
 
   render() {

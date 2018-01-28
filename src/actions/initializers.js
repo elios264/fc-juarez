@@ -3,6 +3,7 @@ import moment from 'moment';
 import { AsyncStorage } from 'react-native';
 
 import { catchError } from './utils';
+import { downloadPushSettings, initializePushSettings } from './pushNotifications';
 import { appStart } from './appState';
 import { ServiceApi } from 'fc_juarez/src/serviceApi';
 import { GameMatch, GameMatchDetails, Season, Tournament, TeamInfo, Advertisement } from 'fc_juarez/src/objects';
@@ -87,16 +88,3 @@ export const loadFromServer = () => catchError(async (dispatch, getState) => {
   dispatch(saveToStorage());
   return true;
 }, 'No se han podido descargar los datos del servidor', false);
-export const updatePushSettings = (settingName, value) => catchError((dispatch, getState) => {
-  dispatch({ type: 'PUSH_SETTINGS_CHANGED', settingName, value });
-  ServiceApi.updatePushSettings(getState().pushSettings);
-}, 'No se han podido actualizar las preferencias');
-export const downloadPushSettings = () => catchError(async (dispatch, getState) => {
-  const newSettings = await ServiceApi.downloadPushSettings();
-  dispatch({ type: 'PUSH_SETTINGS_CHANGED', state: newSettings });
-  return getState().pushSettings;
-}, 'No se han podido descargar las preferencias');
-export const initializePushSettings = () => catchError((dispatch, getState) => {
-  dispatch({ type: 'PUSH_SETTINGS_CHANGED', state: { receiveGeneralAlerts: true, receiveGoalsAlerts: true, receiveMatchAlerts: true } });
-  ServiceApi.updatePushSettings(getState().pushSettings);
-}, 'No se ha podido registrar el dispositivo para recibir notificaciones');

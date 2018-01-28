@@ -4,6 +4,10 @@ Cliente Android & IOS
 
 Tareas pendientes:
 
+[ ] - welcome banner para móvil
+[ ] - icono android notificaciones.
+[ ] - reestructurar loading en todas las pantallas
+[X] - primer lanzamiento las notificaciones no estan activadas
 [X] - imagenes offline
 [X] - Carrusel
 [X] - el proximo partido que te lleve a la pag de prox.

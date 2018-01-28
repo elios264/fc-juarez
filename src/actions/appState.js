@@ -1,5 +1,5 @@
 import { AppState } from 'react-native';
-import OneSignal from 'react-native-onesignal';
+import { getPushPermissions } from './pushNotifications';
 
 const subscribeToAppStateChanged = (handler) => {
   handler(AppState.currentState);
@@ -8,15 +8,11 @@ const subscribeToAppStateChanged = (handler) => {
 };
 
 export const appStart = () => (dispatch) => {
-  const permissionsHandler = (state) => {
-    dispatch({ type: 'PUSH_PERMISSIONS_CHANGED', state });
-  };
   const appStateListener = (state) => {
     __DEV__ && console.log({ type: 'APPSTATE_CHANGED', state });
     dispatch({ type: 'APPSTATE_CHANGED', state });
-    if (state === 'active') OneSignal.getPermissionSubscriptionState(permissionsHandler);
+    if (state === 'active') dispatch(getPushPermissions());
   };
 
-  subscribeToAppStateChanged(appStateListener),
-  OneSignal.getPermissionSubscriptionState(permissionsHandler);
+  subscribeToAppStateChanged(appStateListener);
 };
