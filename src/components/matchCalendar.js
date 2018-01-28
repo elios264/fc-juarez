@@ -59,7 +59,8 @@ const mapStateToProps = (state) => ({
   gameMatches: state.objects.gameMatches,
   seasons: _.values(state.objects.seasons),
   tournaments: state.objects.tournaments,
-  ad: state.objects.ads[Advertisement.SmallAd]
+  ad: state.objects.ads[Advertisement.SmallAd],
+  refreshing: state.refreshing
 });
 @connect(mapStateToProps, mapDispatchToProps)
 @NativeTachyons.wrap
@@ -71,16 +72,12 @@ export class MatchCalendar extends PureComponent {
     tournaments: PropTypes.objectOf(PropTypes.instanceOf(Tournament)).isRequired,
     gameMatches: PropTypes.objectOf(PropTypes.instanceOf(GameMatch)).isRequired,
     nextMatch: PropTypes.instanceOf(GameMatch),
-    ad: PropTypes.instanceOf(Advertisement)
+    ad: PropTypes.instanceOf(Advertisement),
+    refreshing: PropTypes.bool.isRequired,
   }
 
-  state = { refreshing: false, currentSeason: _.last(this.props.seasons) };
+  state = { currentSeason: _.last(this.props.seasons) };
 
-  onRefresh = async () => {
-    this.setState({ refreshing: true });
-    await this.props.loadFromServer();
-    this.setState({ refreshing: false });
-  }
   openViewMore = ({ viewMoreUrl, id }) => {
     const { history, nextMatch } = this.props;
 
@@ -105,8 +102,8 @@ export class MatchCalendar extends PureComponent {
 
 
   render() {
-    let { gameMatches, tournaments, ad } = this.props;
-    const { currentSeason, refreshing } = this.state;
+    let { gameMatches, tournaments, ad, refreshing, loadFromServer } = this.props;
+    const { currentSeason } = this.state;
 
     gameMatches = _(gameMatches)
       .filter(['seasonId', _.get(currentSeason, 'id', -1)])
@@ -117,7 +114,7 @@ export class MatchCalendar extends PureComponent {
       <View cls='flx-i'>
         <View cls='flx-i bg-primary'>
           <Image cls='absolute-fill rm-cover' style={[styles.expand]} source={require('fc_juarez/assets/img/background.png')} />
-          <ScrollView cls='flx-i' refreshControl={<RefreshControl refreshing={refreshing} onRefresh={this.onRefresh} tintColor='white' />} >
+          <ScrollView cls='flx-i' refreshControl={<RefreshControl refreshing={refreshing} onRefresh={loadFromServer} tintColor='white' />} >
             <View cls='aic mv3 mh2 flx-row jcsb'>
               <Text cls='f5 mr3 ff-ubu-m white bg-transparent flx-i'>Calendario <Text cls='#AAAAAA'>de partidos</Text></Text>
               <TouchableOpacity cls='jcc bg-rgba(13,13,13,0.8)' onPress={currentSeason ? this.openPicker : _.noop} activeOpacity={0.8} >

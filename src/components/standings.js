@@ -23,7 +23,11 @@ const Score = NativeTachyons.wrap(({ score }) => ( // eslint-disable-line react/
   </View>
 ));
 
-const mapStateToProps = (state) => ({ teamsInfo: state.objects.teamsInfo, ad: state.objects.ads[Advertisement.SmallAd] });
+const mapStateToProps = (state) => ({
+  teamsInfo: state.objects.teamsInfo,
+  ad: state.objects.ads[Advertisement.SmallAd],
+  refreshing: state.refreshing
+});
 const mapDispatchToProps = (dispatch) => bindActionCreators({ loadFromServer }, dispatch);
 @connect(mapStateToProps, mapDispatchToProps)
 @NativeTachyons.wrap
@@ -32,19 +36,12 @@ export class Standings extends PureComponent {
   static propTypes = {
     loadFromServer: PropTypes.func.isRequired,
     teamsInfo: PropTypes.objectOf(PropTypes.instanceOf(TeamInfo)).isRequired,
-    ad: PropTypes.instanceOf(Advertisement)
-  }
-
-  state = { refreshing: false };
-
-  onRefresh = async () => {
-    this.setState({ refreshing: true });
-    await this.props.loadFromServer();
-    this.setState({ refreshing: false });
+    ad: PropTypes.instanceOf(Advertisement),
+    refreshing: PropTypes.bool.isRequired,
   }
 
   render() {
-    let { teamsInfo, ad } = this.props;
+    let { teamsInfo, ad, refreshing, loadFromServer } = this.props;
 
     teamsInfo = _.orderBy(teamsInfo, 'name');
 
@@ -52,7 +49,7 @@ export class Standings extends PureComponent {
       <View cls='flx-i'>
         <View cls='flx-i bg-primary'>
           <Image cls='absolute-fill rm-cover' style={[styles.expand]} source={require('fc_juarez/assets/img/background.png')} />
-          <ScrollView cls='flx-i' refreshControl={<RefreshControl refreshing={this.state.refreshing} onRefresh={this.onRefresh} tintColor='white' />} >
+          <ScrollView cls='flx-i' refreshControl={<RefreshControl refreshing={refreshing} onRefresh={loadFromServer} tintColor='white' />} >
             <Text cls='mv3 ml3 f3 ff-ubu-m white bg-transparent'>Tabla <Text cls='#AAAAAA'>general</Text></Text>
             <View cls='bt b--#373737' />
             <View cls='mt3 ml2 mr1 flx-row'>

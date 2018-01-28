@@ -6,7 +6,7 @@ Tareas pendientes:
 
 [ ] - welcome banner para móvil
 [ ] - icono android notificaciones.
-[ ] - reestructurar loading en todas las pantallas
+[X] - reestructurar loading en todas las pantallas
 [X] - primer lanzamiento las notificaciones no estan activadas
 [X] - imagenes offline
 [X] - Carrusel

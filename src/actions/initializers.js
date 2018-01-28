@@ -51,6 +51,8 @@ export const saveToStorage = () => catchError(async (dispatch, getState) => {
   await AsyncStorage.setItem('offline-match-data', jsonData);
 }, 'No se han podido guardar los datos en el almacenamiento interno para uso offline');
 export const loadFromServer = () => catchError(async (dispatch, getState) => {
+  dispatch({ type: 'REFRESHING', refreshing: true });
+
   const [seasons, tournaments, gameMatches, welcomeBannerUrl, generalTableData, advertisement] = await Promise.all([
     ServiceApi.downloadSeasons(),
     ServiceApi.downloadTournaments(),
@@ -86,5 +88,9 @@ export const loadFromServer = () => catchError(async (dispatch, getState) => {
   }
 
   dispatch(saveToStorage());
+  dispatch({ type: 'REFRESHING', refreshing: false });
   return true;
-}, 'No se han podido descargar los datos del servidor', false);
+}, 'No se han podido descargar los datos del servidor', (dispatch) => {
+  dispatch({ type: 'REFRESHING', refreshing: false });
+  return false;
+});

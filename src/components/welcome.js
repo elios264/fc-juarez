@@ -10,7 +10,11 @@ import { loadFromServer } from 'fc_juarez/src/actions/initializers';
 import { Advertisement } from 'fc_juarez/src/objects';
 import { CacheableImage } from 'fc_juarez/src/utils';
 
-const mapStateToProps = (state) => ({ welcomeBannerUrl: state.objects.welcomeBannerUrl, ad: state.objects.ads[Advertisement.BigAd] });
+const mapStateToProps = (state) => ({
+  welcomeBannerUrl: state.objects.welcomeBannerUrl,
+  ad: state.objects.ads[Advertisement.BigAd],
+  refreshing: state.refreshing
+});
 const mapDispatchToProps = (dispatch) => bindActionCreators({ loadFromServer }, dispatch);
 @connect(mapStateToProps, mapDispatchToProps)
 @NativeTachyons.wrap
@@ -19,26 +23,19 @@ export class Welcome extends PureComponent {
   static propTypes = {
     loadFromServer: PropTypes.func.isRequired,
     welcomeBannerUrl: PropTypes.string,
-    ad: PropTypes.instanceOf(Advertisement)
-  }
-
-  state = { refreshing: false };
-
-  onRefresh = async () => {
-    this.setState({ refreshing: true });
-    await this.props.loadFromServer();
-    this.setState({ refreshing: false });
+    ad: PropTypes.instanceOf(Advertisement),
+    refreshing: PropTypes.bool.isRequired,
   }
 
   render() {
 
-    const { welcomeBannerUrl, ad } = this.props;
+    const { welcomeBannerUrl, ad, refreshing, loadFromServer } = this.props;
 
     return (
       <View cls='bg-white flx-i'>
         <View cls='flx-i'>
           <CacheableImage cls='absolute-fill rm-cover' style={[styles.expand]} source={welcomeBannerUrl ? { uri: welcomeBannerUrl } : require('fc_juarez/assets/img/welcomebg.png')} />
-          <ScrollView cls='flx-i' contentContainerStyle={styles.scrollContent} refreshControl={<RefreshControl refreshing={this.state.refreshing} onRefresh={this.onRefresh} tintColor='white' />} >
+          <ScrollView cls='flx-i' contentContainerStyle={styles.scrollContent} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={loadFromServer} tintColor='white' />} >
             <View cls='mh4' >
               {!welcomeBannerUrl && <Image cls='rm-contain' style={[styles.expandHor]} source={require('fc_juarez/assets/img/welcomebg2.png')} />}
             </View>

@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import { createCRUDObjectReducer, createSingleObjectReducer } from './utils';
 
 const initializing = (state = false, action) => action.type === 'INITIALIZING' ? action.running : state;
+const refreshing = (state = false, action) => action.type === 'REFRESHING' ? action.refreshing : state;
 
 const pushSettings = (state = { receiveMatchAlerts: false, receiveGoalsAlerts: false, receiveGeneralAlerts: false }, action) => {
   if (action.type !== 'PUSH_SETTINGS_CHANGED')
@@ -35,6 +36,7 @@ const objects = combineReducers({
 
 export const rootReducer = combineReducers({
   initializing,
+  refreshing,
   appInfo,
   objects,
   pushSettings
