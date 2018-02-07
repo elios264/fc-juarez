@@ -4,6 +4,7 @@ Cliente Android & IOS
 
 Tareas pendientes:
 
+[ ] - sidebar logo que esta en la pagina web a un lado del logo de esp eufo
 [ ] - welcome banner para móvil
 [ ] - icono android notificaciones.
 [X] - reestructurar loading en todas las pantallas

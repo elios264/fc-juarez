@@ -2,6 +2,9 @@
 
     include('../../lib/idbmanager.php');
 
+
+// <editor-fold defaultstate="collapsed" desc=" Mobile APP Notification Functions ">
+
     function sendNotification($data){
       $title = $data['title'];
       $message = $data['message'];
@@ -133,6 +136,8 @@
 
       return $ids;
     }
+
+// </editor-fold>
 
 
 // <editor-fold defaultstate="collapsed" desc=" Data Format Functions ">
@@ -2411,6 +2416,205 @@
 // </editor-fold>
 
 
+// <editor-fold defaultstate="collapsed" desc=" HybridSubcategory Functions ">
+
+    function selectHybridSubcategory( $arrData, &$totalTableRows, &$recordset, &$returnMessage ) {
+
+        $db = new iDBManager();
+
+        if ( !$db->openConnection() ){
+            $returnMessage = $db->getErrorMessage();
+            return false;
+        }
+
+        $query = 'CALL SelectHybridSubcategory(' .
+        fstrreq($arrData[Entity]) . ', ' .
+        fstrreq($arrData[Key]) . ', ' .
+        fnumreq($arrData[OrderBy]) . ', ' .
+        fnumreq($arrData[Offset]) . ', ' .
+        fnumreq($arrData[RecordsPerPage]) . ')';
+
+        //$query = "CALL SelectGenerationRecent( @ReturnValue, @ReturnMessage ); SELECT @ReturnValue AS ReturnValue, @ReturnMessage AS ReturnMessage";
+        $db->setSqlQuery($query);
+
+        $dbResult = true;
+        if (!$db->selectDataSet()){
+            $returnMessage = $db->getErrorMessage();
+            $dbResult = false;
+        } else {
+
+            $recordset = $db->getRecordset(1);
+            $totalTableRows = $db->getRecordset(2);
+            $totalTableRows = $totalTableRows[0][0];
+
+        }
+
+        $db->closeConnection();
+        return $dbResult;
+
+    }
+
+    function insertHybridSubcategory( $arrData, &$nextId, &$returnMessage ) {
+
+        $db = new iDBManager();
+
+        if ( !$db->openConnection() ){
+            $returnMessage = $db->getErrorMessage();
+            return false;
+        }
+
+        $query = "CALL InsertHybridSubcategory( " .
+        fstrreq($arrData[Entity]) . ", " .
+        fstrreq($arrData[Title]) . ", " .
+        fstrnotreq($arrData[Description]) . ", " .
+        $arrData[LastUpdateBy] . ",
+        @NextId, @ReturnValue, @ReturnMessage ); ";
+        $query .= "SELECT @NextId AS NextId, @ReturnValue AS ReturnValue, @ReturnMessage AS ReturnMessage";
+        //$query = "CALL SelectGenerationRecent( @ReturnValue, @ReturnMessage ); SELECT @ReturnValue AS ReturnValue, @ReturnMessage AS ReturnMessage";
+        $db->setSqlQuery($query);
+
+        $dbResult = true;
+        if (!$db->executeNonQuery()){
+            $returnMessage = $db->getErrorMessage();
+            $dbResult = false;
+        } else {
+
+            //debug print output values
+            $outputParameters = $db->getOutputParameterValues();
+            if ( !empty($outputParameters) ){
+                #foreach( $outputParameters as $key=>$value)
+                #    echo $key. '=>'. $value. '<br>';
+
+                if ($outputParameters[ReturnValue] == 0){
+                    $nextId = $outputParameters[NextId];
+                    $returnMessage = $outputParameters[ReturnMessage];
+                }
+                else{
+                    $returnMessage = 'Error('. $outputParameters[ReturnValue]. ') '. $outputParameters[ReturnMessage];
+                    $dbResult = false;
+                }
+
+                #echo "DB->returnvalues ReturnValue = ". $outputParameters["ReturnValue"]. "<br>";
+                #echo "DB->returnvalues Insertid = ". $outputParameters["NextId"]. "<br>";
+            }
+
+        }
+
+        $db->closeConnection();
+        return $dbResult;
+
+    }
+
+    function updateHybridSubcategory( $arrData, &$returnMessage ) {
+
+        $db = new iDBManager();
+
+        if ( !$db->openConnection() ){
+            $returnMessage = $db->getErrorMessage();
+            return false;
+        }
+
+        /*
+        echo $arrData[ClientAdditionalInfoId];
+        echo '<br/>'. $arrData[ClientId];
+        echo '<br/>'. $arrData[InitialTitle];
+        echo '<br/>'. $arrData[InitialDescription];
+        echo '<br/>'. $arrData[InitialDisplayOrder];
+        echo '<br/>'. $arrData[Title];
+        echo '<br/>'. $arrData[Description];
+        echo '<br/>'. $arrData[DisplayOrder];
+        */
+
+        $query = "CALL UpdateHybridSubcategory( " .
+        $arrData[SubcategoryId] . ", " .
+        fstrreq($arrData[InitialTitle]) . ", " .
+        fstrnotreq($arrData[InitialDescription]) . ", " .
+        fstrreq($arrData[Title]) . ", " .
+        fstrnotreq($arrData[Description]) . ", " .
+        $arrData[LastUpdateBy] . ",
+        @ReturnValue, @ReturnMessage ); ";
+        $query .= "SELECT @ReturnValue AS ReturnValue, @ReturnMessage AS ReturnMessage";
+        //$query = "CALL SelectGenerationRecent( @ReturnValue, @ReturnMessage ); SELECT @ReturnValue AS ReturnValue, @ReturnMessage AS ReturnMessage";
+        $db->setSqlQuery($query);
+
+        $dbResult = true;
+        if (!$db->executeNonQuery()){
+            $returnMessage = $db->getErrorMessage();
+            $dbResult = false;
+        } else {
+
+            //debug print output values
+            $outputParameters = $db->getOutputParameterValues();
+            if ( !empty($outputParameters) ){
+                #foreach( $outputParameters as $key=>$value)
+                #    echo $key. '=>'. $value. '<br>';
+
+                if ($outputParameters[ReturnValue] == 0){
+                    $returnMessage = $outputParameters[ReturnMessage];
+                }
+                else{
+                    $returnMessage = 'Error('. $outputParameters[ReturnValue]. ') '. $outputParameters[ReturnMessage];
+                    $dbResult = false;
+                }
+
+                #echo "DB->returnvalues ReturnValue = ". $outputParameters["ReturnValue"]. "<br>";
+                #echo "DB->returnvalues Insertid = ". $outputParameters["NextId"]. "<br>";
+            }
+
+        }
+
+        $db->closeConnection();
+        return $dbResult;
+
+    }
+
+    function deleteHybridSubcategory( $id, &$returnMessage ) {
+
+        $db = new iDBManager();
+
+        if ( !$db->openConnection() ){
+            $returnMessage = $db->getErrorMessage();
+            return false;
+        }
+
+        $query = "CALL DeleteHybridSubcategory($id, @ReturnValue, @ReturnMessage ); SELECT @ReturnValue AS ReturnValue, @ReturnMessage AS ReturnMessage";
+        //$query = "CALL SelectGenerationRecent( @ReturnValue, @ReturnMessage ); SELECT @ReturnValue AS ReturnValue, @ReturnMessage AS ReturnMessage";
+        $db->setSqlQuery($query);
+
+        $dbResult = true;
+        if (!$db->executeNonQuery()){
+            $returnMessage = $db->getErrorMessage();
+            $dbResult = false;
+        } else {
+
+            //debug print output values
+            $outputParameters = $db->getOutputParameterValues();
+            if ( !empty($outputParameters) ){
+                #foreach( $outputParameters as $key=>$value)
+                #    echo $key. '=>'. $value. '<br>';
+
+                if ($outputParameters[ReturnValue] == 0){
+                    $returnMessage = $outputParameters[ReturnMessage];
+                }
+                else{
+                    $returnMessage = 'Error('. $outputParameters[ReturnValue]. ') '. $outputParameters[ReturnMessage];
+                    $dbResult = false;
+                }
+
+                #echo "DB->returnvalues ReturnValue = ". $outputParameters["ReturnValue"]. "<br>";
+                #echo "DB->returnvalues Insertid = ". $outputParameters["NextId"]. "<br>";
+            }
+
+        }
+
+        $db->closeConnection();
+        return $dbResult;
+
+    }
+
+// </editor-fold>
+
+
 // <editor-fold defaultstate="collapsed" desc=" Article Functions ">
 
     function selectArticle( $arrData, &$totalTableRows, &$recordset, &$returnMessage ) {
@@ -3207,6 +3411,234 @@
         }
 
         $query = "CALL DeleteRoster($id, @ReturnValue, @ReturnMessage ); SELECT @ReturnValue AS ReturnValue, @ReturnMessage AS ReturnMessage";
+        //$query = "CALL SelectGenerationRecent( @ReturnValue, @ReturnMessage ); SELECT @ReturnValue AS ReturnValue, @ReturnMessage AS ReturnMessage";
+        $db->setSqlQuery($query);
+
+        $dbResult = true;
+        if (!$db->executeNonQuery()){
+            $returnMessage = $db->getErrorMessage();
+            $dbResult = false;
+        } else {
+
+            //debug print output values
+            $outputParameters = $db->getOutputParameterValues();
+            if ( !empty($outputParameters) ){
+                #foreach( $outputParameters as $key=>$value)
+                #    echo $key. '=>'. $value. '<br>';
+
+                if ($outputParameters[ReturnValue] == 0){
+                    $returnMessage = $outputParameters[ReturnMessage];
+                }
+                else{
+                    $returnMessage = 'Error('. $outputParameters[ReturnValue]. ') '. $outputParameters[ReturnMessage];
+                    $dbResult = false;
+                }
+
+                #echo "DB->returnvalues ReturnValue = ". $outputParameters["ReturnValue"]. "<br>";
+                #echo "DB->returnvalues Insertid = ". $outputParameters["NextId"]. "<br>";
+            }
+
+        }
+
+        $db->closeConnection();
+        return $dbResult;
+
+    }
+
+// </editor-fold>
+
+
+// <editor-fold defaultstate="collapsed" desc=" Product Functions ">
+
+    function selectProduct( $arrData, &$totalTableRows, &$recordset, &$returnMessage ) {
+
+        $db = new iDBManager();
+
+        if ( !$db->openConnection() ){
+            $returnMessage = $db->getErrorMessage();
+            return false;
+        }
+
+        $query = 'CALL SelectProduct(' .
+        fnumreq($arrData[CategoryId]) . ', ' .
+        fnumreq($arrData[SubcategoryId]) . ', ' .
+        fstrreq($arrData[Key]) . ', ' .
+        fnumreq($arrData[OrderBy]) . ', ' .
+        fnumreq($arrData[Offset]) . ', ' .
+        fnumreq($arrData[RecordsPerPage]) . ')';
+        //$query = "CALL SelectGenerationRecent( @ReturnValue, @ReturnMessage ); SELECT @ReturnValue AS ReturnValue, @ReturnMessage AS ReturnMessage";
+        $db->setSqlQuery($query);
+
+        $dbResult = true;
+        if (!$db->selectDataSet()){
+            $returnMessage = $db->getErrorMessage();
+            $dbResult = false;
+        } else {
+
+            $recordset = $db->getRecordset(1);
+            $totalTableRows = $db->getRecordset(2);
+            $totalTableRows = $totalTableRows[0][0];
+
+        }
+
+        $db->closeConnection();
+        return $dbResult;
+
+    }
+
+    function insertProduct( $arrData, &$nextId, &$returnMessage ) {
+
+        $db = new iDBManager();
+
+        if ( !$db->openConnection() ){
+            $returnMessage = $db->getErrorMessage();
+            return false;
+        }
+
+        $query = 'CALL InsertProduct( ' .
+        $arrData[CategoryId] . ', ' .
+        fnumreq($arrData[SubcategoryId]) . ', ' .
+        fstrreq($arrData[IssueDate]) . ', ' .
+        fstrreq($arrData[Title]) . ', ' .
+        fstrreq($arrData[Description]) . ', ' .
+        fstrreq($arrData[ProductNumber]) . ', ' .
+        fnumreq($arrData[OnHand]) . ', ' .
+        fnumreq($arrData[ActualPrice]) . ', ' .
+        fnumreq($arrData[ListPrice]) . ', ' .
+        fnumreq($arrData[ShippingPrice]) . ', ' .
+        fbolreq($arrData[Active]) . ', ' .
+        $arrData[LastUpdateBy] . ',
+        @NextId, @ReturnValue, @ReturnMessage ); ';
+        $query .= 'SELECT @NextId AS NextId, @ReturnValue AS ReturnValue, @ReturnMessage AS ReturnMessage';
+        //$query = "CALL SelectGenerationRecent( @ReturnValue, @ReturnMessage ); SELECT @ReturnValue AS ReturnValue, @ReturnMessage AS ReturnMessage";
+        $db->setSqlQuery($query);
+
+        $dbResult = true;
+        if (!$db->executeNonQuery()){
+            $returnMessage = $db->getErrorMessage();
+            $dbResult = false;
+        } else {
+
+            //debug print output values
+            $outputParameters = $db->getOutputParameterValues();
+            if ( !empty($outputParameters) ){
+                #foreach( $outputParameters as $key=>$value)
+                #    echo $key. '=>'. $value. '<br>';
+
+                if ($outputParameters[ReturnValue] == 0){
+                    $nextId = $outputParameters[NextId];
+                    $returnMessage = $outputParameters[ReturnMessage];
+                }
+                else{
+                    $returnMessage = 'Error('. $outputParameters[ReturnValue]. ') '. $outputParameters[ReturnMessage];
+                    $dbResult = false;
+                }
+
+                #echo "DB->returnvalues ReturnValue = ". $outputParameters["ReturnValue"]. "<br>";
+                #echo "DB->returnvalues Insertid = ". $outputParameters["NextId"]. "<br>";
+            }
+
+        }
+
+        $db->closeConnection();
+        return $dbResult;
+
+    }
+
+    function updateProduct( $arrData, &$returnMessage ) {
+
+        $db = new iDBManager();
+
+        if ( !$db->openConnection() ){
+            $returnMessage = $db->getErrorMessage();
+            return false;
+        }
+
+        /*
+        echo $arrData[ClientAdditionalInfoId];
+        echo '<br/>'. $arrData[ClientId];
+        echo '<br/>'. $arrData[InitialTitle];
+        echo '<br/>'. $arrData[InitialDescription];
+        echo '<br/>'. $arrData[InitialDisplayOrder];
+        echo '<br/>'. $arrData[Title];
+        echo '<br/>'. $arrData[Description];
+        echo '<br/>'. $arrData[DisplayOrder];
+        */
+
+        $query = 'CALL UpdateProduct( ' .
+        $arrData[ProductId] . ', ' .
+
+        $arrData[InitialCategoryId] . ', ' .
+        fnumreq($arrData[InitialSubcategoryId]) . ', ' .
+        fstrreq($arrData[InitialIssueDate]) . ', ' .
+        fstrreq($arrData[InitialTitle]) . ', ' .
+        fstrreq($arrData[InitialDescription]) . ', ' .
+        fstrreq($arrData[InitialProductNumber]) . ', ' .
+        fnumnotreq($arrData[InitialOnHand]) . ', ' .
+        fnumreq($arrData[InitialActualPrice]) . ', ' .
+        fnumreq($arrData[InitialListPrice]) . ', ' .
+        fnumreq($arrData[InitialShippingPrice]) . ', ' .
+        fbolreq($arrData[InitialActive]) . ', ' .
+
+        $arrData[CategoryId] . ', ' .
+        fnumreq($arrData[SubcategoryId]) . ', ' .
+        fstrreq($arrData[IssueDate]) . ', ' .
+        fstrreq($arrData[Title]) . ', ' .
+        fstrreq($arrData[Description]) . ', ' .
+        fstrreq($arrData[ProductNumber]) . ', ' .
+        fnumnotreq($arrData[OnHand]) . ', ' .
+        fnumreq($arrData[ActualPrice]) . ', ' .
+        fnumreq($arrData[ListPrice]) . ', ' .
+        fnumreq($arrData[ShippingPrice]) . ', ' .
+        fbolreq($arrData[Active]) . ', ' .
+
+        $arrData[LastUpdateBy] . ',
+        @ReturnValue, @ReturnMessage ); ';
+        $query .= 'SELECT @ReturnValue AS ReturnValue, @ReturnMessage AS ReturnMessage';
+        //$query = "CALL SelectGenerationRecent( @ReturnValue, @ReturnMessage ); SELECT @ReturnValue AS ReturnValue, @ReturnMessage AS ReturnMessage";
+        $db->setSqlQuery($query);
+
+        $dbResult = true;
+        if (!$db->executeNonQuery()){
+            $returnMessage = $db->getErrorMessage();
+            $dbResult = false;
+        } else {
+
+            //debug print output values
+            $outputParameters = $db->getOutputParameterValues();
+            if ( !empty($outputParameters) ){
+                #foreach( $outputParameters as $key=>$value)
+                #    echo $key. '=>'. $value. '<br>';
+
+                if ($outputParameters[ReturnValue] == 0){
+                    $returnMessage = $outputParameters[ReturnMessage];
+                }
+                else{
+                    $returnMessage = 'Error('. $outputParameters[ReturnValue]. ') '. $outputParameters[ReturnMessage];
+                    $dbResult = false;
+                }
+
+                #echo "DB->returnvalues ReturnValue = ". $outputParameters["ReturnValue"]. "<br>";
+                #echo "DB->returnvalues Insertid = ". $outputParameters["NextId"]. "<br>";
+            }
+
+        }
+
+        $db->closeConnection();
+        return $dbResult;
+
+    }
+
+    function deleteProduct( $id, &$returnMessage ) {
+
+        $db = new iDBManager();
+
+        if ( !$db->openConnection() ){
+            $returnMessage = $db->getErrorMessage();
+            return false;
+        }
+
+        $query = "CALL DeleteProduct($id, @ReturnValue, @ReturnMessage ); SELECT @ReturnValue AS ReturnValue, @ReturnMessage AS ReturnMessage";
         //$query = "CALL SelectGenerationRecent( @ReturnValue, @ReturnMessage ); SELECT @ReturnValue AS ReturnValue, @ReturnMessage AS ReturnMessage";
         $db->setSqlQuery($query);
 
