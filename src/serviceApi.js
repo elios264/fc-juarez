@@ -19,7 +19,7 @@ const GENERAL_TABLE_URL = 'http://administrador.ligamx.net/webservices/prtl_web_
 const normalizeData = ({ columns, records }) => _.map(records, (record) => _.zipObject(columns, record));
 const fetchJson = async (url, decode = true) => {
   __DEV__ && console.log(`Fetching ${url}`);
-  const response = await fetch(url);
+  const response = await fetch(url, { headers: { 'Cache-Control': 'no-cache' } });
   let text = await response.text();
   if (decode) {
     text = utf8ArrayToStr(_.map(JSON.stringify(JSON.parse(text)), (c) => c.codePointAt(0)));
@@ -28,7 +28,7 @@ const fetchJson = async (url, decode = true) => {
   return result;
 };
 const fileExists = async (url) => {
-  const result = await fetch(url, { method: 'HEAD' });
+  const result = await fetch(url, { method: 'HEAD', headers: { 'Cache-Control': 'no-cache' } });
   return result.status !== 404;
 };
 
