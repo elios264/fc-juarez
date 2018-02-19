@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
-import { Text, View, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { Text, View, Image, TouchableOpacity, StyleSheet, Linking } from 'react-native';
 import NativeTachyons, { sizes } from 'react-native-style-tachyons';
 import { Link, withRouter } from 'react-router-native';
 
@@ -41,6 +41,10 @@ export class Sidebar extends PureComponent {
     this.props.drawer.closeDrawer();
   }
 
+  openEuphos = () => {
+    Linking.openURL('https://www.eupho.io/');
+  }
+
   render() {
 
     return (
@@ -63,9 +67,14 @@ export class Sidebar extends PureComponent {
           <MenuElement path='/the-minute' image={require('fc_juarez/assets/img/menu/whistle.png')} text='Minuto a minuto' />
           <MenuElement path='/settings' image={require('fc_juarez/assets/img/menu/timer.png')} text='Configuración' />
 
-          <Text cls='gray ff-ubu-b absolute bottom-1 left-1' style={{ fontSize: sizes.f5 / 2 }}>
-            Todos los derechos reservados 2017
-          </Text>
+          <View cls='absolute bottom-1 left-1' >
+            <TouchableOpacity onPress={this.openEuphos} >
+              <Image cls='mb1 rm-contain w3' source={require('fc_juarez/assets/img/menu/eupho.png')} />
+            </TouchableOpacity>
+            <Text cls='gray ff-ubu-b' style={{ fontSize: sizes.f5 / 2 }}>
+              Todos los derechos reservados 2018
+            </Text>
+          </View>
         </View>
       </View>
     );
