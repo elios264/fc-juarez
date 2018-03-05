@@ -109,6 +109,8 @@ export const utf8ArrayToStr = (array) => {
 export const br2nl = (str) => {
   return str.replace(/<br\s*\/?>/mg, '\n');
 };
+export const getValue = (value, mapping = {}, defaultValue) => _.get(mapping, `[${value}]`, defaultValue);
+
 
 export const CacheableImage = imageLocalHoc(Image);
 export const CacheableScalableImage = imageLocalHoc(ScalableImage);

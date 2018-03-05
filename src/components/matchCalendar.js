@@ -6,8 +6,9 @@ import _ from 'lodash';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { DataPicker } from 'rnkit-actionsheet-picker';
+import moment from 'moment';
 
-import { CacheableImage, CacheableScalableImage } from 'fc_juarez/src/utils';
+import { CacheableImage, CacheableScalableImage, getValue } from 'fc_juarez/src/utils';
 import { loadFromServer } from 'fc_juarez/src/actions/initializers';
 import { Season, GameMatch, Tournament, Advertisement } from 'fc_juarez/src/objects';
 
@@ -17,14 +18,27 @@ class MatchInfo extends PureComponent {
   static propTypes = {
     tournament: PropTypes.instanceOf(Tournament).isRequired,
     match: PropTypes.instanceOf(GameMatch).isRequired,
-    onViewMore: PropTypes.func.isRequired,
+    nextMatch: PropTypes.instanceOf(GameMatch),
   }
 
-  openViewMore = () => this.props.onViewMore(this.props.match);
+  openViewMore = () => {
+    const { history, nextMatch, match } = this.props;
+    const { viewMoreUrl, id } = match;
+
+    if (_.get(nextMatch, 'id') === id)
+      history.replace('/next-match');
+    else
+      Linking.openURL(viewMoreUrl);
+  }
+
+  buyTickets = () => {
+    Linking.openURL('https://fcjuarez.boletosenlinea.events/');
+  }
+
 
 
   render() {
-    const { match, tournament } = this.props;
+    const { match, tournament, nextMatch } = this.props;
     const { time, stadium, scoreAway, scoreHome, versusTeam, versusTeamAtHome, teamLogoUrl } = match;
 
 
@@ -33,6 +47,13 @@ class MatchInfo extends PureComponent {
 
     const fst = versusTeamAtHome ? enemy : bravos;
     const snd = versusTeamAtHome ? bravos : enemy;
+
+    const now = moment();
+    const mode = moment(time).isBefore(now)
+      ? 'prev'
+      : _.get(nextMatch, 'id') === match.id
+        ? 'cur'
+        : 'next';
 
     return (
       <View cls='aic mv3'>
@@ -45,9 +66,17 @@ class MatchInfo extends PureComponent {
         </View>
         <Text cls='white ff-ubu-b mb1 bg-transparent'>{_.capitalize(time.format('MMM/DD/YYYY').replace(/\./, ''))}<Text cls='gray'>  |  </Text>{time.format('hh:mm A')}</Text>
         <Text cls='contrast ff-ubu-b mb3 bg-transparent'>{stadium}<Text cls='gray'>  |  </Text>{tournament.title}</Text>
-        <TouchableHighlight onPress={this.openViewMore} cls='bg-contrast pv2 jcc aic ass' underlayColor='#0c963e' >
-          <Text cls='white f6 ff-ubu-b bg-transparent'>Ver más</Text>
-        </TouchableHighlight>
+        <TouchableOpacity onPress={this.openViewMore} cls='bg-contrast pv2 jcc aic ass' activeOpacity={0.6} >
+          <Text cls='white f6 ff-ubu-b bg-transparent'>{getValue(mode, { prev: 'Resumen', cur: 'Ver más', next: 'Previa' })}</Text>
+        </TouchableOpacity>
+        {(mode === 'cur' || mode === 'next') &&
+          <TouchableOpacity onPress={this.buyTickets} cls='ass mt2' activeOpacity={0.6} >
+            <View cls='flx-row jcc aic h2' >
+              <Image cls='absolute-fill rm-stretch' style={[styles.expand]} source={require('fc_juarez/assets/img/rectangle.png')} />
+              <Text cls='white f6 ff-ubu-b bg-transparent'>Comprar Boletos</Text>
+            </View>
+          </TouchableOpacity>
+        }
       </View>
     );
   }
@@ -78,16 +107,6 @@ export class MatchCalendar extends PureComponent {
 
   state = { currentSeason: _.last(this.props.seasons) };
 
-  openViewMore = ({ viewMoreUrl, id }) => {
-    const { history, nextMatch } = this.props;
-
-    if (_.get(nextMatch, 'id') === id)
-      history.replace('/next-match');
-    else
-      Linking.openURL(viewMoreUrl);
-  }
-
-
   openPicker = () => {
     const { seasons } = this.props;
     DataPicker.show({
@@ -102,7 +121,7 @@ export class MatchCalendar extends PureComponent {
 
 
   render() {
-    let { gameMatches, tournaments, ad, refreshing, loadFromServer } = this.props;
+    let { gameMatches, tournaments, ad, refreshing, loadFromServer, nextMatch, history } = this.props;
     const { currentSeason } = this.state;
 
     gameMatches = _(gameMatches)
@@ -125,7 +144,7 @@ export class MatchCalendar extends PureComponent {
             <View cls='bt b--#373737' />
             <View cls='mh2 mv3'>
               <Text cls='mb2 white ff-ubu-b bg-transparent'>{currentSeason ? currentSeason.title : 'Sin temporadas'}</Text>
-              {_.map(gameMatches, (match) => <MatchInfo key={match.id} match={match} tournament={tournaments[match.tournamentId]} onViewMore={this.openViewMore} />)}
+              {_.map(gameMatches, (match) => <MatchInfo key={match.id} nextMatch={nextMatch} match={match} tournament={tournaments[match.tournamentId]} history={history} />)}
             </View>
           </ScrollView>
         </View>
