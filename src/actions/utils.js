@@ -10,7 +10,7 @@ export const displayError = debounceCall((errors) => {
     errors = Array.from(new Set(errors));
     const many = errors.length > 1;
     const messages = errors.reverse().map((err, i) => many && i === 0 ? `${err}:` : err).join('\n');
-    Alert.alert('Un error ha ocurrido', messages);
+    Alert.alert('¡Ups!', messages);
   }, 500);
 });
 export const confirmAction = (title, message) => {
@@ -27,8 +27,6 @@ export const catchError = (fn, errorMessage, returnOnFail) => async (...args) =>
     return await fn(...args);
   } catch (error) {
     console.warn(error.message);
-    if (errorMessage && error.message)
-      displayError(error.message);
     if (errorMessage) displayError(errorMessage);
     return _.isFunction(returnOnFail) ? returnOnFail(...args) : returnOnFail;
   }

@@ -90,7 +90,7 @@ export const loadFromServer = () => catchError(async (dispatch, getState) => {
   dispatch(saveToStorage());
   dispatch({ type: 'REFRESHING', refreshing: false });
   return true;
-}, 'No se han podido descargar los datos del servidor', (dispatch) => {
+}, 'No se han podido descargar los datos del servidor:\nVerifica tu conexión de internet.', (dispatch) => {
   dispatch({ type: 'REFRESHING', refreshing: false });
   return false;
 });
