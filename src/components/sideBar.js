@@ -54,9 +54,9 @@ export class Sidebar extends PureComponent {
             <Image cls='h1 w1' source={require('fc_juarez/assets/img/back.png')} />
           </TouchableOpacity>
           <Link to='/' component={TouchableOpacity} >
-            <Text cls='white f3 ff-permanent-marker'> FC Juarez </Text>
+            <Image cls='rm-contain w4' resizeMethod='resize' source={require('fc_juarez/assets/img/header/logo-bravos.png')} />
           </Link>
-          <Text cls='gray ff-ubu-b absolute' style={{ fontSize: sizes.f5 / 2, bottom: sizes.mb1 + sizes.mb3 }}>
+          <Text cls='gray ff-ubu-b absolute bottom-1' style={{ fontSize: sizes.f5 / 2, left: 140 }}>
             FC JÚAREZ | V1.0
           </Text>
         </View>
@@ -95,5 +95,9 @@ const styles = StyleSheet.create({
     }, {
       height: sizes.h2 + sizes.h3
     })
+  },
+  expand: {
+    width: '100%',
+    height: '100%'
   },
 });

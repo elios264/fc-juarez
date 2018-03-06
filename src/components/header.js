@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React, { PureComponent } from 'react';
-import { Text, View, Image, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import NativeTachyons, { sizes } from 'react-native-style-tachyons';
 
 import { palette } from 'fc_juarez/src/theme';
