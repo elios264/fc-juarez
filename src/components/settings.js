@@ -15,7 +15,7 @@ import { CacheableImage } from 'fc_juarez/src/utils';
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ updatePushSettings, getPushPermissions }, dispatch);
 const mapStateToProps = (state) => ({
-  notificationsAllowed: state.appInfo.pushPermissions.notificationsEnabled,
+  notificationsAllowed: _.get(state.appInfo.pushPermissions, 'notificationsEnabled', false),
   pushSettings: state.pushSettings,
   ad: state.objects.ads[Advertisement.BigAd]
 });
