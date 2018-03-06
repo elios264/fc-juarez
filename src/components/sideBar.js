@@ -50,7 +50,7 @@ export class Sidebar extends PureComponent {
     return (
       <View cls='flx-i bg-primarydark'>
         <View cls='bg-primary aic jcc' style={[styles.header]}>
-          <TouchableOpacity cls='absolute left-1 jcc aic w3 h3' onPress={this.closeDrawer}>
+          <TouchableOpacity cls='absolute left-1 bottom-1 jcc aic w3 h3' onPress={this.closeDrawer}>
             <Image cls='h1 w1' source={require('fc_juarez/assets/img/back.png')} />
           </TouchableOpacity>
           <Link to='/' component={TouchableOpacity} >
@@ -91,7 +91,8 @@ export class Sidebar extends PureComponent {
 const styles = StyleSheet.create({
   header: {
     ...ifIphoneX({
-      height: sizes.h3 + sizes.h3
+      height: sizes.h3 + sizes.h3,
+      paddingTop: sizes.mt4
     }, {
       height: sizes.h2 + sizes.h3
     })
