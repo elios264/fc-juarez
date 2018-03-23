@@ -101,7 +101,7 @@ android {
         applicationId "com.mercatika.fc_juarez"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 6
+        versionCode 7
         versionName "1.0"
         manifestPlaceholders = [onesignal_app_id: "5c13208c-4b79-4a14-bf39-bee0a9515b7a",
                                 onesignal_google_project_number: "REMOTE"]
