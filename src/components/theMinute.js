@@ -88,13 +88,13 @@ export class TheMinute extends PureComponent {
         </View>
         <View cls='flx-row jcc aic h3 mh2' >
           <View cls='flx-i flx-row aic ml2'>
-            <CacheableImage cls='w3 h3 rm-stretch' source={fst.logo} />
+            <CacheableImage cls='w3 h3 rm-contain' source={fst.logo} />
             <Text cls='flx-i ml2 ff-ubu-b white bg-transparent' style={[styles.smallText]}>{fst.name}</Text>
           </View>
           <Text cls='f4 white ff-ubu-b mh2 bg-transparent'>{match.scoreHome}<Text cls='gray'>  vs  </Text>{match.scoreAway}</Text>
           <View cls='flx-i flx-row aic ml2 jcfe'>
             <Text cls='flx-i ff-ubu-b white bg-transparent tr mr2' style={[styles.smallText]}>{snd.name}</Text>
-            <CacheableImage cls='w3 h3 rm-stretch' source={snd.logo} />
+            <CacheableImage cls='w3 h3 rm-contain' source={snd.logo} />
           </View>
         </View>
         <View cls='mh4 mt4 mb3 bt b--#373737' />

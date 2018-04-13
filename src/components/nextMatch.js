@@ -76,13 +76,13 @@ export class NextMatch extends PureComponent {
         </View>
         <View cls='flx-row jcc aic h3 mh2' >
           <View cls='flx-i flx-row aic ml2'>
-            <CacheableImage cls='w3 h3 rm-stretch' source={fst.logo} />
+            <CacheableImage cls='w3 h3 rm-contain' source={fst.logo} />
             <Text cls='flx-i ml2 ff-ubu-b white bg-transparent' style={[styles.smallText]}>{fst.name}</Text>
           </View>
           <Text cls='ff-ubu-b white f4 bg-transparent mh2'>VS</Text>
           <View cls='flx-i flx-row aic ml2 jcfe'>
             <Text cls='flx-i ff-ubu-b white bg-transparent tr mr2' style={[styles.smallText]}>{snd.name}</Text>
-            <CacheableImage cls='w3 h3 rm-stretch' source={snd.logo} />
+            <CacheableImage cls='w3 h3 rm-contain' source={snd.logo} />
           </View>
         </View>
         <View cls='ma4 mb0 bt b--#373737 pt3 pb3'>
