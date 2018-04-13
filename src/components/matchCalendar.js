@@ -67,7 +67,7 @@ class MatchInfo extends PureComponent {
         <Text cls='white ff-ubu-b mb1 bg-transparent'>{_.capitalize(time.format('MMM/DD/YYYY').replace(/\./, ''))}<Text cls='gray'>  |  </Text>{time.format('hh:mm A')}</Text>
         <Text cls='contrast ff-ubu-b mb3 bg-transparent'>{stadium}<Text cls='gray'>  |  </Text>{tournament.title}</Text>
         <TouchableOpacity onPress={this.openViewMore} cls='bg-contrast pv2 jcc aic ass' activeOpacity={0.6} >
-          <Text cls='white f6 ff-ubu-b bg-transparent'>{getValue(mode, { prev: 'Resumen', cur: 'Ver más', next: 'Previa' })}</Text>
+          <Text cls='white f6 ff-ubu-b bg-transparent'>{getValue(mode, { prev: 'Resumen' }, 'Previa')}</Text>
         </TouchableOpacity>
         {(mode === 'cur' || mode === 'next') &&
           <TouchableOpacity onPress={this.buyTickets} cls='ass mt2' activeOpacity={0.6} >

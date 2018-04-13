@@ -37,24 +37,26 @@ export class Advertisement {
 export class GameMatch {
 
   constructor(attributes) {
-    const { Date: date, Hour, GameFutureId, SeasonId, Stadium, TournamentId, VersusTeam, VersusTeamAtHome, GamePresentId, ScoreAway, ScoreHome, Description, Subtitle, Title, banners } = attributes;
+    const { Date: date, Hour, GameFutureId, SeasonId, Stadium, TournamentId, VersusTeam, VersusTeamAtHome, GamePresentId, GamePastId, ScoreAway, ScoreHome, Description, Subtitle, Title, banners } = attributes;
 
     const time = moment.tz(`${date} ${Hour}`, 'YYYY-MM-DD HH:mm:ss', 'America/Chihuahua').local().toDate();
     const id = GameFutureId;
     const detailsId = GamePresentId;
+    const summaryId = GamePastId;
     const desc = Description || Title || Subtitle;
 
-    this.attributes = { time, id, detailsId, SeasonId, Stadium, TournamentId, VersusTeam, VersusTeamAtHome, ScoreAway, ScoreHome, desc, banners };
+    this.attributes = { time, id, detailsId, summaryId, SeasonId, Stadium, TournamentId, VersusTeam, VersusTeamAtHome, ScoreAway, ScoreHome, desc, banners };
   }
 
   get viewMoreUrl() {
-    return this.detailsId
-      ? `${SERVER_URL}/perfil-partidos-en-curso.php?${_.replace(btoa(`gp=${this.detailsId}`), '=', '')}`
+    return this.summaryId
+      ? `${SERVER_URL}/perfil-partidos-resumen.php?${_.replace(btoa(`gt=${this.summaryId}`), '=', '')}`
       : `${SERVER_URL}/perfil-partidos-por-jugar.php?${_.replace(btoa(`gf=${this.id}`), '=', '')}`;
   }
   get bannerUrls() { return this.attributes.banners; }
   get teamLogoUrl() { return `${SERVER_URL}/binder/gamefuture/${this.id}-0.png`; }
   get id() { return this.attributes.id; }
+  get summaryId() { return this.attributes.summaryId; }
   get detailsId() { return this.attributes.detailsId; }
   get seasonId() { return this.attributes.SeasonId; }
   get tournamentId() { return this.attributes.TournamentId; }

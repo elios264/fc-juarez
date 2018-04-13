@@ -865,7 +865,7 @@ $api = new PHP_CRUD_API(array(
 	'database'=>'fcjuarez_emc2',
   'charset'=>'utf8',
   'table_authorizer'=>function($cmd,$db,$tab) {
-    return in_array($tab, array('Season', 'Tournament', 'GameFuture', 'GamePresent', 'GamePresentMinute', 'Banner', 'Advertisement'));
+    return in_array($tab, array('Season', 'Tournament', 'GameFuture', 'GamePresent', 'GamePast', 'GamePresentMinute', 'Banner', 'Advertisement'));
   },
 ));
 $api->executeCommand();

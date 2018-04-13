@@ -10,6 +10,7 @@ const SEASON_URL = '/Season?filter=Active,eq,1&columns=Title,SeasonId';
 const TOURNAMENT_URL = '/Tournament?filter=Active,eq,1&columns=Title,TournamentId';
 const GAME_MATCH_URL = `/GameFuture?columns=GameFutureId,SeasonId,TournamentId,Date,Hour,VersusTeam,VersusTeamAtHome,Stadium&filter[]=Active,eq,1&filter[]=Date,ge,${moment().subtract(4, 'months').format('YYYY-MM-DD')}`;
 const GAME_MATCH_RESULTS_URL = (ids) => `/GamePresent?columns=GamePresentId,GameFutureId,ScoreHome,ScoreAway&filter=GameFutureId,in,${_.join(ids)}`;
+const GAME_MATCH_SUMMARY_URL = (ids) => `/GamePast?columns=GamePastId,GameFutureId&filter=GameFutureId,in,${_.join(ids)}`;
 const GAME_MATCH_DETAILS_URL = (id) => `/GameFuture/${id}`;
 const GAME_MATCH_MINUTE_URL = (id) => `/GamePresentMinute?columns=GamePresentId,GameEventId,Minute,Description&filter=GamePresentId,eq,${id}`;
 const WELCOME_BANNER_URL = '/Banner?order=InputDate,desc&page=1,1&columns=BannerId';
@@ -49,12 +50,20 @@ export class ServiceApi {
     const matches = normalizeData(response.GameFuture);
 
     const ids = _.map(matches, 'GameFutureId');
-    const response2 = await fetchJson(`${SERVER_URL}${API_PATH}${GAME_MATCH_RESULTS_URL(ids)}`); // eslint-disable-line new-cap
+
+    const [response2, response3] = await Promise.all([
+      fetchJson(`${SERVER_URL}${API_PATH}${GAME_MATCH_RESULTS_URL(ids)}`), // eslint-disable-line new-cap
+      fetchJson(`${SERVER_URL}${API_PATH}${GAME_MATCH_SUMMARY_URL(ids)}`), // eslint-disable-line new-cap
+    ]);
+
     const matchesResults = _.keyBy(normalizeData(response2.GamePresent), 'GameFutureId');
+    const summaryResults = _.keyBy(normalizeData(response3.GamePast), 'GameFutureId');
 
     _.each(matches, (match) => {
       const matchResult = matchesResults[match.GameFutureId];
+      const summaryResult = summaryResults[match.GameFutureId];
       if (matchResult) _.assign(match, matchResult);
+      if (summaryResult) _.assign(match, summaryResult);
     });
 
     return matches;
