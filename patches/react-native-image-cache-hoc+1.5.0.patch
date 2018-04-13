@@ -10,7 +10,7 @@ patch-package
        placeholder: PropTypes.shape({
          component: PropTypes.func,
          props: PropTypes.object
-@@ -195,7 +195,7 @@ export default function imageCacheHoc(Image, options = {}) {
+@@ -244,7 +244,7 @@ export default function imageCacheHoc(Image, options = {}) {
          } else if (this.options.defaultPlaceholder) {
            return (<this.options.defaultPlaceholder.component {...this.options.defaultPlaceholder.props} />);
          } else {
