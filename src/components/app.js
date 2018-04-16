@@ -19,6 +19,11 @@ import { MatchCalendar } from './matchCalendar';
 import { Standings } from './standings';
 import { TheMinute } from './theMinute';
 
+let coldStartNotification = undefined;
+OneSignal.addEventListener('opened', (openResult) => {
+  coldStartNotification = openResult;
+});
+
 const mapStateToProps = (state) => ({ initializing: state.initializing });
 const mapDispatchToProps = (dispatch) => bindActionCreators({ loadFromServer }, dispatch);
 @connect(mapStateToProps, mapDispatchToProps)
@@ -29,15 +34,16 @@ export class App extends PureComponent {
     loadFromServer: PropTypes.func.isRequired,
   }
 
-  componentWillMount() {
+  componentDidMount() {
+    if (coldStartNotification) {
+      this.onOpened(coldStartNotification, false);
+      coldStartNotification = undefined;
+    }
     OneSignal.addEventListener('opened', this.onOpened);
   }
 
-  componentWillUnmount() {
-    OneSignal.removeEventListener('opened', this.onOpened);
-  }
 
-  onOpened = (openResult) => {
+  onOpened = (openResult, reload = true) => {
     const { history, loadFromServer } = this.props;
     const pageToNavigate = _.get(openResult, 'notification.payload.additionalData.page');
     switch (pageToNavigate) {
@@ -45,7 +51,9 @@ export class App extends PureComponent {
       case 'matchCalendar': history.push('/next-match'); break;
       default: break;
     }
-    loadFromServer();
+    if (reload) {
+      loadFromServer();
+    }
   }
 
   setDrawerRef = (ref) => this.drawer = ref;

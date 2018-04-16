@@ -1831,7 +1831,8 @@
           $response = sendNotification(array(
             'title' => $arrData[GameEventAction],
             'message' => $arrData[Description],
-            'segment' => $arrData[GameEventId] === '14' ? 'MATCH_GOAL_ALERTS' : 'GENERAL_ALERTS'
+            'segment' => $arrData[GameEventId] === '14' ? 'MATCH_GOAL_ALERTS' : 'GENERAL_ALERTS',
+            'data' =>  array("page" => "minute"),
           ));
         }
 

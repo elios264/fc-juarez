@@ -4,9 +4,9 @@ Cliente Android & IOS
 
 Tareas pendientes:
 
-[ ] - sidebar logo que esta en la pagina web a un lado del logo de esp eufo
-[ ] - welcome banner para móvil
-[ ] - icono android notificaciones.
+[X] - sidebar logo que esta en la pagina web a un lado del logo de esp eufo
+[X] - welcome banner para móvil
+[X] - icono android notificaciones.
 [X] - reestructurar loading en todas las pantallas
 [X] - primer lanzamiento las notificaciones no estan activadas
 [X] - imagenes offline
@@ -29,7 +29,6 @@ Tareas pendientes:
 [X] - Arreglar iconos minuto a minutos
 [X] - Remover ubicacion equipo rival
 [X] - Checar en todas pantallas textos largos.
-
-Dias antes de partido notificacion:
-3 dias antes y el dia del partido
-3 dias " En 3 dias vive la emoción de ser Bravo, el nombre del equipo de casa y el contrincante.
+[X] - anañadir jscodelocation ios
+[X] - hacer que el listener de onesignal se registre lo antes posible.
+[X] - publicar version nueva con correcciones.
