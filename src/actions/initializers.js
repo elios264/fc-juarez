@@ -38,11 +38,15 @@ export const loadFromStorage = () => catchError(async (dispatch) => {
   dispatch({ type: 'GameMatch_FETCHED', objects: _.map(gameMatches, (attributes) => _.create(GameMatch.prototype, attributes)) });
   dispatch({ type: 'TeamInfo_FETCHED', objects: _.map(teamsInfo, (attributes) => _.create(TeamInfo.prototype, attributes)) });
   dispatch({ type: 'WelcomeBannerUrl_FETCHED', object: welcomeBannerUrl });
-  dispatch({ type: 'NextMatch_FETCHED', object: _.create(GameMatch.prototype, nextMatch) });
-  dispatch({ type: 'CurrentMatch_FETCHED', object: {
-    match: _.create(GameMatch.prototype, currentMatch.match),
-    details: _.map(currentMatch.details, (details) => _.create(GameMatchDetails.prototype, details))
-  } });
+
+  if (nextMatch)
+    dispatch({ type: 'NextMatch_FETCHED', object: _.create(GameMatch.prototype, nextMatch) });
+
+  if (currentMatch && currentMatch.details)
+    dispatch({ type: 'CurrentMatch_FETCHED', object: {
+      match: _.create(GameMatch.prototype, currentMatch.match),
+      details: _.map(currentMatch.details, (details) => _.create(GameMatchDetails.prototype, details))
+    } });
 
 }, 'No se han podido recargar los datos del almacenamiento interno');
 export const saveToStorage = () => catchError(async (dispatch, getState) => {
