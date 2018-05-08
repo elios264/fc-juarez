@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import moment from 'moment';
 import { AsyncStorage } from 'react-native';
+import SplashScreen from 'react-native-splash-screen';
 
 import { catchError } from './utils';
 import { downloadPushSettings, initializePushSettings } from './pushNotifications';
@@ -23,8 +24,10 @@ export const intialize = () => catchError(async(dispatch) => {
     await dispatch(initializePushSettings());
   }
 
+  SplashScreen.hide();
   dispatch({ type: 'INITIALIZING', running: false });
 }, 'Ha ocurrido un error inicializando el sistema', (dispatch) => {
+  SplashScreen.hide();
   dispatch({ type: 'INITIALIZING', running: false });
 });
 

@@ -11,7 +11,6 @@ import _ from 'lodash';
 import { loadFromServer } from 'fc_juarez/src/actions/initializers';
 import { Sidebar } from './sideBar';
 import { Header } from './header';
-import { Loader } from './loader';
 import { Welcome } from './welcome';
 import { Settings } from './settings';
 import { NextMatch } from './nextMatch';
@@ -70,7 +69,6 @@ export class App extends PureComponent {
       >
         <StatusBar backgroundColor='transparent' translucent barStyle='light-content' />
         <Switch>
-          { initializing && <Route component={Loader} /> }
           <Route render={() => (
             <View style={styles.flex}>
               <Header drawer={this.drawer} />
