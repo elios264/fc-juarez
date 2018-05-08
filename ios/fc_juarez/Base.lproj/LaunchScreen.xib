@@ -11,23 +11,31 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
-            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+        <view contentMode="scaleToFill" id="aoE-99-1hU">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" preservesSuperviewLayoutMargins="YES" layoutMarginsFollowReadableWidth="YES" insetsLayoutMarginsFromSafeArea="NO" image="screen.png" translatesAutoresizingMaskIntoConstraints="NO" id="6ja-WN-8A1">
-                    <rect key="frame" x="0.0" y="0.0" width="480" height="480"/>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="bgWelcome.png" translatesAutoresizingMaskIntoConstraints="NO" id="yZk-x3-Ix8">
+                    <rect key="frame" x="0.0" y="0.0" width="376" height="670"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                    <color key="backgroundColor" red="0.92570477724075317" green="0.14001494361443986" blue="0.079292342746641473" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </imageView>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="sponsor.png" translatesAutoresizingMaskIntoConstraints="NO" id="GoX-H1-cxo">
+                    <rect key="frame" x="145" y="620" width="230" height="49"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                </imageView>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="fcLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="HGs-I1-7Du">
+                    <rect key="frame" x="-5" y="160" width="385" height="346"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" cocoaTouchSystemColor="viewFlipsideBackgroundColor"/>
-            <nil key="simulatedStatusBarMetrics"/>
-            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="548" y="455"/>
+            <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="tintColor" cocoaTouchSystemColor="darkTextColor"/>
+            <point key="canvasLocation" x="-654.5" y="7.5"/>
         </view>
     </objects>
     <resources>
-        <image name="screen.png" width="1080" height="1920"/>
+        <image name="bgWelcome.png" width="1080" height="1920"/>
+        <image name="fcLogo.png" width="1080" height="1920"/>
+        <image name="sponsor.png" width="555" height="108"/>
     </resources>
 </document>

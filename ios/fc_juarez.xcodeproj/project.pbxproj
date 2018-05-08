@@ -42,13 +42,16 @@
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		8B700E241FEB214700C87D2D /* Permanent Marker.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 794C7D1D30474BF2ABADC587 /* Permanent Marker.ttf */; };
-		8BF5F3131FEC3CA1009BF261 /* screen.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BF5F2EF1FEC3CA1009BF261 /* screen.png */; };
+		8BE21BF120A24BC4003C731C /* bgWelcome.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE21BF020A24BC4003C731C /* bgWelcome.png */; };
+		8BE21BF320A24BCD003C731C /* fcLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE21BF220A24BCD003C731C /* fcLogo.png */; };
+		8BE21BF520A24BDF003C731C /* sponsor.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE21BF420A24BDF003C731C /* sponsor.png */; };
 		9E8585810A0240F885E7D766 /* Ubuntu-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6566BAA026744D69B7E319B /* Ubuntu-LightItalic.ttf */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B332DCD087AE49189FE3B0D3 /* Ubuntu-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 43313435F3634DA4A046D2C4 /* Ubuntu-BoldItalic.ttf */; };
 		DEB154CA3DA942A39E972521 /* libRNFetchBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 32BCC9DA2A1547BDB2BC55E2 /* libRNFetchBlob.a */; };
 		E01402AD8C084D38A0AD404E /* libRCTOneSignal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 252F5C506B944719A4404ACA /* libRCTOneSignal.a */; };
 		EC07722BA8414E4283B14844 /* Ubuntu-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E3A0E4E3B3340A295D89BF6 /* Ubuntu-Bold.ttf */; };
+		FF15DBF31636400A8191CDF3 /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D61A68B9A6E48BEA360D573 /* libSplashScreen.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -339,6 +342,13 @@
 			remoteGlobalIDString = A15C300E1CD25C330074CB35;
 			remoteInfo = RNFetchBlob;
 		};
+		8BE21C3F20A24CEB003C731C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F7B940DB100E44B8BCDC2D6A /* SplashScreen.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 3D7682761D8E76B80014119E;
+			remoteInfo = SplashScreen;
+		};
 		ADBDB9261DFEBF0700ED6528 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */;
@@ -368,6 +378,7 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = fc_juarez/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = fc_juarez/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		1D61A68B9A6E48BEA360D573 /* libSplashScreen.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libSplashScreen.a; sourceTree = "<group>"; };
 		1E3A0E4E3B3340A295D89BF6 /* Ubuntu-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Bold.ttf"; path = "../assets/fonts/Ubuntu-Bold.ttf"; sourceTree = "<group>"; };
 		252F5C506B944719A4404ACA /* libRCTOneSignal.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTOneSignal.a; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* fc_juarez-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "fc_juarez-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -382,13 +393,16 @@
 		7DB8150996794BC0A6F875C5 /* libRNKitASPickerView.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNKitASPickerView.a; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		8B2B56DF200582BF00CEB904 /* fc_juarez.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = fc_juarez.entitlements; path = fc_juarez/fc_juarez.entitlements; sourceTree = "<group>"; };
-		8BF5F2EF1FEC3CA1009BF261 /* screen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = screen.png; path = ../android/app/src/main/res/drawable/screen.png; sourceTree = "<group>"; };
+		8BE21BF020A24BC4003C731C /* bgWelcome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bgWelcome.png; path = ../assets/img/loader/bgWelcome.png; sourceTree = "<group>"; };
+		8BE21BF220A24BCD003C731C /* fcLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fcLogo.png; path = ../assets/img/loader/fcLogo.png; sourceTree = "<group>"; };
+		8BE21BF420A24BDF003C731C /* sponsor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sponsor.png; path = ../assets/img/loader/sponsor.png; sourceTree = "<group>"; };
 		97617A1BEC224E62ABFAFB4C /* Ubuntu-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-MediumItalic.ttf"; path = "../assets/fonts/Ubuntu-MediumItalic.ttf"; sourceTree = "<group>"; };
 		9E41E55D262D4F6BA2DB1606 /* RNKitASPickerView.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNKitASPickerView.xcodeproj; path = "../node_modules/rnkit-actionsheet-picker/ios/RNKitASPickerView.xcodeproj"; sourceTree = "<group>"; };
 		AB0F399D42C3472C8DAD3953 /* RCTOneSignal.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTOneSignal.xcodeproj; path = "../node_modules/react-native-onesignal/ios/RCTOneSignal.xcodeproj"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		ED853D46AA63440F98AD0944 /* Ubuntu-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Light.ttf"; path = "../assets/fonts/Ubuntu-Light.ttf"; sourceTree = "<group>"; };
 		F6566BAA026744D69B7E319B /* Ubuntu-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-LightItalic.ttf"; path = "../assets/fonts/Ubuntu-LightItalic.ttf"; sourceTree = "<group>"; };
+		F7B940DB100E44B8BCDC2D6A /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
 		FECDA92583154243AE1A89C8 /* Ubuntu-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Medium.ttf"; path = "../assets/fonts/Ubuntu-Medium.ttf"; sourceTree = "<group>"; };
 		FFA7D344A1DB4C07BAE43B6D /* Ubuntu-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Italic.ttf"; path = "../assets/fonts/Ubuntu-Italic.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -422,6 +436,7 @@
 				E01402AD8C084D38A0AD404E /* libRCTOneSignal.a in Frameworks */,
 				06CE7128C1764F01A4ED54D9 /* libRNKitASPickerView.a in Frameworks */,
 				DEB154CA3DA942A39E972521 /* libRNFetchBlob.a in Frameworks */,
+				FF15DBF31636400A8191CDF3 /* libSplashScreen.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,11 +548,13 @@
 			isa = PBXGroup;
 			children = (
 				8B2B56DF200582BF00CEB904 /* fc_juarez.entitlements */,
-				8BF5F2EF1FEC3CA1009BF261 /* screen.png */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
-				13B07FB01A68108700A75B9A /* AppDelegate.m */,
+				8BE21BF020A24BC4003C731C /* bgWelcome.png */,
+				8BE21BF420A24BDF003C731C /* sponsor.png */,
+				8BE21BF220A24BCD003C731C /* fcLogo.png */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
+				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
@@ -611,6 +628,7 @@
 				AB0F399D42C3472C8DAD3953 /* RCTOneSignal.xcodeproj */,
 				9E41E55D262D4F6BA2DB1606 /* RNKitASPickerView.xcodeproj */,
 				6F21490110D84537B5B459A7 /* RNFetchBlob.xcodeproj */,
+				F7B940DB100E44B8BCDC2D6A /* SplashScreen.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -657,6 +675,7 @@
 				252F5C506B944719A4404ACA /* libRCTOneSignal.a */,
 				7DB8150996794BC0A6F875C5 /* libRNKitASPickerView.a */,
 				32BCC9DA2A1547BDB2BC55E2 /* libRNFetchBlob.a */,
+				1D61A68B9A6E48BEA360D573 /* libSplashScreen.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -681,6 +700,14 @@
 			isa = PBXGroup;
 			children = (
 				8B98D38B201BF996000559FE /* libRNFetchBlob.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8BE21C3C20A24CEB003C731C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8BE21C4020A24CEB003C731C /* libSplashScreen.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -894,6 +921,10 @@
 				{
 					ProductGroup = 8B2B57112005887600CEB904 /* Products */;
 					ProjectRef = 9E41E55D262D4F6BA2DB1606 /* RNKitASPickerView.xcodeproj */;
+				},
+				{
+					ProductGroup = 8BE21C3C20A24CEB003C731C /* Products */;
+					ProjectRef = F7B940DB100E44B8BCDC2D6A /* SplashScreen.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1180,6 +1211,13 @@
 			remoteRef = 8B98D38A201BF996000559FE /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		8BE21C4020A24CEB003C731C /* libSplashScreen.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSplashScreen.a;
+			remoteRef = 8BE21C3F20A24CEB003C731C /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1204,12 +1242,14 @@
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				EC07722BA8414E4283B14844 /* Ubuntu-Bold.ttf in Resources */,
+				8BE21BF520A24BDF003C731C /* sponsor.png in Resources */,
 				B332DCD087AE49189FE3B0D3 /* Ubuntu-BoldItalic.ttf in Resources */,
 				8B700E241FEB214700C87D2D /* Permanent Marker.ttf in Resources */,
-				8BF5F3131FEC3CA1009BF261 /* screen.png in Resources */,
 				49C4D60822344B3E827FB7B3 /* Ubuntu-Italic.ttf in Resources */,
 				494A7CEEB82241C28EC7E90C /* Ubuntu-Light.ttf in Resources */,
+				8BE21BF320A24BCD003C731C /* fcLogo.png in Resources */,
 				9E8585810A0240F885E7D766 /* Ubuntu-LightItalic.ttf in Resources */,
+				8BE21BF120A24BC4003C731C /* bgWelcome.png in Resources */,
 				1BA18A2792B64DD18345B088 /* Ubuntu-Medium.ttf in Resources */,
 				38F0BC360C3349C192B8E2CE /* Ubuntu-MediumItalic.ttf in Resources */,
 			);
@@ -1340,12 +1380,14 @@
 					"$(SRCROOT)/../node_modules/react-native-onesignal/ios/RCTOneSignal/**",
 					"$(SRCROOT)/../node_modules/rnkit-actionsheet-picker/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = fc_juarezTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1370,12 +1412,14 @@
 					"$(SRCROOT)/../node_modules/react-native-onesignal/ios/RCTOneSignal/**",
 					"$(SRCROOT)/../node_modules/rnkit-actionsheet-picker/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = fc_juarezTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1402,6 +1446,7 @@
 					"$(SRCROOT)/../node_modules/react-native-onesignal/ios/**",
 					"$(SRCROOT)/../node_modules/rnkit-actionsheet-picker/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = fc_juarez/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1428,6 +1473,7 @@
 					"$(SRCROOT)/../node_modules/react-native-onesignal/ios/**",
 					"$(SRCROOT)/../node_modules/rnkit-actionsheet-picker/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = fc_juarez/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1460,11 +1506,13 @@
 					"$(SRCROOT)/../node_modules/react-native-onesignal/ios/RCTOneSignal/**",
 					"$(SRCROOT)/../node_modules/rnkit-actionsheet-picker/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = "fc_juarez-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1499,11 +1547,13 @@
 					"$(SRCROOT)/../node_modules/react-native-onesignal/ios/RCTOneSignal/**",
 					"$(SRCROOT)/../node_modules/rnkit-actionsheet-picker/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-fetch-blob/ios/**",
+					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 				);
 				INFOPLIST_FILE = "fc_juarez-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1539,6 +1589,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.fc_juarez-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1564,6 +1615,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
