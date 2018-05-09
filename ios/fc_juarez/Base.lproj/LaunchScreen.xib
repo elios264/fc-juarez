@@ -15,16 +15,16 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask"/>
             <subviews>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="bgWelcome.png" translatesAutoresizingMaskIntoConstraints="NO" id="yZk-x3-Ix8">
-                    <rect key="frame" x="0.0" y="0.0" width="376" height="670"/>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="bgwelcome.png" translatesAutoresizingMaskIntoConstraints="NO" id="xhR-cM-iQs">
+                    <rect key="frame" x="-5" y="0.0" width="385" height="669"/>
                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 </imageView>
                 <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="sponsor.png" translatesAutoresizingMaskIntoConstraints="NO" id="GoX-H1-cxo">
                     <rect key="frame" x="145" y="620" width="230" height="49"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                 </imageView>
-                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFill" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="fcLogo.png" translatesAutoresizingMaskIntoConstraints="NO" id="HGs-I1-7Du">
-                    <rect key="frame" x="-5" y="160" width="385" height="346"/>
+                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" fixedFrame="YES" insetsLayoutMarginsFromSafeArea="NO" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="c1k-c5-wIU">
+                    <rect key="frame" x="49" y="163" width="276" height="343"/>
                     <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
                 </imageView>
             </subviews>
@@ -34,8 +34,8 @@
         </view>
     </objects>
     <resources>
-        <image name="bgWelcome.png" width="1080" height="1920"/>
-        <image name="fcLogo.png" width="1080" height="1920"/>
+        <image name="bgwelcome.png" width="1080" height="1920"/>
+        <image name="logo.png" width="548" height="795"/>
         <image name="sponsor.png" width="555" height="108"/>
     </resources>
 </document>

@@ -42,9 +42,9 @@
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		8B700E241FEB214700C87D2D /* Permanent Marker.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 794C7D1D30474BF2ABADC587 /* Permanent Marker.ttf */; };
-		8BE21BF120A24BC4003C731C /* bgWelcome.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE21BF020A24BC4003C731C /* bgWelcome.png */; };
-		8BE21BF320A24BCD003C731C /* fcLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE21BF220A24BCD003C731C /* fcLogo.png */; };
-		8BE21BF520A24BDF003C731C /* sponsor.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE21BF420A24BDF003C731C /* sponsor.png */; };
+		8BE21C4620A34774003C731C /* bgwelcome.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE21C4320A34774003C731C /* bgwelcome.png */; };
+		8BE21C4720A34774003C731C /* sponsor.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE21C4420A34774003C731C /* sponsor.png */; };
+		8BE21C8320A34E0D003C731C /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8BE21C8220A34E0D003C731C /* logo.png */; };
 		9E8585810A0240F885E7D766 /* Ubuntu-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F6566BAA026744D69B7E319B /* Ubuntu-LightItalic.ttf */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B332DCD087AE49189FE3B0D3 /* Ubuntu-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 43313435F3634DA4A046D2C4 /* Ubuntu-BoldItalic.ttf */; };
@@ -393,9 +393,9 @@
 		7DB8150996794BC0A6F875C5 /* libRNKitASPickerView.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNKitASPickerView.a; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		8B2B56DF200582BF00CEB904 /* fc_juarez.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = fc_juarez.entitlements; path = fc_juarez/fc_juarez.entitlements; sourceTree = "<group>"; };
-		8BE21BF020A24BC4003C731C /* bgWelcome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bgWelcome.png; path = ../assets/img/loader/bgWelcome.png; sourceTree = "<group>"; };
-		8BE21BF220A24BCD003C731C /* fcLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = fcLogo.png; path = ../assets/img/loader/fcLogo.png; sourceTree = "<group>"; };
-		8BE21BF420A24BDF003C731C /* sponsor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sponsor.png; path = ../assets/img/loader/sponsor.png; sourceTree = "<group>"; };
+		8BE21C4320A34774003C731C /* bgwelcome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = bgwelcome.png; path = "../android/app/src/main/res/drawable-nodpi/bgwelcome.png"; sourceTree = "<group>"; };
+		8BE21C4420A34774003C731C /* sponsor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sponsor.png; path = "../android/app/src/main/res/drawable-nodpi/sponsor.png"; sourceTree = "<group>"; };
+		8BE21C8220A34E0D003C731C /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = "../android/app/src/main/res/drawable-nodpi/logo.png"; sourceTree = "<group>"; };
 		97617A1BEC224E62ABFAFB4C /* Ubuntu-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-MediumItalic.ttf"; path = "../assets/fonts/Ubuntu-MediumItalic.ttf"; sourceTree = "<group>"; };
 		9E41E55D262D4F6BA2DB1606 /* RNKitASPickerView.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNKitASPickerView.xcodeproj; path = "../node_modules/rnkit-actionsheet-picker/ios/RNKitASPickerView.xcodeproj"; sourceTree = "<group>"; };
 		AB0F399D42C3472C8DAD3953 /* RCTOneSignal.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTOneSignal.xcodeproj; path = "../node_modules/react-native-onesignal/ios/RCTOneSignal.xcodeproj"; sourceTree = "<group>"; };
@@ -547,12 +547,12 @@
 		13B07FAE1A68108700A75B9A /* fc_juarez */ = {
 			isa = PBXGroup;
 			children = (
+				8BE21C8220A34E0D003C731C /* logo.png */,
+				8BE21C4320A34774003C731C /* bgwelcome.png */,
+				8BE21C4420A34774003C731C /* sponsor.png */,
 				8B2B56DF200582BF00CEB904 /* fc_juarez.entitlements */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
-				8BE21BF020A24BC4003C731C /* bgWelcome.png */,
-				8BE21BF420A24BDF003C731C /* sponsor.png */,
-				8BE21BF220A24BCD003C731C /* fcLogo.png */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
@@ -1239,17 +1239,17 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8BE21C8320A34E0D003C731C /* logo.png in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				8BE21C4620A34774003C731C /* bgwelcome.png in Resources */,
+				8BE21C4720A34774003C731C /* sponsor.png in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				EC07722BA8414E4283B14844 /* Ubuntu-Bold.ttf in Resources */,
-				8BE21BF520A24BDF003C731C /* sponsor.png in Resources */,
 				B332DCD087AE49189FE3B0D3 /* Ubuntu-BoldItalic.ttf in Resources */,
 				8B700E241FEB214700C87D2D /* Permanent Marker.ttf in Resources */,
 				49C4D60822344B3E827FB7B3 /* Ubuntu-Italic.ttf in Resources */,
 				494A7CEEB82241C28EC7E90C /* Ubuntu-Light.ttf in Resources */,
-				8BE21BF320A24BCD003C731C /* fcLogo.png in Resources */,
 				9E8585810A0240F885E7D766 /* Ubuntu-LightItalic.ttf in Resources */,
-				8BE21BF120A24BC4003C731C /* bgWelcome.png in Resources */,
 				1BA18A2792B64DD18345B088 /* Ubuntu-Medium.ttf in Resources */,
 				38F0BC360C3349C192B8E2CE /* Ubuntu-MediumItalic.ttf in Resources */,
 			);
