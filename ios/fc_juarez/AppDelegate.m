@@ -31,7 +31,7 @@
   rootView.backgroundColor = [UIColor blackColor];
 
   self.oneSignal = [[RCTOneSignal alloc] initWithLaunchOptions:launchOptions
-                                                         appId:@"5c13208c-4b79-4a14-bf39-bee0a9515b7a"];
+                                                         appId:@"651a6964-47af-42f8-b87b-33d261a21887"];
 
   self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
   UIViewController *rootViewController = [UIViewController new];

@@ -1,4 +1,4 @@
-package com.mercatika.fc_juarez;
+package com.bravos.fcjuarez;
 
 import android.app.Application;
 
@@ -27,7 +27,7 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new SplashScreenReactPackage(),
+          new SplashScreenReactPackage(),
           new RNFetchBlobPackage(),
           new ReactNativeOneSignalPackage(),
           new ASPickerViewPackage()

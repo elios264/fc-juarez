@@ -98,12 +98,12 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        applicationId "com.mercatika.fc_juarez"
+        applicationId "com.bravos.fcjuarez"
         minSdkVersion 16
         targetSdkVersion 22
-        versionCode 8
+        versionCode 1
         versionName "1.0"
-        manifestPlaceholders = [onesignal_app_id: "5c13208c-4b79-4a14-bf39-bee0a9515b7a",
+        manifestPlaceholders = [onesignal_app_id: "651a6964-47af-42f8-b87b-33d261a21887",
                                 onesignal_google_project_number: "REMOTE"]
         ndk {
             abiFilters "armeabi-v7a", "x86"

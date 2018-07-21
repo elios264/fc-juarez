@@ -34,7 +34,7 @@ export class Welcome extends PureComponent {
     return (
       <View cls='bg-white flx-i'>
         <View cls='flx-i'>
-          <CacheableImage cls='absolute-fill rm-contain bg-black' style={[styles.expand]} source={welcomeBannerUrl ? { uri: welcomeBannerUrl } : require('fc_juarez/assets/img/welcomebg.png')} />
+          <CacheableImage cls='absolute-fill rm-cover bg-black' style={[styles.expand]} source={welcomeBannerUrl ? { uri: welcomeBannerUrl } : require('fc_juarez/assets/img/welcomebg.png')} />
           <ScrollView cls='flx-i' contentContainerStyle={styles.scrollContent} refreshControl={<RefreshControl refreshing={refreshing} onRefresh={loadFromServer} tintColor='white' />} >
             <View cls='mh4' >
               {!welcomeBannerUrl && <Image cls='rm-contain' style={[styles.expandHor]} source={require('fc_juarez/assets/img/welcomebg2.png')} />}

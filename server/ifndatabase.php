@@ -12,7 +12,7 @@
 
 
       $fields = array(
-        'app_id' => "5c13208c-4b79-4a14-bf39-bee0a9515b7a",
+        'app_id' => "651a6964-47af-42f8-b87b-33d261a21887",
         'included_segments' => array($segment),
         'contents' => array( "en" => $message ),
         'headings' => array( "en" => $title ),
@@ -30,7 +30,7 @@
       $ch = curl_init();
       curl_setopt($ch, CURLOPT_URL, "https://onesignal.com/api/v1/notifications");
       curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json; charset=utf-8',
-                             'Authorization: Basic OWQxNWZlY2QtZmU3ZC00NzVmLTg4NzEtOTQ2YTUwMzVlNDE4'));
+                             'Authorization: Basic NzQ2NzUzZDEtNGMyZi00Yjg5LTgyZjAtMjdhOGEwZjA4NGJh'));
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
       curl_setopt($ch, CURLOPT_HEADER, FALSE);
       curl_setopt($ch, CURLOPT_POST, TRUE);
@@ -61,11 +61,11 @@
 
       $ch = curl_init();
 
-      curl_setopt($ch, CURLOPT_URL, "https://onesignal.com/api/v1/notifications/".$notifId."?app_id=5c13208c-4b79-4a14-bf39-bee0a9515b7a");
+      curl_setopt($ch, CURLOPT_URL, "https://onesignal.com/api/v1/notifications/".$notifId."?app_id=651a6964-47af-42f8-b87b-33d261a21887");
       curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
       curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "DELETE");
       curl_setopt($ch, CURLOPT_TIMEOUT, 3);
-      curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: Basic OWQxNWZlY2QtZmU3ZC00NzVmLTg4NzEtOTQ2YTUwMzVlNDE4'));
+      curl_setopt($ch, CURLOPT_HTTPHEADER, array('Authorization: Basic NzQ2NzUzZDEtNGMyZi00Yjg5LTgyZjAtMjdhOGEwZjA4NGJh'));
 
 
       $response = curl_exec($ch);

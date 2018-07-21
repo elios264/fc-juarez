@@ -1,4 +1,4 @@
-package com.mercatika.fc_juarez;
+package com.bravos.fcjuarez;
 
 import com.facebook.react.ReactActivity;
 import org.devio.rn.splashscreen.SplashScreen; // import this

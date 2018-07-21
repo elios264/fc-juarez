@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import { NativeRouter, Route } from 'react-router-native';
 import NativeTachyons from 'react-native-style-tachyons';
 
+import { name as appName } from 'fc_juarez/app.json';
 import { fonts, palette, rem } from './theme';
 import { intialize } from './actions/initializers';
 import { rootReducer } from './reducers';
@@ -24,7 +25,7 @@ const store = createStore(rootReducer, composeEnhancers(applyMiddleware(thunk)))
 store.dispatch(intialize());
 
 
-const bootstrapper = () => (
+const AppBootstrapper = () => (
   <Provider store={store}>
     <NativeRouter>
       <Route component={App} />
@@ -33,4 +34,4 @@ const bootstrapper = () => (
 );
 
 
-AppRegistry.registerComponent('fc_juarez', () => bootstrapper);
+AppRegistry.registerComponent(appName, () => AppBootstrapper);

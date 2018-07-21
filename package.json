@@ -6,7 +6,7 @@
     "postinstall": "patch-package",
     "start": "node node_modules/react-native/local-cli/cli.js start",
     "regenerate-icon": "app-icon generate",
-    "rename-bundle-android": "react-native-ci-tools bundle \"com.mercatika.fc_juarez\" \"FC Juarez\" -a"
+    "rename-bundle-android": "react-native-ci-tools bundle \"com.bravos.fcjuarez\" \"FC Juarez\" -a"
   },
   "rnpm": {
     "assets": [
