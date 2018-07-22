@@ -3,11 +3,10 @@ import React, { PureComponent } from 'react';
 import { View, Image, TouchableOpacity, StyleSheet } from 'react-native';
 import NativeTachyons, { sizes } from 'react-native-style-tachyons';
 
-import { palette } from 'fc_juarez/src/theme';
-import { ifIphoneX } from 'fc_juarez/src/utils';
+import { palette } from 'fcjuarez/src/theme';
+import { ifIphoneX } from 'fcjuarez/src/utils';
 
-@NativeTachyons.wrap
-export class Header extends PureComponent {
+export class _Header extends PureComponent {
 
   static propTypes = {
     drawer: PropTypes.object,
@@ -23,10 +22,10 @@ export class Header extends PureComponent {
       <View cls='bg-#111111 pb3 bb b--contrast' style={[styles.container]} >
         <View cls='aic jcc flx-row'>
           <TouchableOpacity cls='absolute left-0 jcc w4 h3' onPress={this.openDrawer} >
-            <Image cls='ml4 rm-contain' style={[styles.w1dot5]} source={require('fc_juarez/assets/img/header/menu.png')} />
+            <Image cls='ml4 rm-contain' style={[styles.w1dot5]} source={require('fcjuarez/assets/img/header/menu.png')} />
           </TouchableOpacity>
           <View cls='w4'>
-            <Image style={[styles.expand]} cls='rm-contain' resizeMethod='resize' source={require('fc_juarez/assets/img/header/logo-bravos.png')} />
+            <Image style={[styles.expand]} cls='rm-contain' resizeMethod='resize' source={require('fcjuarez/assets/img/header/logo-bravos.png')} />
           </View>
         </View>
         <View cls='absolute bottom-0 right-0' style={[styles.triangleCorner]} />
@@ -64,3 +63,5 @@ const styles = StyleSheet.create({
     transform: [ { rotate: '180deg' } ]
   }
 });
+
+export const Header = NativeTachyons.wrap(_Header);

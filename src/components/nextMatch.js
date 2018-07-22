@@ -6,10 +6,11 @@ import Carousel from 'react-native-snap-carousel';
 import _ from 'lodash';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import ScalableImage from 'react-native-scalable-image';
 
-import { loadFromServer } from 'fc_juarez/src/actions/initializers';
-import { GameMatch, Tournament, Advertisement } from 'fc_juarez/src/objects';
-import { br2nl, CacheableImage, CacheableScalableImage } from 'fc_juarez/src/utils';
+import { loadFromServer } from 'fcjuarez/src/actions/initializers';
+import { GameMatch, Tournament, Advertisement } from 'fcjuarez/src/objects';
+import { br2nl } from 'fcjuarez/src/utils';
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ loadFromServer }, dispatch);
 const mapStateToProps = (state) => ({
@@ -18,9 +19,8 @@ const mapStateToProps = (state) => ({
   ad: state.objects.ads[Advertisement.SmallAd],
   refreshing: state.refreshing
 });
-@connect(mapStateToProps, mapDispatchToProps)
-@NativeTachyons.wrap
-export class NextMatch extends PureComponent {
+
+export class _NextMatch extends PureComponent {
 
   static propTypes = {
     loadFromServer: PropTypes.func.isRequired,
@@ -38,7 +38,7 @@ export class NextMatch extends PureComponent {
 
     return (
       <View cls='bb b--red'>
-        <CacheableScalableImage width={Dimensions.get('window').width} source={{ uri: url }} />
+        <ScalableImage width={Dimensions.get('window').width} source={{ uri: url }} />
         <View cls='absolute bottom-0 right-0' style={[styles.triangleCorner]} />
       </View>
     );
@@ -53,7 +53,7 @@ export class NextMatch extends PureComponent {
     const matchTournament = _.toUpper(tournament.title);
     const matchDate = _.upperCase(time.format('DD MMM YYYY'));
 
-    const bravos = { name: 'BRAVOS FC', logo: require('fc_juarez/assets/img/fcjuarez.png') };
+    const bravos = { name: 'BRAVOS FC', logo: require('fcjuarez/assets/img/fcjuarez.png') };
     const enemy = { name: _.toUpper(versusTeam), logo: { uri: teamLogoUrl } };
 
     const fst = versusTeamAtHome ? enemy : bravos;
@@ -76,13 +76,13 @@ export class NextMatch extends PureComponent {
         </View>
         <View cls='flx-row jcc aic h3 mh2' >
           <View cls='flx-i flx-row aic ml2'>
-            <CacheableImage cls='w3 h3 rm-contain' source={fst.logo} />
+            <Image cls='w3 h3 rm-contain' source={fst.logo} />
             <Text cls='flx-i ml2 ff-ubu-b white bg-transparent' style={[styles.smallText]}>{fst.name}</Text>
           </View>
           <Text cls='ff-ubu-b white f4 bg-transparent mh2'>VS</Text>
           <View cls='flx-i flx-row aic ml2 jcfe'>
             <Text cls='flx-i ff-ubu-b white bg-transparent tr mr2' style={[styles.smallText]}>{snd.name}</Text>
-            <CacheableImage cls='w3 h3 rm-contain' source={snd.logo} />
+            <Image cls='w3 h3 rm-contain' source={snd.logo} />
           </View>
         </View>
         <View cls='ma4 mb0 bt b--#373737 pt3 pb3'>
@@ -109,13 +109,13 @@ export class NextMatch extends PureComponent {
     return (
       <View cls='flx-i'>
         <View cls='flx-i bg-primary'>
-          <Image cls='absolute-fill rm-cover' style={[styles.expand]} source={require('fc_juarez/assets/img/background.png')} />
+          <Image cls='absolute-fill rm-cover' style={[styles.expand]} source={require('fcjuarez/assets/img/background.png')} />
           <ScrollView cls='flx-i' refreshControl={<RefreshControl refreshing={refreshing} onRefresh={loadFromServer} tintColor='white' />} >
             {contents}
           </ScrollView>
         </View>
         <TouchableHighlight onPress={ad ? ad.openTarget : _.noop} >
-          <CacheableScalableImage width={Dimensions.get('window').width} source={ ad ? { uri: ad.url } : require('fc_juarez/assets/img/ads/smallAd.png')} />
+          <ScalableImage width={Dimensions.get('window').width} source={ ad ? { uri: ad.url } : require('fcjuarez/assets/img/ads/smallAd.png')} />
         </TouchableHighlight>
       </View>
     );
@@ -145,3 +145,5 @@ const styles = StyleSheet.create({
     transform: [ { rotate: '180deg' } ]
   }
 });
+
+export const NextMatch = connect(mapStateToProps, mapDispatchToProps)(NativeTachyons.wrap(_NextMatch));

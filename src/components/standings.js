@@ -5,14 +5,14 @@ import { StyleSheet, View, Dimensions, Image, ScrollView, Text, RefreshControl, 
 import NativeTachyons, { sizes } from 'react-native-style-tachyons';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { loadFromServer } from 'fc_juarez/src/actions/initializers';
-import { TeamInfo, Advertisement } from 'fc_juarez/src/objects';
-import { CacheableImage, CacheableScalableImage } from 'fc_juarez/src/utils';
+import { loadFromServer } from 'fcjuarez/src/actions/initializers';
+import { TeamInfo, Advertisement } from 'fcjuarez/src/objects';
+import ScalableImage from 'react-native-scalable-image';
 
 
 const TeamHeader = NativeTachyons.wrap(({ image, name }) => ( // eslint-disable-line react/prop-types
   <View cls='flx-row aic mv1 mr2 h3'>
-    <CacheableImage source={image} cls='rm-contain' style={[styles.logoSize]} />
+    <Image source={image} cls='rm-contain' style={[styles.logoSize]} />
     <Text cls='white ff-ubu-b f6 ml2 tc flx-i bg-transparent'>{name}</Text>
   </View>
 ));
@@ -29,9 +29,8 @@ const mapStateToProps = (state) => ({
   refreshing: state.refreshing
 });
 const mapDispatchToProps = (dispatch) => bindActionCreators({ loadFromServer }, dispatch);
-@connect(mapStateToProps, mapDispatchToProps)
-@NativeTachyons.wrap
-export class Standings extends PureComponent {
+
+export class _Standings extends PureComponent {
 
   static propTypes = {
     loadFromServer: PropTypes.func.isRequired,
@@ -48,7 +47,7 @@ export class Standings extends PureComponent {
     return (
       <View cls='flx-i'>
         <View cls='flx-i bg-primary'>
-          <Image cls='absolute-fill rm-cover' style={[styles.expand]} source={require('fc_juarez/assets/img/background.png')} />
+          <Image cls='absolute-fill rm-cover' style={[styles.expand]} source={require('fcjuarez/assets/img/background.png')} />
           <ScrollView cls='flx-i' refreshControl={<RefreshControl refreshing={refreshing} onRefresh={loadFromServer} tintColor='white' />} >
             <Text cls='mv3 ml3 f3 ff-ubu-m white bg-transparent'>Tabla <Text cls='#AAAAAA'>general</Text></Text>
             <View cls='bt b--#373737' />
@@ -112,7 +111,7 @@ export class Standings extends PureComponent {
           </ScrollView>
         </View>
         <TouchableHighlight onPress={ad ? ad.openTarget : _.noop} >
-          <CacheableScalableImage width={Dimensions.get('window').width} source={ ad ? { uri: ad.url } : require('fc_juarez/assets/img/ads/smallAd.png')} />
+          <ScalableImage width={Dimensions.get('window').width} source={ ad ? { uri: ad.url } : require('fcjuarez/assets/img/ads/smallAd.png')} />
         </TouchableHighlight>
       </View>
     );
@@ -132,3 +131,5 @@ const styles = StyleSheet.create({
     maxWidth: sizes.w4 + sizes.w2
   }
 });
+
+export const Standings = connect(mapStateToProps, mapDispatchToProps)(NativeTachyons.wrap(_Standings));

@@ -1,7 +1,7 @@
 import _ from 'lodash';
 import moment from 'moment';
 import OneSignal from 'react-native-onesignal';
-import { utf8ArrayToStr, CacheableImage } from 'fc_juarez/src/utils';
+import { utf8ArrayToStr } from 'fcjuarez/src/utils';
 
 export const SERVER_URL = 'http://fcjuarez.com';
 const API_PATH = '/api.php';
@@ -79,7 +79,6 @@ export class ServiceApi {
       banners = await Promise.all(banners);
       banners = _(banners).filter('exists').map('url').value();
       response.banners = banners;
-      await Promise.all(_.map(banners, CacheableImage.cacheFile));
     }
 
     return response;
@@ -96,7 +95,6 @@ export class ServiceApi {
     const url = `${SERVER_URL}/binder/banner/${id}.jpg?${_.random(5000)}`;
 
     if (await fileExists(url)) {
-      await CacheableImage.cacheFile(url);
       return url;
     }
 

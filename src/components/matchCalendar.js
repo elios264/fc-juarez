@@ -7,13 +7,13 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { DataPicker } from 'rnkit-actionsheet-picker';
 import moment from 'moment';
+import ScalableImage from 'react-native-scalable-image';
 
-import { CacheableImage, CacheableScalableImage, getValue } from 'fc_juarez/src/utils';
-import { loadFromServer } from 'fc_juarez/src/actions/initializers';
-import { Season, GameMatch, Tournament, Advertisement } from 'fc_juarez/src/objects';
+import { getValue } from 'fcjuarez/src/utils';
+import { loadFromServer } from 'fcjuarez/src/actions/initializers';
+import { Season, GameMatch, Tournament, Advertisement } from 'fcjuarez/src/objects';
 
-@NativeTachyons.wrap
-class MatchInfo extends PureComponent {
+class _MatchInfo extends PureComponent {
 
   static propTypes = {
     tournament: PropTypes.instanceOf(Tournament).isRequired,
@@ -42,7 +42,7 @@ class MatchInfo extends PureComponent {
     const { time, stadium, scoreAway, scoreHome, versusTeam, versusTeamAtHome, teamLogoUrl } = match;
 
 
-    const bravos = { name: 'FC Juárez', logo: require('fc_juarez/assets/img/fcjuarez.png') };
+    const bravos = { name: 'FC Juárez', logo: require('fcjuarez/assets/img/fcjuarez.png') };
     const enemy = { name: versusTeam, logo: { uri: teamLogoUrl } };
 
     const fst = versusTeamAtHome ? enemy : bravos;
@@ -59,9 +59,9 @@ class MatchInfo extends PureComponent {
       <View cls='aic mv3'>
         <View cls='flx-row aic jcc mb2'>
           <Text cls='white ff-ubu-b mr2 f6 tr flx-i bg-transparent'>{fst.name}</Text>
-          <CacheableImage cls='pa1 rm-contain' style={[styles.logo]} source={fst.logo} />
+          <Image cls='pa1 rm-contain' style={[styles.logo]} source={fst.logo} />
           <Text cls='white ff-ubu-b mh2 bg-transparent'>{scoreHome}<Text cls='gray'> vs </Text>{scoreAway}</Text>
-          <CacheableImage cls='pa1 rm-contain' style={[styles.logo]} source={snd.logo} />
+          <Image cls='pa1 rm-contain' style={[styles.logo]} source={snd.logo} />
           <Text cls='white ff-ubu-b ml2 f6 tl flx-i bg-transparent'>{snd.name}</Text>
         </View>
         <Text cls='white ff-ubu-b mb1 bg-transparent'>{_.capitalize(time.format('MMM/DD/YYYY').replace(/\./, ''))}<Text cls='gray'>  |  </Text>{time.format('hh:mm A')}</Text>
@@ -72,7 +72,7 @@ class MatchInfo extends PureComponent {
         {(mode === 'cur' || mode === 'next') &&
           <TouchableOpacity onPress={this.buyTickets} cls='ass mt2' activeOpacity={0.6} >
             <View cls='flx-row jcc aic h2' >
-              <Image cls='absolute-fill rm-stretch' style={[styles.expand]} source={require('fc_juarez/assets/img/rectangle.png')} />
+              <Image cls='absolute-fill rm-stretch' style={[styles.expand]} source={require('fcjuarez/assets/img/rectangle.png')} />
               <Text cls='white f6 ff-ubu-b bg-transparent'>Comprar Boletos</Text>
             </View>
           </TouchableOpacity>
@@ -81,6 +81,7 @@ class MatchInfo extends PureComponent {
     );
   }
 }
+export const MatchInfo = NativeTachyons.wrap(_MatchInfo);
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ loadFromServer }, dispatch);
 const mapStateToProps = (state) => ({
@@ -91,9 +92,7 @@ const mapStateToProps = (state) => ({
   ad: state.objects.ads[Advertisement.SmallAd],
   refreshing: state.refreshing
 });
-@connect(mapStateToProps, mapDispatchToProps)
-@NativeTachyons.wrap
-export class MatchCalendar extends PureComponent {
+export class _MatchCalendar extends PureComponent {
 
   static propTypes = {
     loadFromServer: PropTypes.func.isRequired,
@@ -132,7 +131,7 @@ export class MatchCalendar extends PureComponent {
     return (
       <View cls='flx-i'>
         <View cls='flx-i bg-primary'>
-          <Image cls='absolute-fill rm-cover' style={[styles.expand]} source={require('fc_juarez/assets/img/background.png')} />
+          <Image cls='absolute-fill rm-cover' style={[styles.expand]} source={require('fcjuarez/assets/img/background.png')} />
           <ScrollView cls='flx-i' refreshControl={<RefreshControl refreshing={refreshing} onRefresh={loadFromServer} tintColor='white' />} >
             <View cls='aic mv3 mh2 flx-row jcsb'>
               <Text cls='f5 mr3 ff-ubu-m white bg-transparent flx-i'>Calendario <Text cls='#AAAAAA'>de partidos</Text></Text>
@@ -149,7 +148,7 @@ export class MatchCalendar extends PureComponent {
           </ScrollView>
         </View>
         <TouchableHighlight onPress={ad ? ad.openTarget : _.noop} >
-          <CacheableScalableImage width={Dimensions.get('window').width} source={ ad ? { uri: ad.url } : require('fc_juarez/assets/img/ads/smallAd.png')} />
+          <ScalableImage width={Dimensions.get('window').width} source={ ad ? { uri: ad.url } : require('fcjuarez/assets/img/ads/smallAd.png')} />
         </TouchableHighlight>
       </View>
     );
@@ -179,3 +178,5 @@ const styles = StyleSheet.create({
     transform: [{ rotate: '180deg' }]
   }
 });
+
+export const MatchCalendar = connect(mapStateToProps, mapDispatchToProps)(NativeTachyons.wrap(_MatchCalendar));

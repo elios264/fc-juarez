@@ -8,7 +8,7 @@ import { Route, Switch } from 'react-router-native';
 import OneSignal from 'react-native-onesignal';
 import _ from 'lodash';
 
-import { loadFromServer } from 'fc_juarez/src/actions/initializers';
+import { loadFromServer } from 'fcjuarez/src/actions/initializers';
 import { Sidebar } from './sideBar';
 import { Header } from './header';
 import { Welcome } from './welcome';
@@ -25,8 +25,7 @@ OneSignal.addEventListener('opened', (openResult) => {
 
 const mapStateToProps = (state) => ({ initializing: state.initializing });
 const mapDispatchToProps = (dispatch) => bindActionCreators({ loadFromServer }, dispatch);
-@connect(mapStateToProps, mapDispatchToProps)
-export class App extends PureComponent {
+class _App extends PureComponent {
 
   static propTypes = {
     initializing: PropTypes.bool.isRequired,
@@ -91,3 +90,5 @@ export class App extends PureComponent {
 const styles = StyleSheet.create({
   flex: { flex: 1 },
 });
+
+export const App = connect(mapStateToProps, mapDispatchToProps)(_App)

@@ -1,6 +1,6 @@
 import OneSignal from 'react-native-onesignal';
 import { catchError } from './utils';
-import { ServiceApi } from 'fc_juarez/src/serviceApi';
+import { ServiceApi } from 'fcjuarez/src/serviceApi';
 
 export const updatePushSettings = (settingName, value) => catchError((dispatch, getState) => {
   dispatch({ type: 'PUSH_SETTINGS_CHANGED', settingName, value });

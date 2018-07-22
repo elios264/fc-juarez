@@ -7,22 +7,20 @@ import NativeTachyons from 'react-native-style-tachyons';
 import ScalableImage from 'react-native-scalable-image';
 import { connect } from 'react-redux';
 
-import { palette } from 'fc_juarez/src/theme';
-import { updatePushSettings, getPushPermissions } from 'fc_juarez/src/actions/pushNotifications';
-import { Advertisement } from 'fc_juarez/src/objects';
-import { CacheableImage } from 'fc_juarez/src/utils';
+import { palette } from 'fcjuarez/src/theme';
+import { updatePushSettings, getPushPermissions } from 'fcjuarez/src/actions/pushNotifications';
+import { Advertisement } from 'fcjuarez/src/objects';
 
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({ updatePushSettings, getPushPermissions }, dispatch);
 const mapStateToProps = (state) => ({
-  notificationsAllowed: _.get(state.appInfo.pushPermissions, 'notificationsEnabled', false),
+  notificationsAllowed: _.get(state.appInfo.pushPermissions, 'notificationsEnabled') === 'true',
   pushSettings: state.pushSettings,
   ad: state.objects.ads[Advertisement.BigAd]
 });
 
-@connect(mapStateToProps, mapDispatchToProps)
-@NativeTachyons.wrap
-export class Settings extends PureComponent {
+
+export class _Settings extends PureComponent {
 
   static propTypes = {
     notificationsAllowed: PropTypes.bool,
@@ -43,8 +41,8 @@ export class Settings extends PureComponent {
     return (
       <View cls='flx-i bg-white'>
         <View cls='flx-i bg-primary'>
-          <Image cls='absolute-fill rm-cover' style={[styles.expand]} source={require('fc_juarez/assets/img/settingsbg.png')} />
-          <ScalableImage cls='absolute bottom-0 left-0' width={Dimensions.get('window').width} source={require('fc_juarez/assets/img/green-bar.png')} />
+          <Image cls='absolute-fill rm-cover' style={[styles.expand]} source={require('fcjuarez/assets/img/settingsbg.png')} />
+          <ScalableImage cls='absolute bottom-0 left-0' width={Dimensions.get('window').width} source={require('fcjuarez/assets/img/green-bar.png')} />
 
           { !notificationsAllowed &&
           <View cls='flx-row aic mt4 ml4 mr3'>
@@ -70,7 +68,7 @@ export class Settings extends PureComponent {
         </View>
         <View cls='h4 pa2'>
           <TouchableHighlight onPress={ad ? ad.openTarget : _.noop} >
-            <CacheableImage style={[styles.expand]} source={ ad ? { uri: ad.url } : require('fc_juarez/assets/img/ads/bigAd.png')} />
+            <Image style={[styles.expand]} source={ ad ? { uri: ad.url } : require('fcjuarez/assets/img/ads/bigAd.png')} />
           </TouchableHighlight>
         </View>
       </View>
@@ -84,3 +82,5 @@ const styles = StyleSheet.create({
     height: '100%'
   },
 });
+
+export const Settings = connect(mapStateToProps, mapDispatchToProps)(NativeTachyons.wrap(_Settings));

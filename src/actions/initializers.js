@@ -6,10 +6,10 @@ import SplashScreen from 'react-native-splash-screen';
 import { catchError } from './utils';
 import { downloadPushSettings, initializePushSettings } from './pushNotifications';
 import { appStart } from './appState';
-import { ServiceApi } from 'fc_juarez/src/serviceApi';
-import { GameMatch, GameMatchDetails, Season, Tournament, TeamInfo, Advertisement } from 'fc_juarez/src/objects';
+import { ServiceApi } from 'fcjuarez/src/serviceApi';
+import { GameMatch, GameMatchDetails, Season, Tournament, TeamInfo, Advertisement } from 'fcjuarez/src/objects';
 
-export const intialize = () => catchError(async(dispatch) => {
+export const initialize = () => catchError(async(dispatch) => {
   dispatch({ type: 'INITIALIZING', running: true });
 
   dispatch(appStart());

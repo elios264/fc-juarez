@@ -5,31 +5,31 @@ import { StyleSheet, View, Dimensions, Image, ScrollView, Text, RefreshControl, 
 import NativeTachyons, { sizes } from 'react-native-style-tachyons';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { loadFromServer } from 'fc_juarez/src/actions/initializers';
-import { Tournament, GameMatch, GameMatchDetails, Advertisement } from 'fc_juarez/src/objects';
-import { CacheableImage, CacheableScalableImage } from 'fc_juarez/src/utils';
+import { loadFromServer } from 'fcjuarez/src/actions/initializers';
+import { Tournament, GameMatch, GameMatchDetails, Advertisement } from 'fcjuarez/src/objects';
+import ScalableImage from 'react-native-scalable-image';
 
 const icons = {
-  '1': require('fc_juarez/assets/img/icons/1.png'),
-  '2': require('fc_juarez/assets/img/icons/2.png'),
-  '3': require('fc_juarez/assets/img/icons/3.png'),
-  '4': require('fc_juarez/assets/img/icons/4.png'),
-  '5': require('fc_juarez/assets/img/icons/5.png'),
-  '6': require('fc_juarez/assets/img/icons/6.png'),
-  '7': require('fc_juarez/assets/img/icons/7.png'),
-  '8': require('fc_juarez/assets/img/icons/8.png'),
-  '9': require('fc_juarez/assets/img/icons/9.png'),
-  '10': require('fc_juarez/assets/img/icons/10.png'),
-  '11': require('fc_juarez/assets/img/icons/11.png'),
-  '12': require('fc_juarez/assets/img/icons/12.png'),
-  '13': require('fc_juarez/assets/img/icons/13.png'),
-  '14': require('fc_juarez/assets/img/icons/14.png'),
-  '15': require('fc_juarez/assets/img/icons/15.png'),
-  '16': require('fc_juarez/assets/img/icons/16.png'),
-  '17': require('fc_juarez/assets/img/icons/17.png'),
-  '18': require('fc_juarez/assets/img/icons/18.png'),
-  '19': require('fc_juarez/assets/img/icons/19.png'),
-  '20': require('fc_juarez/assets/img/icons/20.png'),
+  '1': require('fcjuarez/assets/img/icons/1.png'),
+  '2': require('fcjuarez/assets/img/icons/2.png'),
+  '3': require('fcjuarez/assets/img/icons/3.png'),
+  '4': require('fcjuarez/assets/img/icons/4.png'),
+  '5': require('fcjuarez/assets/img/icons/5.png'),
+  '6': require('fcjuarez/assets/img/icons/6.png'),
+  '7': require('fcjuarez/assets/img/icons/7.png'),
+  '8': require('fcjuarez/assets/img/icons/8.png'),
+  '9': require('fcjuarez/assets/img/icons/9.png'),
+  '10': require('fcjuarez/assets/img/icons/10.png'),
+  '11': require('fcjuarez/assets/img/icons/11.png'),
+  '12': require('fcjuarez/assets/img/icons/12.png'),
+  '13': require('fcjuarez/assets/img/icons/13.png'),
+  '14': require('fcjuarez/assets/img/icons/14.png'),
+  '15': require('fcjuarez/assets/img/icons/15.png'),
+  '16': require('fcjuarez/assets/img/icons/16.png'),
+  '17': require('fcjuarez/assets/img/icons/17.png'),
+  '18': require('fcjuarez/assets/img/icons/18.png'),
+  '19': require('fcjuarez/assets/img/icons/19.png'),
+  '20': require('fcjuarez/assets/img/icons/20.png'),
 };
 
 
@@ -52,9 +52,8 @@ const mapStateToProps = (state) => ({
   ad: state.objects.ads[Advertisement.SmallAd],
   refreshing: state.refreshing
 });
-@connect(mapStateToProps, mapDispatchToProps)
-@NativeTachyons.wrap
-export class TheMinute extends PureComponent {
+
+export class _TheMinute extends PureComponent {
 
   static propTypes = {
     loadFromServer: PropTypes.func.isRequired,
@@ -74,7 +73,7 @@ export class TheMinute extends PureComponent {
     const matchTournament = _.toUpper(tournament.title);
     const matchDate = _.upperCase(match.time.format('DD MMM YYYY'));
 
-    const bravos = { name: 'BRAVOS FC', logo: require('fc_juarez/assets/img/fcjuarez.png') };
+    const bravos = { name: 'BRAVOS FC', logo: require('fcjuarez/assets/img/fcjuarez.png') };
     const enemy = { name: _.toUpper(match.versusTeam), logo: { uri: match.teamLogoUrl } };
 
     const fst = match.versusTeamAtHome ? enemy : bravos;
@@ -88,13 +87,13 @@ export class TheMinute extends PureComponent {
         </View>
         <View cls='flx-row jcc aic h3 mh2' >
           <View cls='flx-i flx-row aic ml2'>
-            <CacheableImage cls='w3 h3 rm-contain' source={fst.logo} />
+            <Image cls='w3 h3 rm-contain' source={fst.logo} />
             <Text cls='flx-i ml2 ff-ubu-b white bg-transparent' style={[styles.smallText]}>{fst.name}</Text>
           </View>
           <Text cls='f4 white ff-ubu-b mh2 bg-transparent'>{match.scoreHome}<Text cls='gray'>  vs  </Text>{match.scoreAway}</Text>
           <View cls='flx-i flx-row aic ml2 jcfe'>
             <Text cls='flx-i ff-ubu-b white bg-transparent tr mr2' style={[styles.smallText]}>{snd.name}</Text>
-            <CacheableImage cls='w3 h3 rm-contain' source={snd.logo} />
+            <Image cls='w3 h3 rm-contain' source={snd.logo} />
           </View>
         </View>
         <View cls='mh4 mt4 mb3 bt b--#373737' />
@@ -118,13 +117,13 @@ export class TheMinute extends PureComponent {
     return (
       <View cls='flx-i'>
         <View cls='flx-i bg-primary'>
-          <Image cls='absolute-fill rm-cover' style={[styles.expand]} source={require('fc_juarez/assets/img/background.png')} />
+          <Image cls='absolute-fill rm-cover' style={[styles.expand]} source={require('fcjuarez/assets/img/background.png')} />
           <ScrollView cls='flx-i' refreshControl={<RefreshControl refreshing={refreshing} onRefresh={loadFromServer} tintColor='white' />} >
             {contents}
           </ScrollView>
         </View>
         <TouchableHighlight onPress={ad ? ad.openTarget : _.noop} >
-          <CacheableScalableImage width={Dimensions.get('window').width} source={ ad ? { uri: ad.url } : require('fc_juarez/assets/img/ads/smallAd.png')} />
+          <ScalableImage width={Dimensions.get('window').width} source={ ad ? { uri: ad.url } : require('fcjuarez/assets/img/ads/smallAd.png')} />
         </TouchableHighlight>
       </View>
     );
@@ -140,3 +139,6 @@ const styles = StyleSheet.create({
     height: '100%'
   }
 });
+
+
+export const TheMinute = connect(mapStateToProps, mapDispatchToProps)(NativeTachyons.wrap(_TheMinute));
