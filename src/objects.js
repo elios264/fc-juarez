@@ -81,9 +81,9 @@ export class GameMatchDetails {
 export class TeamInfo {
 
   constructor(attributes) {
-    const { nombreClub, JJ, JG, JE, JP, GF, GC, Diferencia, puntos, idClub } = attributes;
+    const { nombreClub, JJ, JG, JE, JP, GF, GC, Diferencia, puntos, idClub, redDot } = attributes;
     const logoUrl = `${SERVER_URL}/assets/images/logos-equipos/ascenso/tabla/${_.toLower(_.deburr(nombreClub)).replace(/[ .]+/g, '')}.png`;
-    this.attributes = { nombreClub, logoUrl, JJ, JG, JE, JP, GF, GC, Diferencia, puntos, idClub };
+    this.attributes = { nombreClub, logoUrl, JJ, JG, JE, JP, GF, GC, Diferencia, puntos, idClub, redDot };
   }
 
   get id() { return this.attributes.idClub; }
@@ -97,4 +97,5 @@ export class TeamInfo {
   get gc() { return this.attributes.GC; }
   get dif() { return this.attributes.Diferencia; }
   get pts() { return this.attributes.puntos; }
+  get redDot() { return this.attributes.redDot }
 }

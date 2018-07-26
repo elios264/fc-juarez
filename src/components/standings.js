@@ -13,7 +13,7 @@ import ScalableImage from 'react-native-scalable-image';
 const TeamHeader = NativeTachyons.wrap(({ image, name }) => ( // eslint-disable-line react/prop-types
   <View cls='flx-row aic mv1 mr2 h3'>
     <Image source={image} cls='rm-contain' style={[styles.logoSize]} />
-    <Text cls='white ff-ubu-b f6 ml2 tc flx-i bg-transparent'>{name}</Text>
+    <Text cls='white ff-ubu-b f6 ml2 flx-i bg-transparent'>{name}</Text>
   </View>
 ));
 
@@ -22,6 +22,14 @@ const Score = NativeTachyons.wrap(({ score }) => ( // eslint-disable-line react/
     <Text cls='f6 ff-ubu-b white bg-transparent'>{score}</Text>
   </View>
 ));
+
+const RedDot = NativeTachyons.wrap(({ on }) => ( // eslint-disable-line react/prop-types
+  <View cls='h3 jcc aife ml1 mr2 mv1'>
+    {on ? <View style={styles.circle} /> : null}
+  </View>
+));
+
+
 
 const mapStateToProps = (state) => ({
   teamsInfo: state.objects.teamsInfo,
@@ -52,11 +60,17 @@ export class _Standings extends PureComponent {
             <Text cls='mv3 ml3 f3 ff-ubu-m white bg-transparent'>Tabla <Text cls='#AAAAAA'>general</Text></Text>
             <View cls='bt b--#373737' />
             <View cls='mt3 ml2 mr1 flx-row'>
-              <View cls='flx-i' style={[styles.maxDesc]}>
+              <View cls='flx-i' >
                 <View cls='h2 jcc'>
                   <Text cls='white ff-ubu bg-transparent'>Liga de ascenso</Text>
                 </View>
                 { _.map(teamsInfo, ({ name, logoUrl, id }) => <TeamHeader key={id} image={{ uri: logoUrl }} name={name} />)}
+              </View>
+              <View>
+                <View cls='h2 jcc'>
+                  <Text cls='contrast ff-ubu-b ml1 mr2 f6 bg-transparent'>{' '}</Text>
+                </View>
+                { _.map(teamsInfo, ({ redDot, id }) => <RedDot key={id} on={redDot} /> )}
               </View>
               <View>
                 <View cls='h2 jcc'>
@@ -127,8 +141,11 @@ const styles = StyleSheet.create({
     width: sizes.w2 + sizes.w1,
     height: sizes.h1 + sizes.h2
   },
-  maxDesc: {
-    maxWidth: sizes.w4 + sizes.w2
+  circle: {
+    width: 10,
+    height: 10,
+    borderRadius: 10/2,
+    backgroundColor: 'red'
   }
 });
 
