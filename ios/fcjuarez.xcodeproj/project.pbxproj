@@ -1481,7 +1481,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.fcjuarez-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bravos.fcjuarez;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -1519,7 +1519,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.fcjuarez-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.bravos.fcjuarez;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
