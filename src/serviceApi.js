@@ -15,7 +15,7 @@ const GAME_MATCH_DETAILS_URL = (id) => `/GameFuture/${id}`;
 const GAME_MATCH_MINUTE_URL = (id) => `/GamePresentMinute?columns=GamePresentId,GameEventId,Minute,Description&filter=GamePresentId,eq,${id}`;
 const WELCOME_BANNER_URL = '/Banner?order=InputDate,desc&page=1,1&columns=BannerId';
 const ADS_URL = '/Advertisement?filter[]=AdvertisementId,in,6,7&filter[]=Active,eq,1&columns=AdvertisementId,LinkAddress,Active';
-const GENERAL_TABLE_URL = 'http://administrador.ligamx.net/webservices/prtl_web_jsondata.ashx?psWidget=PRTL_EstdClubDtll&objIDDivision=2&objIDTemporada=68&objIDTorneo=2';
+const GENERAL_TABLE_URL = 'http://administrador.ligamx.net/webservices/prtl_web_jsondata.ashx?psWidget=PRTL_EstdClubDtll&objIDDivision=2&objIDTemporada=69&objIDTorneo=1';
 
 const normalizeData = ({ columns, records }) => _.map(records, (record) => _.zipObject(columns, record));
 const fetchJson = async (url, decode = true) => {
@@ -108,7 +108,20 @@ export class ServiceApi {
 
   static async downloadGeneralTableData() {
     const response = await fetchJson(GENERAL_TABLE_URL, false);
-    return response.DatosJSON;
+    const redDots = new Set([
+      '10449', //mineros
+      '3111', //dorados
+      '11221', //zacatepc
+      '3088', //Alebrijes
+      '33', //u de g
+      '10962', //tampico madero
+      '11220', //atletico san luis
+      '10725', //fc juarez
+      '10721', //cimarrones
+    ]);
+    const data = response.DatosJSON;
+    return _.map(data, (team) => ({ ...team, redDot: redDots.has(team['idClub']) }));
+    //return response.DatosJSON;
   }
 
   static updatePushSettings(settings) {
