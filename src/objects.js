@@ -37,7 +37,7 @@ export class Advertisement {
 export class GameMatch {
 
   constructor(attributes) {
-    const { Date: date, Hour, GameFutureId, SeasonId, Stadium, TournamentId, VersusTeam, VersusTeamAtHome, GamePresentId, GamePastId, ScoreAway, ScoreHome, Description, Subtitle, Title, banners } = attributes;
+    const { Date: date, Hour, GameFutureId, SeasonId, Stadium, TournamentId, VersusTeam, VersusTeamAtHome, GamePresentId, GamePastId, ScoreAway, ScoreHome, Description, Subtitle, Title, banners, LinkAddress1, LinkAddress1Past } = attributes;
 
     const time = moment.tz(`${date} ${Hour}`, 'YYYY-MM-DD HH:mm:ss', 'America/Chihuahua').local().toDate();
     const id = GameFutureId;
@@ -45,7 +45,7 @@ export class GameMatch {
     const summaryId = GamePastId;
     const desc = Description || Title || Subtitle;
 
-    this.attributes = { time, id, detailsId, summaryId, SeasonId, Stadium, TournamentId, VersusTeam, VersusTeamAtHome, ScoreAway, ScoreHome, desc, banners };
+    this.attributes = { time, id, detailsId, summaryId, SeasonId, Stadium, TournamentId, VersusTeam, VersusTeamAtHome, ScoreAway, ScoreHome, desc, banners, promoVideo: LinkAddress1, matchVideo: LinkAddress1Past };
   }
 
   get viewMoreUrl() {
@@ -67,6 +67,8 @@ export class GameMatch {
   get desc() { return this.attributes.desc; }
   get scoreAway() { return this.attributes.ScoreAway; }
   get scoreHome() { return this.attributes.ScoreHome; }
+  get promoVideo() { return this.attributes.promoVideo; }
+  get matchVideo() { return this.attributes.matchVideo; }
 
 }
 

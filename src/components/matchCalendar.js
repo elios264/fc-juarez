@@ -35,11 +35,14 @@ class _MatchInfo extends PureComponent {
     Linking.openURL('https://fcjuarez.boletosenlinea.events/');
   }
 
-
+  playVideo = () => {
+    const { promoVideo, matchVideo } = this.props.match;
+    Linking.openURL(matchVideo || promoVideo);
+  };
 
   render() {
     const { match, tournament, nextMatch } = this.props;
-    const { time, stadium, scoreAway, scoreHome, versusTeam, versusTeamAtHome, teamLogoUrl } = match;
+    const { time, stadium, scoreAway, scoreHome, versusTeam, versusTeamAtHome, teamLogoUrl, promoVideo, matchVideo } = match;
 
 
     const bravos = { name: 'FC Juárez', logo: require('fcjuarez/assets/img/fcjuarez.png') };
@@ -69,6 +72,11 @@ class _MatchInfo extends PureComponent {
         <TouchableOpacity onPress={this.openViewMore} cls='bg-contrast pv2 jcc aic ass' activeOpacity={0.6} >
           <Text cls='white f6 ff-ubu-b bg-transparent'>{getValue(mode, { prev: 'Resumen' }, 'Previa')}</Text>
         </TouchableOpacity>
+        { (!!promoVideo || !!matchVideo) &&
+          <TouchableOpacity onPress={this.playVideo} cls='bg-contrast2 pv2 mt2 jcc aic ass' activeOpacity={0.6} >
+            <Text cls='white f6 ff-ubu-b bg-transparent'>Video</Text>
+          </TouchableOpacity>
+        }
         {(mode === 'cur' || mode === 'next') &&
           <TouchableOpacity onPress={this.buyTickets} cls='ass mt2' activeOpacity={0.6} >
             <View cls='flx-row jcc aic h2' >

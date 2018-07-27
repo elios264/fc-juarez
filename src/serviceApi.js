@@ -8,9 +8,9 @@ const API_PATH = '/api.php';
 
 const SEASON_URL = '/Season?filter=Active,eq,1&columns=Title,SeasonId';
 const TOURNAMENT_URL = '/Tournament?filter=Active,eq,1&columns=Title,TournamentId';
-const GAME_MATCH_URL = `/GameFuture?columns=GameFutureId,SeasonId,TournamentId,Date,Hour,VersusTeam,VersusTeamAtHome,Stadium&filter[]=Active,eq,1&filter[]=Date,ge,${moment().subtract(4, 'months').format('YYYY-MM-DD')}`;
+const GAME_MATCH_URL = `/GameFuture?columns=GameFutureId,SeasonId,TournamentId,Date,Hour,VersusTeam,VersusTeamAtHome,Stadium,LinkAddress1&filter[]=Active,eq,1&filter[]=Date,ge,${moment().subtract(4, 'months').format('YYYY-MM-DD')}`;
 const GAME_MATCH_RESULTS_URL = (ids) => `/GamePresent?columns=GamePresentId,GameFutureId,ScoreHome,ScoreAway&filter=GameFutureId,in,${_.join(ids)}`;
-const GAME_MATCH_SUMMARY_URL = (ids) => `/GamePast?columns=GamePastId,GameFutureId&filter=GameFutureId,in,${_.join(ids)}`;
+const GAME_MATCH_SUMMARY_URL = (ids) => `/GamePast?columns=GamePastId,GameFutureId,LinkAddress1&filter=GameFutureId,in,${_.join(ids)}`;
 const GAME_MATCH_DETAILS_URL = (id) => `/GameFuture/${id}`;
 const GAME_MATCH_MINUTE_URL = (id) => `/GamePresentMinute?columns=GamePresentId,GameEventId,Minute,Description&filter=GamePresentId,eq,${id}`;
 const WELCOME_BANNER_URL = '/Banner?order=InputDate,desc&page=1,1&columns=BannerId';
@@ -63,7 +63,10 @@ export class ServiceApi {
       const matchResult = matchesResults[match.GameFutureId];
       const summaryResult = summaryResults[match.GameFutureId];
       if (matchResult) _.assign(match, matchResult);
-      if (summaryResult) _.assign(match, summaryResult);
+      if (summaryResult) {
+        const { LinkAddress1: LinkAddress1Past, ...props } = summaryResult;
+        _.assign(match, props, { LinkAddress1Past });
+      }
     });
 
     return matches;
