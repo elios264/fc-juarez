@@ -25,6 +25,7 @@ OneSignal.addEventListener('opened', (openResult) => {
 
 const mapStateToProps = (state) => ({ initializing: state.initializing });
 const mapDispatchToProps = (dispatch) => bindActionCreators({ loadFromServer }, dispatch);
+const responderNegotiate = (e, { dx }) => (dx >= 20 || dx <= -20);
 class _App extends PureComponent {
 
   static propTypes = {
@@ -64,6 +65,7 @@ class _App extends PureComponent {
         ref={this.setDrawerRef}
         disabled={initializing}
         drawerWidth={300}
+        responderNegotiate={responderNegotiate}
         drawerContent={<Sidebar drawer={{}} />}
       >
         <StatusBar backgroundColor='transparent' translucent barStyle='light-content' />
@@ -91,4 +93,4 @@ const styles = StyleSheet.create({
   flex: { flex: 1 },
 });
 
-export const App = connect(mapStateToProps, mapDispatchToProps)(_App)
+export const App = connect(mapStateToProps, mapDispatchToProps)(_App);
