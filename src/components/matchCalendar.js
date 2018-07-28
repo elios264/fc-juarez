@@ -9,7 +9,7 @@ import { DataPicker } from 'rnkit-actionsheet-picker';
 import moment from 'moment';
 import ScalableImage from 'react-native-scalable-image';
 
-import { getValue } from 'fcjuarez/src/utils';
+import { getValue, playYoutubeVideo } from 'fcjuarez/src/utils';
 import { loadFromServer } from 'fcjuarez/src/actions/initializers';
 import { Season, GameMatch, Tournament, Advertisement } from 'fcjuarez/src/objects';
 
@@ -37,7 +37,7 @@ class _MatchInfo extends PureComponent {
 
   playVideo = () => {
     const { promoVideo, matchVideo } = this.props.match;
-    Linking.openURL(matchVideo || promoVideo);
+    playYoutubeVideo(matchVideo || promoVideo);
   };
 
   render() {

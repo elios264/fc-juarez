@@ -1,5 +1,9 @@
 import _ from 'lodash';
 import { Dimensions, Platform } from 'react-native';
+import { YouTubeStandaloneAndroid, YouTubeStandaloneIOS } from 'react-native-youtube';
+
+import { youtubeApiKey } from 'fcjuarez/app.json';
+
 
 const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
 
@@ -86,3 +90,19 @@ export const br2nl = (str) => {
   return str.replace(/<br\s*\/?>/mg, '\n');
 };
 export const getValue = (value, mapping = {}, defaultValue) => _.get(mapping, `[${value}]`, defaultValue);
+
+export const playYoutubeVideo = (videoId) => {
+  if (Platform.OS === 'android')
+    return YouTubeStandaloneAndroid.playVideo({ videoId, autoplay: true, startTime: 0, apiKey: youtubeApiKey });
+  else if (Platform.OS === 'ios' )
+    return YouTubeStandaloneIOS.playVideo(videoId);
+};
+
+export const getYoutubeVideoIdFromUrl = (url) => {
+  var regExp = /^.*(youtu\.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+  var match = _.defaultTo(url, '').match(regExp);
+  if (match && match[2].length == 11)
+    return match[2];
+  else
+    return undefined;
+};

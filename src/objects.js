@@ -2,7 +2,7 @@ import _ from 'lodash';
 import moment from 'moment';
 import { Linking } from 'react-native';
 import { SERVER_URL } from './serviceApi';
-import { btoa } from './utils';
+import { btoa, getYoutubeVideoIdFromUrl } from './utils';
 
 export class Season {
   constructor(attributes) { this.attributes = attributes; }
@@ -44,8 +44,10 @@ export class GameMatch {
     const detailsId = GamePresentId;
     const summaryId = GamePastId;
     const desc = Description || Title || Subtitle;
+    const promoVideo = getYoutubeVideoIdFromUrl(LinkAddress1);
+    const matchVideo = getYoutubeVideoIdFromUrl(LinkAddress1Past);
 
-    this.attributes = { time, id, detailsId, summaryId, SeasonId, Stadium, TournamentId, VersusTeam, VersusTeamAtHome, ScoreAway, ScoreHome, desc, banners, promoVideo: LinkAddress1, matchVideo: LinkAddress1Past };
+    this.attributes = { time, id, detailsId, summaryId, SeasonId, Stadium, TournamentId, VersusTeam, VersusTeamAtHome, ScoreAway, ScoreHome, desc, banners, promoVideo, matchVideo };
   }
 
   get viewMoreUrl() {
