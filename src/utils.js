@@ -1,6 +1,7 @@
 import _ from 'lodash';
 import { Dimensions, Platform } from 'react-native';
 import { YouTubeStandaloneAndroid, YouTubeStandaloneIOS } from 'react-native-youtube';
+import Orientation from 'react-native-orientation';
 
 import { youtubeApiKey } from 'fcjuarez/app.json';
 
@@ -91,11 +92,17 @@ export const br2nl = (str) => {
 };
 export const getValue = (value, mapping = {}, defaultValue) => _.get(mapping, `[${value}]`, defaultValue);
 
-export const playYoutubeVideo = (videoId) => {
+export const playYoutubeVideo = async (videoId) => {
+  let result;
+  Orientation.unlockAllOrientations();
+
   if (Platform.OS === 'android')
-    return YouTubeStandaloneAndroid.playVideo({ videoId, autoplay: true, startTime: 0, apiKey: youtubeApiKey });
+    result = await YouTubeStandaloneAndroid.playVideo({ videoId, autoplay: true, startTime: 0, apiKey: youtubeApiKey });
   else if (Platform.OS === 'ios' )
-    return YouTubeStandaloneIOS.playVideo(videoId);
+    result = await YouTubeStandaloneIOS.playVideo(videoId);
+
+  Orientation.lockToPortrait();
+  return result;
 };
 
 export const getYoutubeVideoIdFromUrl = (url) => {

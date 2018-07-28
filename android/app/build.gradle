@@ -159,6 +159,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-orientation')
     compile project(':react-native-youtube')
     compile project(':rnkit-actionsheet-picker')
     compile project(':react-native-splash-screen')

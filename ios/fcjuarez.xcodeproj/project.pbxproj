@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302AC1ABCB8CE00DB3ED1 /* libRCTActionSheet.a */; };
 		00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302BA1ABCB90400DB3ED1 /* libRCTGeolocation.a */; };
@@ -12,6 +13,7 @@
 		00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		00E356F31AD99517003FC87E /* fcjuarezTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* fcjuarezTests.m */; };
+		03111A164B9544049473112F /* YTPlayerView-iframe-player.html in Resources */ = {isa = PBXBuildFile; fileRef = 5022901AD22A494F975B035C /* YTPlayerView-iframe-player.html */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
 		139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
@@ -36,9 +38,11 @@
 		2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D16E6891FA4F8E400B85C8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* fcjuarezTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* fcjuarezTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
+		40A06F03080743C59D0AE394 /* libRCTYouTube.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ACB4C322D5942CA8EF20998 /* libRCTYouTube.a */; };
 		45F6AE83BAC642D4BED11D54 /* Ubuntu-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7CC39B9CC7094A0E9016A1B5 /* Ubuntu-MediumItalic.ttf */; };
 		4D1358DE07F245C9874F4758 /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DC43DB033FD3421DBE8CC9E5 /* libSplashScreen.a */; };
 		557CE104FAB24CB29131C62B /* Permanent Marker.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 510B87EBC2534527AC0B7A8B /* Permanent Marker.ttf */; };
+		57A45D87EC5D400A8CCD4909 /* libRCTOrientation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AF8CA4FD182144C48E9AB214 /* libRCTOrientation.a */; };
 		5E56352483A1411C85D3F543 /* Ubuntu-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4DBA0DA7AFF7483795C8B7F9 /* Ubuntu-Light.ttf */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		74C2AE7A3C984A7DBE604A1A /* Ubuntu-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E28475394A104C0C825F45A0 /* Ubuntu-BoldItalic.ttf */; };
@@ -47,13 +51,13 @@
 		8B701362210B90BB00C350FA /* bgwelcome.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B70135F210B90BA00C350FA /* bgwelcome.png */; };
 		8B701363210B90BB00C350FA /* sponsor.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B701360210B90BA00C350FA /* sponsor.png */; };
 		8B701364210B90BB00C350FA /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 8B701361210B90BA00C350FA /* logo.png */; };
+		8CF2EC7D48E2A7ACF4290CBF /* libPods-fcjuarez.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F3367EF87D2B177FDD96B056 /* libPods-fcjuarez.a */; };
 		9B1B98B659094615869AFA31 /* libRNKitASPickerView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B27875F9D282400A9AEF954D /* libRNKitASPickerView.a */; };
+		9B6728EC733906A5CEB66B5F /* libPods-fcjuarez-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 33C5998B378E94DE68A8DFAB /* libPods-fcjuarez-tvOS.a */; };
 		9FE133B3772048C38199BF38 /* Ubuntu-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2E045D93BE4A42069B15A532 /* Ubuntu-Bold.ttf */; };
 		A19EA2CEA75F4F5CB625062C /* libRCTOneSignal.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 07CDF7F915934090ABB31242 /* libRCTOneSignal.a */; };
 		A2BBD8D0D15E42A0845D602A /* Ubuntu.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2498BCADF6E044928216E302 /* Ubuntu.ttf */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
-		40A06F03080743C59D0AE394 /* libRCTYouTube.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1ACB4C322D5942CA8EF20998 /* libRCTYouTube.a */; };
-		03111A164B9544049473112F /* YTPlayerView-iframe-player.html in Resources */ = {isa = PBXBuildFile; fileRef = 5022901AD22A494F975B035C /* YTPlayerView-iframe-player.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -323,6 +327,20 @@
 			remoteGlobalIDString = 58B5119B1A9E6C1200147676;
 			remoteInfo = RCTText;
 		};
+		8B538B03210CB4E5008B1BB5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D264FF066DD141AEA41E9A8D /* RCTYouTube.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 8BDB9BC91B4289AE00EF9FEF;
+			remoteInfo = RCTYouTube;
+		};
+		8B538B61210CC2E1008B1BB5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 263803C7E52B4F59A2D0D7F4 /* RCTOrientation.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RCTOrientation;
+		};
 		8B701353210B904800C350FA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = DC82047DE1E34118B8A870AA /* RNKitASPickerView.xcodeproj */;
@@ -363,6 +381,7 @@
 		00E356EE1AD99517003FC87E /* fcjuarezTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = fcjuarezTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* fcjuarezTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = fcjuarezTests.m; sourceTree = "<group>"; };
+		077633A0A2D3463BCD891E28 /* Pods-fcjuarez-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fcjuarez-tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-fcjuarez-tvOS/Pods-fcjuarez-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		07CDF7F915934090ABB31242 /* libRCTOneSignal.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTOneSignal.a; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
@@ -374,14 +393,20 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = fcjuarez/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = fcjuarez/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		1ACB4C322D5942CA8EF20998 /* libRCTYouTube.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTYouTube.a; sourceTree = "<group>"; };
 		21667A605AA1495C962FC514 /* Ubuntu-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Medium.ttf"; path = "../assets/fonts/Ubuntu-Medium.ttf"; sourceTree = "<group>"; };
+		22A5CB81B3519564D87CFE1D /* Pods-fcjuarez-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fcjuarez-tvOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fcjuarez-tvOS/Pods-fcjuarez-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		2498BCADF6E044928216E302 /* Ubuntu.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ubuntu.ttf; path = ../assets/fonts/Ubuntu.ttf; sourceTree = "<group>"; };
+		263803C7E52B4F59A2D0D7F4 /* RCTOrientation.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTOrientation.xcodeproj; path = "../node_modules/react-native-orientation/iOS/RCTOrientation.xcodeproj"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* fcjuarez-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "fcjuarez-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* fcjuarez-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "fcjuarez-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E045D93BE4A42069B15A532 /* Ubuntu-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Bold.ttf"; path = "../assets/fonts/Ubuntu-Bold.ttf"; sourceTree = "<group>"; };
+		33C5998B378E94DE68A8DFAB /* libPods-fcjuarez-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-fcjuarez-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		35FE0FF04C055D1C1894579E /* Pods-fcjuarez.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fcjuarez.debug.xcconfig"; path = "Pods/Target Support Files/Pods-fcjuarez/Pods-fcjuarez.debug.xcconfig"; sourceTree = "<group>"; };
 		4D82793ACEB84B89BE9A5F1E /* Ubuntu-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-LightItalic.ttf"; path = "../assets/fonts/Ubuntu-LightItalic.ttf"; sourceTree = "<group>"; };
 		4DBA0DA7AFF7483795C8B7F9 /* Ubuntu-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Light.ttf"; path = "../assets/fonts/Ubuntu-Light.ttf"; sourceTree = "<group>"; };
+		5022901AD22A494F975B035C /* YTPlayerView-iframe-player.html */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "YTPlayerView-iframe-player.html"; path = "../node_modules/react-native-youtube/assets/YTPlayerView-iframe-player.html"; sourceTree = "<group>"; };
 		510B87EBC2534527AC0B7A8B /* Permanent Marker.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Permanent Marker.ttf"; path = "../assets/fonts/Permanent Marker.ttf"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		669126574DD94F818CC85AD7 /* Ubuntu-Italic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-Italic.ttf"; path = "../assets/fonts/Ubuntu-Italic.ttf"; sourceTree = "<group>"; };
@@ -394,14 +419,15 @@
 		8B701360210B90BA00C350FA /* sponsor.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = sponsor.png; path = "../android/app/src/main/res/drawable-nodpi/sponsor.png"; sourceTree = "<group>"; };
 		8B701361210B90BA00C350FA /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = logo.png; path = "../android/app/src/main/res/drawable-nodpi/logo.png"; sourceTree = "<group>"; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
+		AF8CA4FD182144C48E9AB214 /* libRCTOrientation.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTOrientation.a; sourceTree = "<group>"; };
 		B27875F9D282400A9AEF954D /* libRNKitASPickerView.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNKitASPickerView.a; sourceTree = "<group>"; };
+		D264FF066DD141AEA41E9A8D /* RCTYouTube.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTYouTube.xcodeproj; path = "../node_modules/react-native-youtube/RCTYouTube.xcodeproj"; sourceTree = "<group>"; };
 		D4F17837E38B48D9AB941B1A /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = SplashScreen.xcodeproj; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; };
+		DA595475EA8CE26004E04866 /* Pods-fcjuarez.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fcjuarez.release.xcconfig"; path = "Pods/Target Support Files/Pods-fcjuarez/Pods-fcjuarez.release.xcconfig"; sourceTree = "<group>"; };
 		DC43DB033FD3421DBE8CC9E5 /* libSplashScreen.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libSplashScreen.a; sourceTree = "<group>"; };
 		DC82047DE1E34118B8A870AA /* RNKitASPickerView.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNKitASPickerView.xcodeproj; path = "../node_modules/rnkit-actionsheet-picker/ios/RNKitASPickerView.xcodeproj"; sourceTree = "<group>"; };
 		E28475394A104C0C825F45A0 /* Ubuntu-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Ubuntu-BoldItalic.ttf"; path = "../assets/fonts/Ubuntu-BoldItalic.ttf"; sourceTree = "<group>"; };
-		D264FF066DD141AEA41E9A8D /* RCTYouTube.xcodeproj */ = {isa = PBXFileReference; name = "RCTYouTube.xcodeproj"; path = "../node_modules/react-native-youtube/RCTYouTube.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
-		1ACB4C322D5942CA8EF20998 /* libRCTYouTube.a */ = {isa = PBXFileReference; name = "libRCTYouTube.a"; path = "libRCTYouTube.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
-		5022901AD22A494F975B035C /* YTPlayerView-iframe-player.html */ = {isa = PBXFileReference; name = "YTPlayerView-iframe-player.html"; path = "../node_modules/react-native-youtube/assets/YTPlayerView-iframe-player.html"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F3367EF87D2B177FDD96B056 /* libPods-fcjuarez.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-fcjuarez.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -434,6 +460,8 @@
 				4D1358DE07F245C9874F4758 /* libSplashScreen.a in Frameworks */,
 				9B1B98B659094615869AFA31 /* libRNKitASPickerView.a in Frameworks */,
 				40A06F03080743C59D0AE394 /* libRCTYouTube.a in Frameworks */,
+				8CF2EC7D48E2A7ACF4290CBF /* libPods-fcjuarez.a in Frameworks */,
+				57A45D87EC5D400A8CCD4909 /* libRCTOrientation.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,6 +477,7 @@
 				2D02E4C61E0B4AEC006451C7 /* libRCTSettings-tvOS.a in Frameworks */,
 				2D02E4C71E0B4AEC006451C7 /* libRCTText-tvOS.a in Frameworks */,
 				2D02E4C81E0B4AEC006451C7 /* libRCTWebSocket-tvOS.a in Frameworks */,
+				9B6728EC733906A5CEB66B5F /* libPods-fcjuarez-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -587,8 +616,21 @@
 			isa = PBXGroup;
 			children = (
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
+				F3367EF87D2B177FDD96B056 /* libPods-fcjuarez.a */,
+				33C5998B378E94DE68A8DFAB /* libPods-fcjuarez-tvOS.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		5794944FF7CBBD51DCF1AB68 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				35FE0FF04C055D1C1894579E /* Pods-fcjuarez.debug.xcconfig */,
+				DA595475EA8CE26004E04866 /* Pods-fcjuarez.release.xcconfig */,
+				22A5CB81B3519564D87CFE1D /* Pods-fcjuarez-tvOS.debug.xcconfig */,
+				077633A0A2D3463BCD891E28 /* Pods-fcjuarez-tvOS.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 		5E91572E1DD0AC6500FF2AA8 /* Products */ = {
@@ -645,6 +687,7 @@
 				D4F17837E38B48D9AB941B1A /* SplashScreen.xcodeproj */,
 				DC82047DE1E34118B8A870AA /* RNKitASPickerView.xcodeproj */,
 				D264FF066DD141AEA41E9A8D /* RCTYouTube.xcodeproj */,
+				263803C7E52B4F59A2D0D7F4 /* RCTOrientation.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -668,6 +711,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				68CFBDC86AE64A20BEA9A553 /* Resources */,
 				8B70132A210B904700C350FA /* Recovered References */,
+				5794944FF7CBBD51DCF1AB68 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -685,12 +729,30 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		8B538B00210CB4E5008B1BB5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8B538B04210CB4E5008B1BB5 /* libRCTYouTube.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8B538B5E210CC2E1008B1BB5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8B538B62210CC2E1008B1BB5 /* libRCTOrientation.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		8B70132A210B904700C350FA /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
 				07CDF7F915934090ABB31242 /* libRCTOneSignal.a */,
 				DC43DB033FD3421DBE8CC9E5 /* libSplashScreen.a */,
 				B27875F9D282400A9AEF954D /* libRNKitASPickerView.a */,
+				1ACB4C322D5942CA8EF20998 /* libRCTYouTube.a */,
+				AF8CA4FD182144C48E9AB214 /* libRCTOrientation.a */,
 			);
 			name = "Recovered References";
 			sourceTree = "<group>";
@@ -753,6 +815,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "fcjuarez" */;
 			buildPhases = (
+				DAD36A94604F6787BBAE5A5C /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
@@ -771,6 +834,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "fcjuarez-tvOS" */;
 			buildPhases = (
+				012F817148E119B498F64676 /* [CP] Check Pods Manifest.lock */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
 				2D02E4781E0B4A5D006451C7 /* Frameworks */,
 				2D02E4791E0B4A5D006451C7 /* Resources */,
@@ -883,6 +947,10 @@
 					ProjectRef = 75B2D4EE355346E1B93F3BD6 /* RCTOneSignal.xcodeproj */;
 				},
 				{
+					ProductGroup = 8B538B5E210CC2E1008B1BB5 /* Products */;
+					ProjectRef = 263803C7E52B4F59A2D0D7F4 /* RCTOrientation.xcodeproj */;
+				},
+				{
 					ProductGroup = 139105B71AF99BAD00B5F7CC /* Products */;
 					ProjectRef = 139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */;
 				},
@@ -897,6 +965,10 @@
 				{
 					ProductGroup = 139FDEE71B06529A00C62182 /* Products */;
 					ProjectRef = 139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */;
+				},
+				{
+					ProductGroup = 8B538B00210CB4E5008B1BB5 /* Products */;
+					ProjectRef = D264FF066DD141AEA41E9A8D /* RCTYouTube.xcodeproj */;
 				},
 				{
 					ProductGroup = 146834001AC3E56700842450 /* Products */;
@@ -1174,6 +1246,20 @@
 			remoteRef = 832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		8B538B04210CB4E5008B1BB5 /* libRCTYouTube.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTYouTube.a;
+			remoteRef = 8B538B03210CB4E5008B1BB5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		8B538B62210CC2E1008B1BB5 /* libRCTOrientation.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTOrientation.a;
+			remoteRef = 8B538B61210CC2E1008B1BB5 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		8B701354210B904800C350FA /* libRNKitASPickerView.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1266,6 +1352,24 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
+		012F817148E119B498F64676 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-fcjuarez-tvOS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1279,6 +1383,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		DAD36A94604F6787BBAE5A5C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-fcjuarez-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1359,12 +1481,14 @@
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/rnkit-actionsheet-picker/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-youtube/**",
+					"$(SRCROOT)/../node_modules/react-native-orientation/iOS/RCTOrientation/**",
 				);
 				INFOPLIST_FILE = fcjuarezTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1390,12 +1514,14 @@
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/rnkit-actionsheet-picker/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-youtube/**",
+					"$(SRCROOT)/../node_modules/react-native-orientation/iOS/RCTOrientation/**",
 				);
 				INFOPLIST_FILE = fcjuarezTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1412,6 +1538,7 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 35FE0FF04C055D1C1894579E /* Pods-fcjuarez.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = fcjuarez/fcjuarez.entitlements;
@@ -1424,6 +1551,7 @@
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/rnkit-actionsheet-picker/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-youtube/**",
+					"$(SRCROOT)/../node_modules/react-native-orientation/iOS/RCTOrientation/**",
 				);
 				INFOPLIST_FILE = fcjuarez/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1440,6 +1568,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA595475EA8CE26004E04866 /* Pods-fcjuarez.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = fcjuarez/fcjuarez.entitlements;
@@ -1451,6 +1580,7 @@
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/rnkit-actionsheet-picker/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-youtube/**",
+					"$(SRCROOT)/../node_modules/react-native-orientation/iOS/RCTOrientation/**",
 				);
 				INFOPLIST_FILE = fcjuarez/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1467,6 +1597,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 22A5CB81B3519564D87CFE1D /* Pods-fcjuarez-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1483,11 +1614,13 @@
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/rnkit-actionsheet-picker/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-youtube/**",
+					"$(SRCROOT)/../node_modules/react-native-orientation/iOS/RCTOrientation/**",
 				);
 				INFOPLIST_FILE = "fcjuarez-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1507,6 +1640,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 077633A0A2D3463BCD891E28 /* Pods-fcjuarez-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1523,11 +1657,13 @@
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/rnkit-actionsheet-picker/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-youtube/**",
+					"$(SRCROOT)/../node_modules/react-native-orientation/iOS/RCTOrientation/**",
 				);
 				INFOPLIST_FILE = "fcjuarez-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1562,11 +1698,13 @@
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/rnkit-actionsheet-picker/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-youtube/**",
+					"$(SRCROOT)/../node_modules/react-native-orientation/iOS/RCTOrientation/**",
 				);
 				INFOPLIST_FILE = "fcjuarez-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
@@ -1601,11 +1739,13 @@
 					"$(SRCROOT)/../node_modules/react-native-splash-screen/ios",
 					"$(SRCROOT)/../node_modules/rnkit-actionsheet-picker/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-youtube/**",
+					"$(SRCROOT)/../node_modules/react-native-orientation/iOS/RCTOrientation/**",
 				);
 				INFOPLIST_FILE = "fcjuarez-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
