@@ -8,13 +8,12 @@ import ScalableImage from 'react-native-scalable-image';
 import { connect } from 'react-redux';
 
 import { palette } from 'fcjuarez/src/theme';
-import { updatePushSettings, getPushPermissions } from 'fcjuarez/src/actions/pushNotifications';
+import { updatePushSettings } from 'fcjuarez/src/actions/pushNotifications';
 import { Advertisement } from 'fcjuarez/src/objects';
 
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({ updatePushSettings, getPushPermissions }, dispatch);
+const mapDispatchToProps = (dispatch) => bindActionCreators({ updatePushSettings }, dispatch);
 const mapStateToProps = (state) => ({
-  notificationsAllowed: _.get(state.appInfo.pushPermissions, 'notificationsEnabled') === 'true',
   pushSettings: state.pushSettings,
   ad: state.objects.ads[Advertisement.BigAd]
 });
@@ -23,19 +22,13 @@ const mapStateToProps = (state) => ({
 export class _Settings extends PureComponent {
 
   static propTypes = {
-    notificationsAllowed: PropTypes.bool,
     updatePushSettings: PropTypes.func.isRequired,
-    getPushPermissions: PropTypes.func.isRequired,
     pushSettings: PropTypes.object.isRequired,
     ad: PropTypes.instanceOf(Advertisement)
   }
 
-  componentWillMount() {
-    this.props.getPushPermissions();
-  }
-
   render() {
-    const { pushSettings, updatePushSettings, notificationsAllowed, ad } = this.props;
+    const { pushSettings, updatePushSettings, ad } = this.props;
     const { receiveMatchAlerts, receiveGoalsAlerts, receiveGeneralAlerts } = pushSettings;
 
     return (
@@ -44,12 +37,6 @@ export class _Settings extends PureComponent {
           <Image cls='absolute-fill rm-cover' style={[styles.expand]} source={require('fcjuarez/assets/img/settingsbg.png')} />
           <ScalableImage cls='absolute bottom-0 left-0' width={Dimensions.get('window').width} source={require('fcjuarez/assets/img/green-bar.png')} />
 
-          { !notificationsAllowed &&
-          <View cls='flx-row aic mt4 ml4 mr3'>
-            <Text cls='flx-i yellow ff-ubu-b bg-transparent'>Notificaciones desactivadas, ve a preferencias del sistema y activalas.</Text>
-          </View>
-          }
-          { notificationsAllowed &&
           <Fragment>
             <View cls='flx-row aic mt4 ml4 mr3'>
               <Text cls='flx-i white ff-ubu-b bg-transparent'>Activar alerta de partidos</Text>
@@ -64,7 +51,6 @@ export class _Settings extends PureComponent {
               <Switch value={receiveGeneralAlerts} onValueChange={updatePushSettings.bind(null, 'receiveGeneralAlerts')} onTintColor={palette.contrast} thumbTintColor='white' tintColor={palette.gray}/>
             </View>
           </Fragment>
-          }
         </View>
         <View cls='h4 pa2'>
           <TouchableHighlight onPress={ad ? ad.openTarget : _.noop} >
