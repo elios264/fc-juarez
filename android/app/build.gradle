@@ -105,6 +105,11 @@ def enableSeparateBuildPerCPUArchitecture = false
 def enableProguardInReleaseBuilds = false
 
 android {
+
+    lintOptions {
+        checkReleaseBuilds false
+    }
+
     compileSdkVersion rootProject.ext.compileSdkVersion
     buildToolsVersion rootProject.ext.buildToolsVersion
 
@@ -112,7 +117,7 @@ android {
         applicationId "com.bravos.fcjuarez"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 2
+        versionCode 3
         versionName "1.0"
         ndk {
             abiFilters "armeabi-v7a", "x86"
