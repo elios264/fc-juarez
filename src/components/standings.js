@@ -11,20 +11,20 @@ import ScalableImage from 'react-native-scalable-image';
 
 
 const TeamHeader = NativeTachyons.wrap(({ image, name }) => ( // eslint-disable-line react/prop-types
-  <View cls='flx-row aic mv1 mr2 h3'>
+  <View cls='flx-row aic mt1 mr1 h3'>
     <Image source={image} cls='rm-contain' style={[styles.logoSize]} />
-    <Text cls='white ff-ubu-b f6 ml2 flx-i bg-transparent'>{name}</Text>
+    <Text cls='white ff-ubu-b f6 ml1 flx-i bg-transparent'>{name}</Text>
   </View>
 ));
 
 const Score = NativeTachyons.wrap(({ score }) => ( // eslint-disable-line react/prop-types
-  <View cls='h3 jcc aife ml1 mr2 mv1'>
+  <View cls='h3 jcc aife mh1 mt1'>
     <Text cls='f6 ff-ubu-b white bg-transparent'>{score}</Text>
   </View>
 ));
 
 const RedDot = NativeTachyons.wrap(({ on }) => ( // eslint-disable-line react/prop-types
-  <View cls='h3 jcc aife ml1 mr2 mv1'>
+  <View cls='h3 jcc aife mt1 mh1 mr1'>
     {on ? <View style={styles.circle} /> : null}
   </View>
 ));
@@ -59,64 +59,64 @@ export class _Standings extends PureComponent {
           <ScrollView cls='flx-i' refreshControl={<RefreshControl refreshing={refreshing} onRefresh={loadFromServer} tintColor='white' />} >
             <Text cls='mv3 ml3 f3 ff-ubu-m white bg-transparent'>Tabla <Text cls='#AAAAAA'>general</Text></Text>
             <View cls='bt b--#373737' />
-            <View cls='mt3 ml2 mr1 flx-row'>
+            <View cls='mt3 ml1 mr1 flx-row'>
               <View cls='flx-i' >
-                <View cls='h2 jcc'>
+                <View cls='jcc h2'>
                   <Text cls='white ff-ubu bg-transparent'>Liga de ascenso</Text>
                 </View>
                 { _.map(teamsInfo, ({ name, logoUrl, id }) => <TeamHeader key={id} image={{ uri: logoUrl }} name={name} />)}
               </View>
               <View>
                 <View cls='h2 jcc'>
-                  <Text cls='contrast ff-ubu-b ml1 mr2 f6 bg-transparent'>{' '}</Text>
+                  <Text cls='contrast ff-ubu-b ml1 mr1 f6 bg-transparent'>{' '}</Text>
                 </View>
                 { _.map(teamsInfo, ({ redDot, id }) => <RedDot key={id} on={redDot} />)}
               </View>
               <View>
                 <View cls='h2 jcc'>
-                  <Text cls='contrast ff-ubu-b ml1 mr2 f6 bg-transparent'>JJ</Text>
+                  <Text cls='contrast ff-ubu-b ml1 mr1 f6 bg-transparent'>JJ</Text>
                 </View>
                 { _.map(teamsInfo, ({ jj, id }) => <Score key={id} score={jj} />)}
               </View>
               <View>
                 <View cls='h2 jcc'>
-                  <Text cls='contrast ff-ubu-b ml1 mr2 f6 bg-transparent'>JG</Text>
+                  <Text cls='contrast ff-ubu-b ml1 mr1 f6 bg-transparent'>JG</Text>
                 </View>
                 { _.map(teamsInfo, ({ jg, id }) => <Score key={id} score={jg} />)}
               </View>
               <View>
                 <View cls='h2 jcc'>
-                  <Text cls='contrast ff-ubu-b ml1 mr2 f6 bg-transparent'>JE</Text>
+                  <Text cls='contrast ff-ubu-b ml1 mr1 f6 bg-transparent'>JE</Text>
                 </View>
                 { _.map(teamsInfo, ({ je, id }) => <Score key={id} score={je} />)}
               </View>
               <View>
                 <View cls='h2 jcc'>
-                  <Text cls='contrast ff-ubu-b ml1 mr2 f6 bg-transparent'>JP</Text>
+                  <Text cls='contrast ff-ubu-b ml1 mr1 f6 bg-transparent'>JP</Text>
                 </View>
                 { _.map(teamsInfo, ({ jp, id }) => <Score key={id} score={jp} />)}
               </View>
               <View>
                 <View cls='h2 jcc'>
-                  <Text cls='contrast ff-ubu-b ml1 mr2 f6 bg-transparent'>GF</Text>
+                  <Text cls='contrast ff-ubu-b ml1 mr1 f6 bg-transparent'>GF</Text>
                 </View>
                 { _.map(teamsInfo, ({ gf, id }) => <Score key={id} score={gf} />)}
               </View>
               <View>
                 <View cls='h2 jcc'>
-                  <Text cls='contrast ff-ubu-b ml1 mr2 f6 bg-transparent'>GC</Text>
+                  <Text cls='contrast ff-ubu-b ml1 mr1 f6 bg-transparent'>GC</Text>
                 </View>
                 { _.map(teamsInfo, ({ gc, id }) => <Score key={id} score={gc} />)}
               </View>
               <View>
                 <View cls='h2 jcc'>
-                  <Text cls='contrast ff-ubu-b ml1 mr2 f6 bg-transparent'>DIF</Text>
+                  <Text cls='contrast ff-ubu-b ml1 mr1 f6 bg-transparent'>DIF</Text>
                 </View>
                 { _.map(teamsInfo, ({ dif, id }) => <Score key={id} score={dif} />)}
               </View>
               <View>
                 <View cls='h2 jcc'>
-                  <Text cls='contrast ff-ubu-b ml1 mr2 f6 bg-transparent'>PTS</Text>
+                  <Text cls='contrast ff-ubu-b ml1 mr1 f6 bg-transparent'>PTS</Text>
                 </View>
                 { _.map(teamsInfo, ({ pts, id }) => <Score key={id} score={pts} />)}
               </View>

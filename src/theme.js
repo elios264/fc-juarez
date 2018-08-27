@@ -3,6 +3,7 @@ export const palette = {
   contrast: '#14fa68',
   primary: '#161616',
   primarydark: '#0e0e0e',
+  contrast2: '#fdd700',
   gray: '#7b7b7b',
 };
 export const fonts = {

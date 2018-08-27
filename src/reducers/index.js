@@ -14,10 +14,9 @@ const pushSettings = (state = { receiveMatchAlerts: false, receiveGoalsAlerts: f
     return { ...state, [action.settingName]: action.value };
 };
 
-const appInfo = (state = { appState: 'unknown', pushPermissions: undefined }, action) => {
+const appInfo = (state = { appState: 'unknown' }, action) => {
   switch (action.type) {
     case 'APPSTATE_CHANGED': return { ...state, appState: action.state };
-    case 'PUSH_PERMISSIONS_CHANGED': return { ...state, pushPermissions: action.state };
     default: return state;
   }
 };

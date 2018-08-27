@@ -33,7 +33,7 @@ class _App extends PureComponent {
     loadFromServer: PropTypes.func.isRequired,
   }
 
-  componentDidMount() {
+  componentDidMount() {    
     if (coldStartNotification) {
       this.onOpened(coldStartNotification, false);
       coldStartNotification = undefined;

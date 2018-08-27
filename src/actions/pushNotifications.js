@@ -15,8 +15,3 @@ export const initializePushSettings = () => catchError((dispatch, getState) => {
   dispatch({ type: 'PUSH_SETTINGS_CHANGED', state: { receiveGeneralAlerts: true, receiveGoalsAlerts: true, receiveMatchAlerts: true } });
   ServiceApi.updatePushSettings(getState().pushSettings);
 }, 'No se ha podido registrar el dispositivo para recibir notificaciones');
-export const getPushPermissions = () => catchError(async (dispatch) => {
-  const state = await new Promise((res) => OneSignal.getPermissionSubscriptionState(res));
-  dispatch({ type: 'PUSH_PERMISSIONS_CHANGED', state });
-  return state;
-}, 'No se han podido leer los permisos de las notificaciones');

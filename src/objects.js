@@ -2,7 +2,7 @@ import _ from 'lodash';
 import moment from 'moment';
 import { Linking } from 'react-native';
 import { SERVER_URL } from './serviceApi';
-import { btoa } from './utils';
+import { btoa, getYoutubeVideoIdFromUrl } from './utils';
 
 export class Season {
   constructor(attributes) { this.attributes = attributes; }
@@ -37,15 +37,17 @@ export class Advertisement {
 export class GameMatch {
 
   constructor(attributes) {
-    const { Date: date, Hour, GameFutureId, SeasonId, Stadium, TournamentId, VersusTeam, VersusTeamAtHome, GamePresentId, GamePastId, ScoreAway, ScoreHome, Description, Subtitle, Title, banners } = attributes;
+    const { Date: date, Hour, GameFutureId, SeasonId, Stadium, TournamentId, VersusTeam, VersusTeamAtHome, GamePresentId, GamePastId, ScoreAway, ScoreHome, Description, Subtitle, Title, banners, LinkAddress1, LinkAddress1Past } = attributes;
 
     const time = moment.tz(`${date} ${Hour}`, 'YYYY-MM-DD HH:mm:ss', 'America/Chihuahua').local().toDate();
     const id = GameFutureId;
     const detailsId = GamePresentId;
     const summaryId = GamePastId;
     const desc = Description || Title || Subtitle;
+    const promoVideo = getYoutubeVideoIdFromUrl(LinkAddress1);
+    const matchVideo = getYoutubeVideoIdFromUrl(LinkAddress1Past);
 
-    this.attributes = { time, id, detailsId, summaryId, SeasonId, Stadium, TournamentId, VersusTeam, VersusTeamAtHome, ScoreAway, ScoreHome, desc, banners };
+    this.attributes = { time, id, detailsId, summaryId, SeasonId, Stadium, TournamentId, VersusTeam, VersusTeamAtHome, ScoreAway, ScoreHome, desc, banners, promoVideo, matchVideo };
   }
 
   get viewMoreUrl() {
@@ -67,6 +69,8 @@ export class GameMatch {
   get desc() { return this.attributes.desc; }
   get scoreAway() { return this.attributes.ScoreAway; }
   get scoreHome() { return this.attributes.ScoreHome; }
+  get promoVideo() { return this.attributes.promoVideo; }
+  get matchVideo() { return this.attributes.matchVideo; }
 
 }
 

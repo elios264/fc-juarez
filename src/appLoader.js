@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import { NativeRouter, Route } from 'react-router-native';
 import NativeTachyons from 'react-native-style-tachyons';
 import OneSignal from 'react-native-onesignal';
+import Orientation from 'react-native-orientation';
 
 import { name as appName, oneSignalId } from 'fcjuarez/app.json';
 import { fonts, palette, rem } from './theme';
@@ -19,6 +20,7 @@ moment.locale('es');
 
 OneSignal.init(oneSignalId);
 NativeTachyons.build({ rem, fonts, colors: { palette } }, StyleSheet);
+Orientation.lockToPortrait();
 
 const { App } = require('./components/app');
 const composeEnhancers = __DEV__ ? (window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose) : compose;
