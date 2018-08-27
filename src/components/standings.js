@@ -50,7 +50,7 @@ export class _Standings extends PureComponent {
   render() {
     let { teamsInfo, ad, refreshing, loadFromServer } = this.props;
 
-    teamsInfo = _.orderBy(teamsInfo, 'pts', 'desc');
+    teamsInfo = _.orderBy(teamsInfo, ({ pts }) => Number(pts), 'desc');
 
     return (
       <View cls='flx-i'>
@@ -70,7 +70,7 @@ export class _Standings extends PureComponent {
                 <View cls='h2 jcc'>
                   <Text cls='contrast ff-ubu-b ml1 mr1 f6 bg-transparent'>{' '}</Text>
                 </View>
-                { _.map(teamsInfo, ({ redDot, id }) => <RedDot key={id} on={redDot} /> )}
+                { _.map(teamsInfo, ({ redDot, id }) => <RedDot key={id} on={redDot} />)}
               </View>
               <View>
                 <View cls='h2 jcc'>
@@ -144,7 +144,7 @@ const styles = StyleSheet.create({
   circle: {
     width: 10,
     height: 10,
-    borderRadius: 10/2,
+    borderRadius: 10 / 2,
     backgroundColor: 'red'
   }
 });
