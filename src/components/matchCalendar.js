@@ -77,7 +77,7 @@ class _MatchInfo extends PureComponent {
             <Text cls='white f6 ff-ubu-b bg-transparent'>Video</Text>
           </TouchableOpacity>
         }
-        {(mode === 'cur' || mode === 'next') &&
+        {(mode === 'cur' || mode === 'next') && !versusTeamAtHome &&
           <TouchableOpacity onPress={this.buyTickets} cls='ass mt2' activeOpacity={0.6} >
             <View cls='flx-row jcc aic h2' >
               <Image cls='absolute-fill rm-stretch' style={[styles.expand]} source={require('fcjuarez/assets/img/rectangle.png')} />

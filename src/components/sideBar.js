@@ -39,8 +39,8 @@ export class _Sidebar extends PureComponent {
     this.props.drawer.closeDrawer();
   }
 
-  openEuphos = () => {
-    Linking.openURL('https://www.eupho.io/');
+  openTranstelco = () => {
+    Linking.openURL('https://transtelco.net/');
   }
 
   render() {
@@ -65,18 +65,13 @@ export class _Sidebar extends PureComponent {
           <MenuElement path='/the-minute' image={require('fcjuarez/assets/img/menu/whistle.png')} text='Minuto a minuto' />
           <MenuElement path='/settings' image={require('fcjuarez/assets/img/menu/timer.png')} text='Configuración' />
 
-          <View cls='flx-i jcc' >
-            <View cls='flx-row' >
-              <TouchableOpacity onPress={this.openEuphos} >
-                <View cls='aic ml4' >
-                  <Image cls='mb1 rm-contain w4' source={require('fcjuarez/assets/img/menu/eupho.png')} />
-                  <Text cls='white ff-ubu-b f5 asc'>Ve los partidos en vivo</Text>
-                </View>
-              </TouchableOpacity>
-            </View>
+          <View cls='flx-i flx-row aic jcc' >
+            <TouchableOpacity onPress={this.openTranstelco} >
+              <Image cls='rm-contain' style={[styles.logo]} source={require('fcjuarez/assets/img/menu/transtelco.png')} />
+            </TouchableOpacity>
           </View>
 
-          <Text cls=' mb3 ml3 gray ff-ubu-b' style={{ fontSize: sizes.f5 / 2 }}>
+          <Text cls='mb3 ml3 gray ff-ubu-b' style={{ fontSize: sizes.f5 / 2 }}>
               Todos los derechos reservados 2018
           </Text>
         </View>
@@ -99,6 +94,10 @@ const styles = StyleSheet.create({
     width: '100%',
     height: '100%'
   },
+  logo: {
+    width: sizes.w5 + sizes.w2,
+    height: sizes.h3 + sizes.h1
+  }
 });
 
 export const Sidebar = withRouter(NativeTachyons.wrap(_Sidebar));

@@ -13,7 +13,6 @@ const GAME_MATCH_RESULTS_URL = (ids) => `/GamePresent?columns=GamePresentId,Game
 const GAME_MATCH_SUMMARY_URL = (ids) => `/GamePast?columns=GamePastId,GameFutureId,LinkAddress1&filter=GameFutureId,in,${_.join(ids)}`;
 const GAME_MATCH_DETAILS_URL = (id) => `/GameFuture/${id}`;
 const GAME_MATCH_MINUTE_URL = (id) => `/GamePresentMinute?columns=GamePresentId,GameEventId,Minute,Description&filter=GamePresentId,eq,${id}`;
-const WELCOME_BANNER_URL = '/Banner?order=InputDate,desc&page=1,1&columns=BannerId';
 const ADS_URL = '/Advertisement?filter[]=AdvertisementId,in,6,7&filter[]=Active,eq,1&columns=AdvertisementId,LinkAddress,Active';
 const GENERAL_TABLE_URL = 'http://administrador.ligamx.net/webservices/prtl_web_jsondata.ashx?psWidget=PRTL_EstdClubDtll&objIDDivision=2&objIDTemporada=69&objIDTorneo=1';
 
@@ -93,9 +92,7 @@ export class ServiceApi {
   }
 
   static async downloadWelcomeBanner() {
-    const response = await fetchJson(`${SERVER_URL}${API_PATH}${WELCOME_BANNER_URL}`);
-    const id = _.get(normalizeData(response.Banner), '[0].BannerId');
-    const url = `${SERVER_URL}/binder/banner/${id}.jpg?${_.random(5000)}`;
+    const url = `${SERVER_URL}/binder/bannerapp/1.jpg?${_.random(5000)}`;
 
     if (await fileExists(url)) {
       return url;
