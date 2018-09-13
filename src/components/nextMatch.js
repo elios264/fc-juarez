@@ -91,9 +91,11 @@ export class _NextMatch extends PureComponent {
           <Text cls='white ff-ubu mt3 mb3 bg-transparent' style={[styles.smallText]} >
             {br2nl(desc)}
           </Text>
-          <TouchableHighlight onPress={this.buyTickets} cls='bg-contrast pv2 jcc aic' underlayColor='#0c963e' >
-            <Text cls='#0b6b2e f6 ff-ubu-b'>Comprar boletos</Text>
-          </TouchableHighlight>
+          { !versusTeamAtHome &&
+            <TouchableHighlight onPress={this.buyTickets} cls='bg-contrast pv2 jcc aic' underlayColor='#0c963e' >
+              <Text cls='#0b6b2e f6 ff-ubu-b'>Comprar boletos</Text>
+            </TouchableHighlight>
+          }
         </View>
       </View>
     );
