@@ -47,6 +47,7 @@ export class GameMatch {
     const promoVideo = getYoutubeVideoIdFromUrl(LinkAddress1);
     const matchVideo = getYoutubeVideoIdFromUrl(LinkAddress1Past);
 
+    this.cacheBurster = _.random(5000);
     this.attributes = { time, id, detailsId, summaryId, SeasonId, Stadium, TournamentId, VersusTeam, VersusTeamAtHome, ScoreAway, ScoreHome, desc, banners, promoVideo, matchVideo };
   }
 
@@ -56,7 +57,7 @@ export class GameMatch {
       : `${SERVER_URL}/perfil-partidos-por-jugar.php?${_.replace(btoa(`gf=${this.id}`), '=', '')}`;
   }
   get bannerUrls() { return this.attributes.banners; }
-  get teamLogoUrl() { return `${SERVER_URL}/binder/gamefuture/${this.id}-0.png`; }
+  get teamLogoUrl() { return `${SERVER_URL}/binder/gamefuture/${this.id}-0.png?${this.cacheBurster}`; }
   get id() { return this.attributes.id; }
   get summaryId() { return this.attributes.summaryId; }
   get detailsId() { return this.attributes.detailsId; }
@@ -86,7 +87,8 @@ export class TeamInfo {
 
   constructor(attributes) {
     const { nombreClub, JJ, JG, JE, JP, GF, GC, Diferencia, puntos, idClub, redDot } = attributes;
-    const logoUrl = `${SERVER_URL}/assets/images/logos-equipos/ascenso/tabla/${_.toLower(_.deburr(nombreClub)).replace(/[ .]+/g, '')}.png`;
+    this.cacheBurster = _.random(5000);
+    const logoUrl = `${SERVER_URL}/assets/images/logos-equipos/ascenso/tabla/${_.toLower(_.deburr(nombreClub)).replace(/[ .]+/g, '')}.png?${this.cacheBurster}`;
     this.attributes = { nombreClub, logoUrl, JJ, JG, JE, JP, GF, GC, Diferencia, puntos, idClub, redDot };
   }
 
@@ -101,5 +103,5 @@ export class TeamInfo {
   get gc() { return this.attributes.GC; }
   get dif() { return this.attributes.Diferencia; }
   get pts() { return this.attributes.puntos; }
-  get redDot() { return this.attributes.redDot }
+  get redDot() { return this.attributes.redDot; }
 }
