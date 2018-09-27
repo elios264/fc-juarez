@@ -50,7 +50,7 @@ export class _Standings extends PureComponent {
   render() {
     let { teamsInfo, ad, refreshing, loadFromServer } = this.props;
 
-    teamsInfo = _.orderBy(teamsInfo, ({ pts }) => Number(pts), 'desc');
+    teamsInfo = _.orderBy(teamsInfo, [({ pts }) => Number(pts), ({ dif }) => Number(dif), ({ gf }) => Number(gf)], ['desc', 'desc', 'desc']);
 
     return (
       <View cls='flx-i'>
